@@ -1,0 +1,110 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Backend/C#' />
+
+
+# Example for C#
+
+Because ASAP PDF uses [Puppeteer](https://pptr.dev/) to convert HTML to PDF on the fly, we recommend using
+[Puppeteer Sharp](https://www.puppeteersharp.com/) on the server side.
+
+Below is an example code for converting HTML to PDF in **C#**:
+
+```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using PuppeteerSharp;
+
+namespace PuppeteerSharpPDFGenerator
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            string htmlContent = "<html><head><title>My HTML String</title></head><body><h1>Hello, World!</h1></body></html>";
+            await GeneratePDFAsync(htmlContent);
+        }
+
+        private static async Task GeneratePDFAsync(string htmlContent)
+        {
+            // Make sure the Chrome or Chromium browser is installed on your computer
+            await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+
+            // Launch the browser and open a new tab
+            using var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true });
+            using var page = await browser.NewPageAsync();
+
+            // Load HTML code from string
+            await page.SetContentAsync(htmlContent);
+
+            // PDF options
+            var pdfOptions = new PdfOptions
+            {
+                Format = PaperFormat.A4,
+                PrintBackground = true,
+                MarginOptions = new MarginOptions
+                {
+                    Top = "1cm",
+                    Bottom = "1cm",
+                    Left = "1cm",
+                    Right = "1cm"
+                }
+            };
+
+            // Generate PDF file
+            byte[] pdfData = await page.PdfDataAsync(pdfOptions);
+
+            // Save the PDF file to disk
+            File.WriteAllBytes("generated.pdf", pdfData);
+
+            // Close the browser
+            await browser.CloseAsync();
+
+            Console.WriteLine("PDF generated successfully!");
+        }
+    }
+}
+
+```
+
+## Inserting data into labels
+
+If you need to insert data into HTML on the backend before generating a PDF from HTML, we recommend using
+`{{ someData }}` type labels and [Fluid](https://github.com/sebastienros/fluid).
+
+An example of a document with the `{{userName}}` label:
+
+```HTML
+<!DOCTYPE html>
+<html lang="en" data-theme="asap">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Example</title>
+</head>
+
+<body>
+	<div class="sheet A4-m-15mm">
+		<h1>Hello, {{userName}}!</h1>
+	</div>
+</body>
+</html>
+```
+
+```Pug
+extends ./../templates/common
+
+//- Document variables
+block append vars
+	-
+		docTitle = 'Example'
+
+
+//- Document content
+block append content
+	.sheet.A4-m-15mm
+		h1 Hello, {{userName}}
+```
+
+These labels can also be used for [mocked data testing](?path=/story/test-mocking--page).

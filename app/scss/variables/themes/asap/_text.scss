@@ -1,0 +1,59 @@
+// ===============================================
+// TEXT VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	// TEXT COMPONENTS
+	// -----------------------------------------------
+
+	--text-xxs-fz: var(--fz-xxs);
+	--text-xs-fz: var(--fz-xs);
+	--text-sm-fz: var(--fz-sm);
+	--text-md-fz: var(--fz-md);
+	--text-lg-fz: var(--fz-lg);
+	--text-xl-fz: var(--fz-xl);
+	--text-xxl-fz: var(--fz-xxl);
+
+	--text-xxs-lh: var(--lh-md);
+	--text-xs-lh: var(--lh-md);
+	--text-sm-lh: var(--lh-lg);
+	--text-md-lh: var(--lh-xl);
+	--text-lg-lh: var(--lh-md);
+	--text-xl-lh: var(--lh-md);
+	--text-xxl-lh: var(--lh-md);
+
+
+	--h1-lh: var(--lh-1);
+	--h2-lh: var(--lh-xs);
+	--h3-lh: var(--lh-sm);
+	--h4-lh: var(--lh-lg);
+	--h5-lh: var(--lh-lg);
+
+	// -----------------------------------------------
+	// TEXT COMPONENTS
+
+
+	// TEXT COLORS
+	// -----------------------------------------------
+
+	--text-white-cl: var(--cl-white);
+	--text-black-cl: var(--cl-black);
+	--text-light-cl: var(--cl-gray-300);
+	--text-dark-cl: var(--cl-gray-100);
+	--text-primary-cl: var(--cl-blue-100);
+	--text-success-cl: var(--cl-green-100);
+	--text-warning-cl: var(--cl-orange-100);
+	--text-danger-cl: var(--cl-red-100);
+	--text-info-cl: var(--cl-yellow-100);
+	--text-muted-cl: var(--cl-gray-400);
+
+	// -----------------------------------------------
+	// TEXT COLORS
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

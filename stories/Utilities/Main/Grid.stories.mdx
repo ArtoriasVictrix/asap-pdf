@@ -1,0 +1,312 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Main/CSS Grid' />
+
+
+# CSS Grid
+
+## Grid: auto flow
+
+Control how elements in a grid are auto-placed with our `.grid-af` utilities. The format is `grid-af-{value}`.
+
+Where *value* is one of:
+
+- `row` - for `row`
+- `col` - for `column`
+- `row-dense` - for `row dense`
+- `col-dense` - for `column dense`
+
+**.grid-af-row:**
+
+<Canvas>
+<div class="d-grid grid-af-row gap-12 bg-info" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridColumnEnd: 'span 2'}}>1</div>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridColumnEnd: 'span 2'}}>2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+	<div class="bg-light border-1 border-light border-solid p-12">4</div>
+	<div class="bg-light border-1 border-light border-solid p-12">5</div>
+</div>
+</Canvas>
+
+**.grid-af-row-dense:**
+
+<Canvas>
+<div class="d-grid grid-af-row-dense gap-12 bg-info" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridColumnEnd: 'span 2'}}>1</div>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridColumnEnd: 'span 2'}}>2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+	<div class="bg-light border-1 border-light border-solid p-12">4</div>
+	<div class="bg-light border-1 border-light border-solid p-12">5</div>
+</div>
+</Canvas>
+
+**.grid-af-col:**
+
+<Canvas>
+<div class="d-grid grid-af-col gap-12 bg-info" style={{gridTemplateRows: '1fr 1fr 1fr'}}>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridRowEnd: 'span 2'}}>1</div>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridRowEnd: 'span 2'}}>2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+	<div class="bg-light border-1 border-light border-solid p-12">4</div>
+	<div class="bg-light border-1 border-light border-solid p-12">5</div>
+</div>
+</Canvas>
+
+**.grid-af-col-dense:**
+
+<Canvas>
+<div class="d-grid grid-af-col-dense gap-12 bg-info" style={{gridTemplateRows: '1fr 1fr 1fr'}}>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridRowEnd: 'span 2'}}>1</div>
+	<div class="bg-light border-1 border-light border-solid p-12" style={{gridRowEnd: 'span 2'}}>2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+	<div class="bg-light border-1 border-light border-solid p-12">4</div>
+	<div class="bg-light border-1 border-light border-solid p-12">5</div>
+</div>
+</Canvas>
+
+## Grid: justify content
+
+Control how elements in a grid are positioned along container's main axis with our `.grid-jc` utilities. The format is
+`grid-jc-{value}`.
+
+Where *value* is one of:
+
+- `start` - for `start`
+- `end` - for `end`
+- `center` - for `center`
+- `stretch` - for `stretch`
+- `around` - for `space-around`
+- `between` - for `space-between`
+- `evenly` - for `space-evenly`
+
+**.grid-jc-center:**
+
+<Canvas>
+<div class="d-grid grid-jc-center gap-12 bg-info">
+	<div class="bg-light border-1 border-light border-solid p-12">1</div>
+	<div class="bg-light border-1 border-light border-solid p-12">2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+</div>
+</Canvas>
+
+**.grid-jc-end:**
+
+<Canvas>
+<div class="d-grid grid-jc-end gap-12 bg-info">
+	<div class="bg-light border-1 border-light border-solid p-12">1</div>
+	<div class="bg-light border-1 border-light border-solid p-12">2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+</div>
+</Canvas>
+
+**.grid-jc-stretch:**
+
+<Canvas>
+<div class="d-grid grid-jc-stretch gap-12 bg-info">
+	<div class="bg-light border-1 border-light border-solid p-12">1</div>
+	<div class="bg-light border-1 border-light border-solid p-12">2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+</div>
+</Canvas>
+
+## Grid: justify items
+
+Control how elements in a grid are aligned along their inline axis with our `.grid-ji` utilities. The format is
+`grid-ji-{value}`.
+
+Where *value* is one of:
+
+- `start` - for `start`
+- `end` - for `end`
+- `center` - for `center`
+- `stretch` - for `stretch`
+
+**.grid-ji-end**:
+
+<Canvas>
+<div class="d-grid grid-af-row grid-ji-end gap-12 bg-info" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
+	<div class="bg-light border-1 border-light border-solid p-12">1</div>
+	<div class="bg-light border-1 border-light border-solid p-12">2</div>
+	<div class="bg-light border-1 border-light border-solid p-12">3</div>
+	<div class="bg-light border-1 border-light border-solid p-12">4</div>
+	<div class="bg-light border-1 border-light border-solid p-12">5</div>
+</div>
+</Canvas>
+
+## Grid: justify self
+
+Control how an individual grid item is aligned along its inline axis with our `.grid-js` utilities. The format is
+`grid-js-{value}`.
+
+Where *value* is one of:
+
+- `start` - for `start`
+- `end` - for `end`
+- `center` - for `center`
+- `stretch` - for `stretch`
+
+<Canvas>
+<div class="d-grid grid-ji-end gap-12 bg-info">
+	<div class="bg-light border-1 border-light border-solid p-12">1</div>
+	<div class="grid-js-stretch bg-light border-1 border-light border-solid p-12">2</div>
+	<div class="grid-js-center bg-light border-1 border-light border-solid p-12">3</div>
+</div>
+</Canvas>
+
+## Grid: align items
+
+Control how elements in a grid are positioned along a container's cross axis with our `.grid-ai` utilities. The format
+is `grid-ai-{value}`.
+
+Where *value* is one of:
+
+- `start` - for `start`
+- `end` - for `end`
+- `center` - for `center`
+- `stretch` - for `stretch`
+
+**.grid-ai-center:**
+
+<Canvas>
+<div class="d-grid grid-af-row grid-ai-center gap-12 bg-info" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
+	<div class="h-36 bg-light border-1 border-light border-solid p-8">1</div>
+	<div class="h-120 bg-light border-1 border-light border-solid p-8">2</div>
+	<div class="h-48 bg-light border-1 border-light border-solid p-8">3</div>
+</div>
+</Canvas>
+
+## Grid: align content
+
+Control how rows are positioned in grid containers with our `.grid-ac` utilities. The format is `grid-ac-{value}`.
+
+Where *value* is one of:
+
+- `start` - for `start`
+- `end` - for `end`
+- `center` - for `center`
+- `stretch` - for `stretch`
+- `around` - for `space-around`
+- `between` - for `space-between`
+- `evenly` - for `space-evenly`
+
+**.grid-ac-end**:
+
+<Canvas>
+<div class="d-grid grid-af-row grid-ac-end gap-12 h-120 bg-info" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
+	<div class="h-48 bg-light border-1 border-light border-solid p-8">1</div>
+	<div class="h-48 bg-light border-1 border-light border-solid p-8">2</div>
+	<div class="h-48 bg-light border-1 border-light border-solid p-8">3</div>
+</div>
+</Canvas>
+
+## Grid: align self
+
+Control how an individual grid item is positioned along its container's cross axis with our `.grid-as` utilities. The
+format is `grid-as-{value}`.
+
+Where *value* is one of:
+
+- `start` - for `start`
+- `end` - for `end`
+- `center` - for `center`
+- `stretch` - for `stretch`
+
+<Canvas>
+<div class="d-grid grid-af-row grid-ai-end gap-12 h-120 bg-info" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
+	<div class="h-48 bg-light border-1 border-light border-solid p-8">1</div>
+	<div class="grid-as-start h-48 bg-light border-1 border-light border-solid p-8">2</div>
+	<div class="h-48 bg-light border-1 border-light border-solid p-8">3</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Grid utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Grid utilities
+'grid-auto-flow': (
+	property: grid-auto-flow,
+	class: grid-af,
+	values: (
+		row: row,
+		col: column,
+		row-dense: row dense,
+		col-dense: column dense,
+	)
+),
+'grid-justify-items': (
+	property: justify-items,
+	class: grid-ji,
+	values: (
+		start: start,
+		end: end,
+		center: center,
+		stretch: stretch,
+	)
+),
+'grid-justify-content': (
+	property: justify-content,
+	class: grid-jc,
+	values: (
+		start: start,
+		end: end,
+		center: center,
+		stretch: stretch,
+		around: space-around,
+		between: space-between,
+		evenly: space-evenly,
+	)
+),
+'grid-justify-self': (
+	property: justify-self,
+	class: grid-js,
+	values: (
+		start: start,
+		end: end,
+		center: center,
+		stretch: stretch,
+	)
+),
+'grid-align-items': (
+	property: align-items,
+	class: grid-ai,
+	values: (
+		start: start,
+		end: end,
+		center: center,
+		stretch: stretch,
+	)
+),
+'grid-align-content': (
+	property: align-content,
+	class: grid-ac,
+	values: (
+		start: start,
+		end: end,
+		center: center,
+		stretch: stretch,
+		around: space-around,
+		between: space-between,
+		evenly: space-evenly,
+	)
+),
+'grid-align-self': (
+	property: align-self,
+	class: grid-as,
+	values: (
+		start: start,
+		end: end,
+		center: center,
+		stretch: stretch,
+	)
+),
+'gap': (
+	property: gap,
+	class: gap,
+	values: create-range(0, 32, 4, 'px'),
+),
+```

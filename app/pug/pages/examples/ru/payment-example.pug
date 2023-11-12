@@ -1,0 +1,145 @@
+extends ./../../../templates/common
+
+//- Document variables
+block append vars
+	-
+		docTitle = 'Пример платёжного поручения'
+		cssPath = '../../css/style.css'
+
+
+//- Document content
+block append content
+	.sheet.A4-m-15mm
+		table.table.cells-p-0.w-100p.mb-28
+			tbody
+				tr.ta-c
+					td.border-b-solid.border-b-1.w-132 {{Date1}}
+					td.w-20
+					td.border-b-solid.border-b-1.w-132 {{Date2}}
+					td &nbsp;
+					td.border-solid.border-1.w-100.h-32.px-8 {{FormNum}}
+				tr.fz-sm.ta-c
+					td.pt-4 Поступ.&nbsp;в&nbsp;банк плат.
+					td
+					td.pt-4 Списано со&nbsp;сч. плат.
+					td
+					td
+
+		table.table.cells-p-0.w-100p.mb-12
+			tbody
+				tr
+					td.fz-lg.fw-b.pr-20 Пример платёжного поручения &#8470; 1
+					td.fw-b.ta-c.border-b-solid.border-b-1.w-120 01.11.2023
+					td.w-20 &nbsp;
+					td.fw-b.ta-c.border-b-solid.border-b-1.w-100 11
+					td.w-20 &nbsp;
+					td.ta-c.border-solid.border-1.h-32.px-8
+				tr.fz-sm
+					td
+					td.ta-c.pt-4 Дата
+					td
+					td.ta-c.pt-4 Вид платежа
+					td
+					td
+
+		table.table.table--borders.table--borders-black.cells-va-t.w-100p
+			tbody
+				tr.cells-va-t
+					td.w-160(colspan='2') Сумма прописью
+					td.pt-4.pr-12.pb-12.pl-20(colspan='6') {{SumaInCuirsive}}
+				tr
+					td.no-border-x.w-32 ИНН
+					td.min-w-100 {{PayerInn}}&nbsp;
+					td.no-border-x.w-32 КПП
+					td.min-w-100 &nbsp;
+					td.w-100.h-60(rowspan='2') Сумма
+					td(colspan='3' rowspan='2') {{Amount}}
+				tr
+					td.border-r-solid.border-r-1.no-border-b(rowspan='2' colspan='4') {{PayerName}}
+				tr
+					td.h-52(rowspan='2') Сч. &#8470;
+					td.no-border-b(colspan='3' rowspan='2') 12345678901234567890
+				tr
+					td.fz-sm.va-b.border-r-solid.border-r-1(colspan='4') Плательщик
+				tr
+					td.no-border-b(rowspan='2' colspan='4') ООО «Название банка», г. Москва
+					td.w-52 БИК
+					td.no-border-b(colspan='3') 123456789
+				tr
+					td.h-52(rowspan='2') Сч. &#8470;
+					td(colspan='3' rowspan='2') 11111111111111111111
+				tr
+					td.fz-sm.va-b.border-r-solid.border-r-1(colspan='4') Банк плательщика
+				tr
+					td.no-border-b(rowspan='2' colspan='4') "ООО «Какой-то-Банк для примера», г. Москва"
+					td.w-52 БИК
+					td.no-border-b(colspan='3') 111111111
+				tr
+					td.h-52(rowspan='2') Сч. &#8470;
+					td.no-border-b(colspan='3' rowspan='2') 11111111111111111111
+				tr
+					td.fz-sm.va-b.border-r-solid.border-r-1(colspan='4') Банк получателя
+				tr
+					td.no-border-x.w-32 ИНН
+					td.min-w-100 1111111111
+					td.no-border-x.w-32 КПП
+					td.min-w-100
+					td.w-52.h-52(rowspan='2') Сч. &#8470;
+					td(colspan='3' rowspan='2') 11111111111111111111
+				tr
+					td.border-r-1.border-r-solid.no-border-b(rowspan='3' colspan='4') Выдуманное учреждение с названием какой-то длины
+				tr
+					td Вид оп.
+					td.no-border-b.w-92 01
+					td.w-140 Срок плат.
+					td.no-border-b.w-112
+				tr
+					td Наз. пл.
+					td.no-border-b 1
+					td Очер. плат.
+					td.no-border-b 1
+				tr
+					td.fz-sm.va-b(colspan='4') Получатель
+					td Код
+					td {{UIN}}
+					td Рез. поле
+					td
+		table.table.table--borders.table--borders-black.table--outer-border.no-border-x.w-100p.ta-c
+			tbody
+				tr
+					td.w-25p 11111111111111111111
+					td.w-15p 12345678
+					td 0
+					td.w-15p 1
+					td.w-15p 1
+					td.w-15p 11.01.2011
+					td
+
+		table.table.w-100p.pg-bk-inside-avoid
+			tbody
+				tr
+					td.h-68.py-12.px-0(colspan='3') Пример текста для назначения платежа
+				tr
+					td.fz-sm.border-b-1.border-b-solid(colspan='3') Назначение платежа
+				tr
+					td.w-25p
+					td.fz-md.ta-c Подписи
+					td.fz-md.ta-c.w-40p Отметки банка
+				tr
+					td.h-68 М.П.
+					td.border-b-1.border-b-solid
+					td.pt-20.pl-20(rowspan='3')
+						.stamp
+							| БИК 123456789
+							br
+							| к/с&nbsp;11111111111111111111
+							br
+							| {{Date2}}
+							br
+							span.tt-u Принято
+				tr
+					td.h-72
+					td.border-b-1.border-b-solid
+				tr
+					td
+					td

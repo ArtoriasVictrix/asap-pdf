@@ -1,0 +1,14 @@
+// ===============================================
+// EMBED
+// ===============================================
+
+
+// stylelint-disable scss/no-duplicate-dollar-variables, scss/dollar-variable-colon-newline-after
+
+$aspect-ratios: (
+	'4x3': calc(3 / 4 * 100%),
+	'16x9': calc(9 / 16 * 100%),
+	'21x9': calc(9 / 21 * 100%)
+) !default;
+
+// stylelint-enable scss/no-duplicate-dollar-variables, scss/dollar-variable-colon-newline-after

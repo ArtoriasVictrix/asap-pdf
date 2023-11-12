@@ -1,0 +1,78 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Object fit' />
+
+
+# Object fit
+
+[Object fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) utilities control how a replaced element's
+content should be resized.
+
+| Class | Properties |
+|-|-|
+| obj-contain | object-fit: contain; |
+| obj-cover | object-fit: cover; |
+| obj-fill | object-fit: fill; |
+| obj-none | object-fit: none; |
+| obj-scale-down | object-fit: scale-down; |
+
+## `.obj-contain`
+
+<Canvas>
+<div class="bg-info">
+	<img class="obj-contain h-200 w-100p" src="http://placekitten.com/300/200" alt="" />
+</div>
+</Canvas>
+
+## `.obj-cover`
+
+<Canvas>
+<div class="bg-info">
+	<img class="obj-cover h-200 w-100p" src="http://placekitten.com/300/200" alt="" />
+</div>
+</Canvas>
+
+## `.obj-fill`
+
+<Canvas>
+<div class="bg-info">
+	<img class="obj-fill h-200 w-100p" src="http://placekitten.com/300/200" alt="" />
+</div>
+</Canvas>
+
+## `.obj-none`
+
+<Canvas>
+<div class="bg-info">
+	<img class="obj-none h-200 w-100p" src="http://placekitten.com/300/200" alt="" />
+</div>
+</Canvas>
+
+## `.obj-scale-down`
+
+<Canvas>
+<div class="bg-info">
+	<img class="obj-scale-down h-200 w-100p" src="http://placekitten.com/300/200" alt="" />
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Object fit utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'object-fit': (
+	property: object-fit,
+	class: obj,
+	values: (
+		contain,
+		cover,
+		fill,
+		none,
+		scale-down,
+	)
+),
+```

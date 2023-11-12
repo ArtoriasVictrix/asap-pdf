@@ -1,0 +1,32 @@
+// ===============================================
+// ICONS
+// ===============================================
+
+
+.icon {
+	display: inline-block;
+	width: var(--icon-size);
+	height: var(--icon-size);
+	fill: transparent;
+	stroke: currentColor;
+	stroke-width: 0;
+	vertical-align: middle;
+
+	&:not(.icon--cl) {
+		[stroke] {
+			stroke: currentColor;
+		}
+
+		[fill] {
+			fill: currentColor;
+		}
+	}
+
+	&--lg {
+		font-size: 20px;
+	}
+
+	&--xl {
+		font-size: 24px;
+	}
+}

@@ -1,0 +1,103 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Get started/Project settings' />
+
+
+# 🛠 Project settings
+
+## About Build Modes
+
+ASAP PDF supports two build modes: **production** and **development** (`npm start` and `npm run dev`, respectively).
+
+The **production** mode has the widest range of options:
++ CSS compression (when compiling SCSS);
++ Autoprefixer CSS (when compiling SCSS);
++ Image optimization;
++ Resource encoding in Base64 and subsequent insertion into HTML;
++ Removing unused CSS before inserting it into HTML;
+
+> To optimize productivity in production mode, an automatically generated `temp/` folder is utilized to store
+> intermediate assembly files.
+
+**Development** mode is meant for debugging through source maps. In this mode, resources from the `app/` folder are not
+optimized, encoded in Base64, or embedded in HTML. Instead, they are copied to the `dist/` folder. However, data mocking
+is not supported in development mode, as the mocked HTML files are transferred to the `dist/mocked/` folder, rendering
+the specified resource paths outdated.
+
+You can learn more about the structure of the project [here](?path=/story/get-started-project-structure--page).
+
+
+## Build Settings
+
+Build settings are stored in `gulp/config/build/development.js` and `gulp/config/build/production.js`. The structure of
+these files is the same for both build modes:
+
+```js
+
+// Use 'temp' folder
+tempFolder: true, // Using the temp/ folder for the build
+
+// Pug
+pugPrettify: true, // Making final HTML readable
+
+// CSS
+cssAutoprefix: false, // Using Autoprefixer
+cssUglify: true, // Compressing CSS
+cssSourcemaps: false, // Generating CSS sourcemap
+cssConcat: false, // Compilating CSS files into one
+cssConcatFilename: 'style.css', // Name of the compiled CSS file (works only when cssConcat = true)
+
+// SCSS
+scssAutoprefix: true, // Using Autoprefixer
+scssUglify: true, // Compressing final CSS
+scssSourcemaps: false, // Generating sourcemap for SCSS
+scssConcat: false, // Compilating final CSS files into one
+scssConcatFilename: 'style.css', // Name for the compiled CSS file (only works when scssConcat = true)
+
+// JS
+jsBabel: true, // Processing JavaScript with Babel
+jsUglify: true, // Compressing JavaScript
+jsSourcemaps: false, // Generating JavaScript sourcemap
+
+// IMG
+minifyImg: true, // Image optimization
+
+// Other
+usePlumber: true, // Waiting for a bug fix after compilation (for Gulp Watch)
+
+// Only works when usePlumber = true:
+useNotify: true, // Notifying on a compilation error (for Pug and SCSS)
+useBeeper: true, // Sound signal on a compilation error (for Pug and SCSS)
+
+```
+
+> Changing the `tempFolder` setting is only recommended for advanced users who are well-acquainted with the builder code
+> (`gulpfile.js`).
+
+
+## HTML to PDF Conversion Settings
+
+There are two files containing settings for converting HTML to PDF:
+- `gulp/config/html2pdfConfig.default.js` - default settings;
+- `gulp/config/html2pdfConfig.js` - user settings;
+
+To speed up your workflow, you have the option of choosing which HTML files will be converted to PDF on the fly. For
+this, navigate to the `gulp/config/html2pdfConfig.js` file and set the `convertAll` parameter to `false`. Next, specify
+the list of pages to be converted in the `pageList` array:
+
+```js
+
+html2pdfConfig = {
+	convertAll: false,
+
+	// Can be specified with or without format (.html)
+	pageList: [
+		'index.html',
+		'doc-example',
+		'some-folder/some-file.html',
+	],
+};
+
+```
+
+> The user settings file has been included in the gitignore to prevent conflicts when merging branches.

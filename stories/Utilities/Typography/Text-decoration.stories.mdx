@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Text decoration' />
+
+
+# Text decoration
+
+Decorate text in components with text decoration classes.
+
+<Canvas>
+<div>
+	<p class="underline">This text has a line underneath it.</p>
+	<p class="line-through">This text has a line going through it.</p>
+	<a href="#" class="no-underline">This link has its text decoration removed</a>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Text decoration utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Text decoration
+'text-decoration': (
+	property: text-decoration,
+	class: null,
+	values: (
+		'underline': underline,
+		'line-through': line-through,
+		'no-underline': none,
+	),
+),
+```

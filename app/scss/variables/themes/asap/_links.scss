@@ -1,0 +1,16 @@
+// ===============================================
+// LINK VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	--link-cl: inherit;
+	--link-decoration: underline;
+	--link-bg: transparent;
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

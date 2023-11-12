@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Sheet/Header and Footer' />
+
+
+# Header and footer of a document
+
+In the ASAP PDF framework, [Puppeteer](https://pptr.dev/) is used to convert HTML to PDF. Puppeteer has a lot of
+different [conversion options](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagepdfoptions) that include
+header and footer settings.
+
+ASAP PDF doesn’t have default settings for header and footer. If you need to set the header and footer for a certain
+document, next to its pug file you can create a JS file with the same name that will contain conversion settings. The
+settings will be automatically applied at the compilation stage.
+
+An example of a settings file for inserting a **page number** into the footer:
+
+<img src="./img/examples/pdf-settings-example.jpg" class="storybook-image" style={{marginBottom: '40px'}} alt="PDF settings example" />
+
+**Result:**
+
+<img src="./img/examples/pdf-settings-doc-example.png" class="storybook-image" style={{maxWidth: '500px', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}} alt="PDF settings example - result" />

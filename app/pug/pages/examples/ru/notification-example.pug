@@ -1,0 +1,57 @@
+extends ./../../../templates/common
+
+//- Document variables
+block append vars
+	-
+		docTitle = 'Пример документа'
+		cssPath = '../../css/style.css'
+
+
+//- Document content
+block append content
+	.sheet.A4-m-15mm
+		.text-sm.d-flex.flex-jc-end
+			p Приложение &#8470;&nbsp;1
+				br
+				| от 01.01.2020
+
+		h1.h5.fw-n.ta-c.mt-32
+			span.tt-u Уведомление
+			br
+			| о применении {{FrameworkName}}
+			br
+			| для вёрстки красивого PDF-документа
+
+		p.text-sm.mt-20 Настоящее уведомление представляется в:
+		table.table.table--borders.table--outer-border.table--borders-black.cells-px-0.cells-py-4.cells-va-b.tt-u.ta-c.fz-md.w-100p.mt-8
+			tbody
+				+string-to-tr({
+					str: 'Отдел по вопросам вёрстки',
+					count: 34,
+					classNames: 'w-20 h-32',
+				})
+
+		p.text-xs.ta-c.
+			(наименование команды, занимающейся вёрсткой)
+
+		.text-sm.mt-24
+			p
+				| 1. Статус готовности PDF (нужное отметить
+				span.border-solid.border-black.border-1.p-4.mx-4 X
+				| или
+				span.border-solid.border-black.border-1.p-4.ml-4 V
+				| ):
+
+			.text-sm.d-grid.grid-af-col.mt-24
+				.d-grid.gap-4
+					.d-flex.flex-jc-between
+						.d-flex.w-40p
+							.border-solid.border-black.border-1.text-md.ta-c.w-20.h-32.flex-shrink-0.p-4.mr-8 X
+							ul.ul.ul--dashed
+								li.my-0.
+									красивый документ ещё предстоит сверстать
+						.d-flex.w-55p
+							.border-solid.border-black.border-1.text-md.ta-c.w-20.h-32.flex-shrink-0.p-4.mr-8
+							ul.ul.ul--dashed
+								li.my-0.
+									красивый документ готов

@@ -1,0 +1,51 @@
+version.txt
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+*.ts
+
+# OS or Editor folders
+.DS_Store
+**/.DS_Store
+._*
+Thumbs.db
+.cache
+.project
+.settings
+.idea
+.vscode
+
+# Folders or files to ignore
+.git
+.hg
+/temp
+/dist
+/tests/screenshots/after/
+/tests/screenshots/difference/
+/tests/pdf2img/temp/
+/tests/pdf2img/after/
+/tests/pdf2img/difference/
+/gulp/config/html2pdfConfig.js
+/gulp/config/test/pdf2img.js
+/gulp/config/test/sc.js
+/storybook-static
+storybook-static
+
+# Node.JS
+node_modules
+node_modules/
+node_modules_
+npm-debug.log*
+
+# Binaries
+*.exe
+*.bak

@@ -1,0 +1,130 @@
+// ===============================================
+// FONTS
+// ===============================================
+
+
+/*
+	INFO: To save resources and reduce build time, only using fonts in the woff2
+	format is the preferred option.
+	It's not required to include other font formats simply because there is no
+	need to provide cross-browser fonts in a PDF.
+*/
+
+
+// NUNITO SANS
+// -----------------------------------------------
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-Black.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 900;
+	font-style: italic;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-BlackItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-ExtraBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-SemiBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-ExtraLight.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 200;
+	font-style: italic;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-ExtraLightItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+	src: url('../fonts/nunito-sans/NunitoSans-Italic.woff2') format('woff2');
+}
+
+// -----------------------------------------------
+// NUNITO SANS

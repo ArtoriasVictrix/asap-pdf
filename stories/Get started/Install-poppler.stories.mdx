@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Get started/Install Poppler' />
+
+
+# 🚀 Install Poppler
+
+## Linux
+
+Linux users need to download `poppler-data` and `poppler-utils` binaries.
+Binaries installation on Debian:
+
+```
+sudo apt-get install poppler-data
+sudo apt-get install poppler-utils
+```
+
+## macOS/Darwin
+
+You can install poppler binaries on macOS using [Homebrew](https://brew.sh/):
+
+```
+brew install poppler
+```
+
+## Windows
+
+Windows users can install poppler by following these steps:
+
+1. Go to [this page](https://blog.alivate.com.au/poppler-windows/) and download the binary of your choice. In this
+example we will download and use `poppler-0.68.0_x86`;
+2. Extract the archive file `poppler-0.68.0_x86.7z` into `C:\Program Files`. Thus, the directory structure should look
+something like this:
+
+```
+C:
+└ Program Files
+  └ poppler-0.68.0_x86
+    ├ bin
+    ├ include
+    ├ lib
+    └ share
+```
+
+3. Add `C:\Program Files\poppler-0.68.0_x86\bin` to your system `PATH` by doing the following: Click on the Windows
+start button, search for `Edit the system environment variables`, click on `Environment Variables...`, under
+`System variables`, look for and double-click on `PATH`, click on `New`, then add
+`C:\Users\Program Files\poppler-0.68.0_x86\bin`, click `OK`.
+4. If you are using a terminal to execute poppler (e.g. running `pdf2image` in command line), you may need to reopen
+your terminal for poppler to work.
+5. Done!
+
+> Source: https://stackoverflow.com/a/53960829

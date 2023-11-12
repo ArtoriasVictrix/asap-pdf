@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Visibility' />
+
+
+# Visibility
+
+> Control the visibility of elements, without modifying their display, with visibility utilities.
+
+Set the `visibility` of elements with the visibility utilities. These utility classes do not modify the `display`
+value at all and do not affect layout – `.invisible` elements still take up space in the page.
+
+## `.visible`
+
+<Canvas>
+<div class="visible w-200" style={{height: '50px'}}>Visible text</div>
+</Canvas>
+
+## `.invisible`
+
+<Canvas>
+<div class="invisible w-200" style={{height: '50px'}}>Invisible text</div>
+</Canvas>
+
+## Sass
+
+### Utilities API
+
+Visibility utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'visibility': (
+	property: visibility,
+	class: null,
+	values: (
+		visible: visible,
+		invisible: hidden,
+	)
+),
+```

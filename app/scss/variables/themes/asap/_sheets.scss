@@ -1,0 +1,15 @@
+// ===============================================
+// SHEET VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	--sheet-bg-cl: var(--cl-white);
+	--sheet-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

@@ -1,0 +1,49 @@
+// ===============================================
+// CHECKBOX VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	// COMMON
+	// -----------------------------------------------
+
+	--checkbox-check-border-cl: var(--cl-black);
+
+	--checkbox-border-cl: var(--cl-black);
+	--checkbox-bg-cl: var(--cl-white);
+
+	// -----------------------------------------------
+	// COMMON
+
+
+	// DEFAULT
+	// -----------------------------------------------
+
+	--checkbox-default-lh: 17px;
+	--checkbox-default-size: 16px;
+	--checkbox-default-check-w: 8px;
+	--checkbox-default-check-h: 14px;
+	--checkbox-default-label-pl: 28px;
+
+	// -----------------------------------------------
+	// DEFAULT
+
+
+	// SMALL
+	// -----------------------------------------------
+
+	--checkbox-sm-lh: 13px;
+	--checkbox-sm-size: 12px;
+	--checkbox-sm-check-w: 6px;
+	--checkbox-sm-check-h: 10px;
+	--checkbox-sm-label-pl: 22px;
+
+	// -----------------------------------------------
+	// SMALL
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

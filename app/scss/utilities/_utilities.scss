@@ -1,0 +1,1075 @@
+// ===============================================
+// PROJECT UTILITIES
+// ===============================================
+
+
+@use 'sass:map';
+
+$utilities: () !default;
+$enable-important-utilities: true;
+
+// stylelint-disable-next-line scss/dollar-variable-colon-newline-after, scss/no-duplicate-dollar-variables, value-list-max-empty-lines, function-max-empty-lines
+$utilities: map-merge(
+	(
+		'align': (
+			property: vertical-align,
+			class: va,
+			values: (
+				bl: baseline,
+				t: top,
+				m: middle,
+				b: bottom,
+				tb: text-bottom,
+				tt: text-top
+			)
+		),
+
+		'cells-text-align': (
+			property: --cells-va,
+			class: cells-va,
+			important: false,
+			values: (
+				bl: baseline,
+				t: top,
+				m: middle,
+				b: bottom,
+				tb: text-bottom,
+				tt: text-top
+			)
+		),
+
+		'float': (
+			property: float,
+			values: (left, right, none),
+		),
+
+		'overflow': (
+			property: overflow,
+			class: ov,
+			values: auto hidden visible scroll,
+		),
+		'overflow-x': (
+			property: overflow-x,
+			class: ov-x,
+			values: auto hidden visible scroll,
+		),
+		'overflow-y': (
+			property: overflow-y,
+			class: ov-y,
+			values: auto hidden visible scroll,
+		),
+
+		'display': (
+			print: true,
+			property: display,
+			class: d,
+			values: inline inline-block block table table-row table-cell flex inline-flex grid inline-grid contents none,
+		),
+
+		'position': (
+			property: position,
+			class: pos,
+			values: static relative absolute fixed sticky,
+		),
+		'position-top': (
+			property: top,
+			class: pos-top,
+			values: create-range(
+				$position-start,
+				$position-end,
+				$position-step,
+				$position-type
+			),
+		),
+		'position-right': (
+			property: right,
+			class: pos-right,
+			values: create-range(
+				$position-start,
+				$position-end,
+				$position-step,
+				$position-type
+			),
+		),
+		'position-bottom': (
+			property: bottom,
+			class: pos-bottom,
+			values: create-range(
+				$position-start,
+				$position-end,
+				$position-step,
+				$position-type
+			),
+		),
+		'position-left': (
+			property: left,
+			class: pos-left,
+			values: create-range(
+				$position-start,
+				$position-end,
+				$position-step,
+				$position-type
+			),
+		),
+
+		'translate-middle': (
+			property: transform,
+			class: translate-middle,
+			values: (
+				null: translate(-50%, -50%),
+				x: translateX(-50%),
+				y: translateY(-50%),
+			)
+		),
+
+		// Page break
+		'page-break-inside': (
+			property: page-break-inside,
+			class: pg-bk-inside,
+			values: auto avoid,
+		),
+		'page-break-before': (
+			property: page-break-before,
+			class: pg-bk-before,
+			values: always auto avoid left right,
+		),
+		'page-break-after': (
+			property: page-break-after,
+			class: pg-bk-after,
+			values: always auto avoid left right,
+		),
+
+		// Border radius
+		'border-radius': (
+			property: border-radius,
+			class: brs,
+			values: create-range(
+				$border-radius-start,
+				$border-radius-end,
+				$border-radius-step,
+				'px'
+			),
+		),
+		'border-radius-tr': (
+			property: border-top-right-radius,
+			class: brs-tr,
+			values: create-range(
+				$border-radius-start,
+				$border-radius-end,
+				$border-radius-step,
+				'px'
+			),
+		),
+		'border-radius-br': (
+			property: border-bottom-right-radius,
+			class: brs-br,
+			values: create-range(
+				$border-radius-start,
+				$border-radius-end,
+				$border-radius-step,
+				'px'
+			),
+		),
+		'border-radius-bl': (
+			property: border-bottom-left-radius,
+			class: brs-bl,
+			values: create-range(
+				$border-radius-start,
+				$border-radius-end,
+				$border-radius-step,
+				'px'
+			),
+		),
+		'border-radius-tl': (
+			property: border-top-left-radius,
+			class: brs-tl,
+			values: create-range(
+				$border-radius-start,
+				$border-radius-end,
+				$border-radius-step,
+				'px'
+			),
+		),
+
+		// Border
+		'border-width': (
+			property: border-width,
+			class: border,
+			values: create-range(
+				$border-width-start,
+				$border-width-end,
+				$border-width-step,
+				'px'
+			),
+		),
+		'border-width-x': (
+			property: border-left-width border-right-width,
+			class: border-x,
+			values: create-range(
+				$border-width-start,
+				$border-width-end,
+				$border-width-step,
+				'px'
+			),
+		),
+		'border-width-y': (
+			property: border-top-width border-bottom-width,
+			class: border-y,
+			values: create-range(
+				$border-width-start,
+				$border-width-end,
+				$border-width-step,
+				'px'
+			),
+		),
+		'border-width-t': (
+			property: border-top-width,
+			class: border-t,
+			values: create-range(
+				$border-width-start,
+				$border-width-end,
+				$border-width-step,
+				'px'
+			),
+		),
+		'border-width-r': (
+			property: border-right-width,
+			class: border-r,
+			values: create-range(
+				$border-width-start,
+				$border-width-end,
+				$border-width-step,
+				'px'
+			),
+		),
+		'border-width-b': (
+			property: border-bottom-width,
+			class: border-b,
+			values: create-range(
+				$border-width-start,
+				$border-width-end,
+				$border-width-step,
+				'px'
+			),
+		),
+		'border-width-l': (
+			property: border-left-width,
+			class: border-l,
+			values: create-range(
+				$border-width-start,
+				$border-width-end,
+				$border-width-step,
+				'px'
+			),
+		),
+
+		'border-style': (
+			property: border-style,
+			class: border,
+			values: none hidden dotted dashed solid double groove ridge inset outset,
+		),
+		'border-style-x': (
+			property: border-left-style border-right-style,
+			class: border-x,
+			values: none hidden dotted dashed solid double groove ridge inset outset,
+		),
+		'border-style-y': (
+			property: border-top-style border-bottom-style,
+			class: border-y,
+			values: none hidden dotted dashed solid double groove ridge inset outset,
+		),
+		'border-style-t': (
+			property: border-top-style,
+			class: border-t,
+			values: none hidden dotted dashed solid double groove ridge inset outset,
+		),
+		'border-style-r': (
+			property: border-right-style,
+			class: border-r,
+			values: none hidden dotted dashed solid double groove ridge inset outset,
+		),
+		'border-style-b': (
+			property: border-bottom-style,
+			class: border-b,
+			values: none hidden dotted dashed solid double groove ridge inset outset,
+		),
+		'border-style-l': (
+			property: border-left-style,
+			class: border-l,
+			values: none hidden dotted dashed solid double groove ridge inset outset,
+		),
+
+		'border-color': (
+			property: border-color,
+			class: border,
+			values: (
+				white: var(--border-white-cl),
+				black: var(--border-black-cl),
+				light: var(--border-light-cl),
+				dark: var(--border-dark-cl),
+				primary: var(--border-primary-cl),
+				success: var(--border-success-cl),
+				warning: var(--border-warning-cl),
+				danger: var(--border-danger-cl),
+				info: var(--border-info-cl),
+				transparent: transparent
+			),
+		),
+		'border-color-x': (
+			property: border-right-color border-left-color,
+			class: border-x,
+			values: (
+				white: var(--border-white-cl),
+				black: var(--border-black-cl),
+				light: var(--border-light-cl),
+				dark: var(--border-dark-cl),
+				primary: var(--border-primary-cl),
+				success: var(--border-success-cl),
+				warning: var(--border-warning-cl),
+				danger: var(--border-danger-cl),
+				info: var(--border-info-cl),
+				transparent: transparent
+			),
+		),
+		'border-color-y': (
+			property: border-top-color border-bottom-color,
+			class: border-y,
+			values: (
+				white: var(--border-white-cl),
+				black: var(--border-black-cl),
+				light: var(--border-light-cl),
+				dark: var(--border-dark-cl),
+				primary: var(--border-primary-cl),
+				success: var(--border-success-cl),
+				warning: var(--border-warning-cl),
+				danger: var(--border-danger-cl),
+				info: var(--border-info-cl),
+				transparent: transparent
+			),
+		),
+		'border-t-color': (
+			property: border-top-color,
+			class: border-t,
+			values: (
+				white: var(--border-white-cl),
+				black: var(--border-black-cl),
+				light: var(--border-light-cl),
+				dark: var(--border-dark-cl),
+				primary: var(--border-primary-cl),
+				success: var(--border-success-cl),
+				warning: var(--border-warning-cl),
+				danger: var(--border-danger-cl),
+				info: var(--border-info-cl),
+				transparent: transparent
+			),
+		),
+		'border-r-color': (
+			property: border-right-color,
+			class: border-r,
+			values: (
+				white: var(--border-white-cl),
+				black: var(--border-black-cl),
+				light: var(--border-light-cl),
+				dark: var(--border-dark-cl),
+				primary: var(--border-primary-cl),
+				success: var(--border-success-cl),
+				warning: var(--border-warning-cl),
+				danger: var(--border-danger-cl),
+				info: var(--border-info-cl),
+				transparent: transparent
+			),
+		),
+		'border-b-color': (
+			property: border-bottom-color,
+			class: border-b,
+			values: (
+				white: var(--border-white-cl),
+				black: var(--border-black-cl),
+				light: var(--border-light-cl),
+				dark: var(--border-dark-cl),
+				primary: var(--border-primary-cl),
+				success: var(--border-success-cl),
+				warning: var(--border-warning-cl),
+				danger: var(--border-danger-cl),
+				info: var(--border-info-cl),
+				transparent: transparent
+			),
+		),
+		'border-l-color': (
+			property: border-left-color,
+			class: border-l,
+			values: (
+				white: var(--border-white-cl),
+				black: var(--border-black-cl),
+				light: var(--border-light-cl),
+				dark: var(--border-dark-cl),
+				primary: var(--border-primary-cl),
+				success: var(--border-success-cl),
+				warning: var(--border-warning-cl),
+				danger: var(--border-danger-cl),
+				info: var(--border-info-cl),
+				transparent: transparent
+			),
+		),
+
+		'no-border': (
+			property: border,
+			class: null,
+			values: (
+				'no-border': 0,
+			)
+		),
+		'no-border-t': (
+			property: border-top,
+			class: no-border,
+			values: (
+				t: 0
+			),
+		),
+		'no-border-r': (
+			property: border-right,
+			class: no-border,
+			values: (
+				r: 0
+			),
+		),
+		'no-border-b': (
+			property: border-bottom,
+			class: no-border,
+			values: (
+				b: 0
+			),
+		),
+		'no-border-l': (
+			property: border-left,
+			class: no-border,
+			values: (
+				l: 0
+			),
+		),
+		'no-border-x': (
+			property: border-left border-right,
+			class: no-border,
+			values: (
+				x: 0
+			),
+		),
+		'no-border-y': (
+			property: border-top border-bottom,
+			class: no-border,
+			values: (
+				y: 0
+			),
+		),
+
+		'width-percent': (
+			property: width,
+			class: w,
+			values: create-range(0, 100, 5, '%'),
+		),
+		'width': (
+			property: width,
+			class: w,
+			values: map.merge(create-range(4, 156, 4, 'px'), (auto: auto)),
+		),
+		'width-large': (
+			property: width,
+			class: w,
+			values: create-range(160, 400, 20, 'px'),
+		),
+		'min-width-percent': (
+			property: min-width,
+			class: min-w,
+			values: create-range(0, 100, 5, '%'),
+		),
+		'min-width-px': (
+			property: min-width,
+			class: min-w,
+			values: create-range(4, 136, 4, 'px'),
+		),
+		'max-width-percent': (
+			property: max-width,
+			class: max-w,
+			values: map.merge(create-range(0, 100, 5, '%'), (none: none)),
+		),
+		'max-width': (
+			property: max-width,
+			class: max-w,
+			values: create-range(4, 136, 4, 'px'),
+		),
+		'max-width-large': (
+			property: max-width,
+			class: max-w,
+			values: create-range(140, 400, 20, 'px'),
+		),
+
+		'height-percent': (
+			property: height,
+			class: h,
+			values: map.merge(create-range(0, 100, 25, '%'), (auto: auto)),
+		),
+		'height': (
+			property: height,
+			class: h,
+			values: create-range(4, 80, 4, 'px'),
+		),
+		'height-px-large': (
+			property: height,
+			class: h,
+			values: create-range(80, 300, 20, 'px'),
+		),
+		'min-height': (
+			property: min-height,
+			class: min-h,
+			values: create-range(0, 60, 4, 'px'),
+		),
+		'min-height-large': (
+			property: min-height,
+			class: min-h,
+			values: create-range(300, 440, 20, 'px'),
+		),
+		'max-height': (
+			property: max-height,
+			class: max-h,
+			values: (100p: 100%),
+		),
+
+		// Flex utilities
+		'flex-direction': (
+			property: flex-direction,
+			class: flex,
+			values: row column row-reverse column-reverse,
+		),
+		'flex-wrap': (
+			property: flex-wrap,
+			class: flex,
+			values: wrap nowrap wrap-reverse,
+		),
+
+		'flex-grow': (
+			property: flex-grow,
+			values: (0, 1),
+		),
+		'flex-shrink': (
+			property: flex-shrink,
+			values: (0, 1)
+		),
+		'justify-content': (
+			property: justify-content,
+			class: flex-jc,
+			values: (
+				start: flex-start,
+				end: flex-end,
+				center: center,
+				between: space-between,
+				around: space-around,
+				evenly: space-evenly,
+			)
+		),
+		'align-items': (
+			property: align-items,
+			class: flex-ai,
+			values: (
+				start: flex-start,
+				end: flex-end,
+				center: center,
+				baseline: baseline,
+				stretch: stretch,
+			)
+		),
+		'align-content': (
+			property: align-content,
+			class: flex-ac,
+			values: (
+				start: flex-start,
+				end: flex-end,
+				center: center,
+				between: space-between,
+				around: space-around,
+				stretch: stretch,
+			)
+		),
+		'align-self': (
+			property: align-self,
+			class: flex-as,
+			values: (
+				auto: auto,
+				start: flex-start,
+				end: flex-end,
+				center: center,
+				baseline: baseline,
+				stretch: stretch,
+			)
+		),
+		'order': (
+			property: order,
+			values: map-merge(
+				(first: -1),
+				create-range(0, 6, 1, ''),
+			),
+		),
+		'gap': (
+			property: gap,
+			class: gap,
+			values: create-range(0, 32, 4, 'px'),
+		),
+
+		/*
+			Gutters
+			Make use of `.row--g-*`, `.row--gx-*` or `.row--gy-*` utilities to change spacing between the columns.
+		*/
+		'row--g': (
+			property: '--gutter-x' '--gutter-y',
+			class: 'row--g',
+			values: create-range(
+				$columns-gutter,
+				$columns-gutter-end,
+				$columns-gutter-step,
+				'px'
+			),
+		),
+		'row--gy': (
+			property: '--gutter-y',
+			class: 'row--gy',
+			values: create-range(
+				$columns-gutter-y,
+				$columns-gutter-y-end,
+				$columns-gutter-y-step,
+				'px'
+			),
+		),
+		'row--gx': (
+			property: '--gutter-x',
+			class: 'row--gx',
+			values: create-range(
+				$columns-gutter-x,
+				$columns-gutter-x-end,
+				$columns-gutter-x-step,
+				'px'
+			),
+		),
+
+		// Grid utilities
+		'grid-auto-flow': (
+			property: grid-auto-flow,
+			class: grid-af,
+			values: (
+				row: row,
+				col: column,
+				row-dense: row dense,
+				col-dense: column dense,
+			)
+		),
+		'grid-justify-items': (
+			property: justify-items,
+			class: grid-ji,
+			values: (
+				start: start,
+				end: end,
+				center: center,
+				stretch: stretch,
+			)
+		),
+		'grid-justify-content': (
+			property: justify-content,
+			class: grid-jc,
+			values: (
+				start: start,
+				end: end,
+				center: center,
+				stretch: stretch,
+				around: space-around,
+				between: space-between,
+				evenly: space-evenly,
+			)
+		),
+		'grid-justify-self': (
+			property: justify-self,
+			class: grid-js,
+			values: (
+				start: start,
+				end: end,
+				center: center,
+				stretch: stretch,
+			)
+		),
+		'grid-align-items': (
+			property: align-items,
+			class: grid-ai,
+			values: (
+				start: start,
+				end: end,
+				center: center,
+				stretch: stretch,
+			)
+		),
+		'grid-align-content': (
+			property: align-content,
+			class: grid-ac,
+			values: (
+				start: start,
+				end: end,
+				center: center,
+				stretch: stretch,
+				around: space-around,
+				between: space-between,
+				evenly: space-evenly,
+			)
+		),
+		'grid-align-self': (
+			property: align-self,
+			class: grid-as,
+			values: (
+				start: start,
+				end: end,
+				center: center,
+				stretch: stretch,
+			)
+		),
+
+		'margin': (
+			property: margin,
+			class: m,
+			values: map-merge(create-range(
+				$margin-start,
+				$margin-end,
+				$margin-step,
+				$margin-type,
+			), (auto: auto)),
+		),
+		'margin-x': (
+			property: margin-right margin-left,
+			class: mx,
+			values: map-merge(create-range(
+				$margin-start,
+				$margin-end,
+				$margin-step,
+				$margin-type,
+			), (auto: auto)),
+		),
+		'margin-y': (
+			property: margin-top margin-bottom,
+			class: my,
+			values: map-merge(create-range(
+				$margin-start,
+				$margin-end,
+				$margin-step,
+				$margin-type,
+			), (auto: auto)),
+		),
+		'margin-top': (
+			property: margin-top,
+			class: mt,
+			values: map-merge(create-range(
+				$margin-start,
+				$margin-end,
+				$margin-step,
+				$margin-type,
+			), (auto: auto)),
+		),
+		'margin-right': (
+			property: margin-right,
+			class: mr,
+			values: map-merge(create-range(
+				$margin-start,
+				$margin-end,
+				$margin-step,
+				$margin-type,
+			), (auto: auto)),
+		),
+		'margin-bottom': (
+			property: margin-bottom,
+			class: mb,
+			values: map-merge(create-range(
+				$margin-start,
+				$margin-end,
+				$margin-step,
+				$margin-type,
+			), (auto: auto)),
+		),
+		'margin-left': (
+			property: margin-left,
+			class: ml,
+			values: map-merge(create-range(
+				$margin-start,
+				$margin-end,
+				$margin-step,
+				$margin-type,
+			), (auto: auto)),
+		),
+
+		// Padding utilities
+		'padding': (
+			property: padding,
+			class: p,
+			values: create-range(
+				$padding-start,
+				$padding-end,
+				$padding-step,
+				$padding-type,
+			),
+		),
+		'padding-x': (
+			property: padding-right padding-left,
+			class: px,
+			values: create-range(
+				$padding-start,
+				$padding-end,
+				$padding-step,
+				$padding-type,
+			),
+		),
+		'padding-y': (
+			property: padding-top padding-bottom,
+			class: py,
+			values: create-range(
+				$padding-start,
+				$padding-end,
+				$padding-step,
+				$padding-type,
+			),
+		),
+		'padding-top': (
+			property: padding-top,
+			class: pt,
+			values: create-range(
+				$padding-start,
+				$padding-end,
+				$padding-step,
+				$padding-type,
+			),
+		),
+		'padding-right': (
+			property: padding-right,
+			class: pr,
+			values: create-range(
+				$padding-start,
+				$padding-end,
+				$padding-step,
+				$padding-type,
+			),
+		),
+		'padding-bottom': (
+			property: padding-bottom,
+			class: pb,
+			values: create-range(
+				$padding-start,
+				$padding-end,
+				$padding-step,
+				$padding-type,
+			),
+		),
+		'padding-left': (
+			property: padding-left,
+			class: pl,
+			values: create-range(
+				$padding-start,
+				$padding-end,
+				$padding-step,
+				$padding-type,
+			),
+		),
+
+		// Font sizes
+		'font-size': (
+			property: font-size,
+			class: fz,
+			values: (
+				xxs: var(--fz-xxs),
+				xs: var(--fz-xs),
+				sm: var(--fz-sm),
+				md: var(--fz-md),
+				lg: var(--fz-lg),
+				xl: var(--fz-xl),
+				xxl: var(--fz-xxl),
+			),
+		),
+
+		'italic': (
+			property: font-style,
+			class: font,
+			values: italic,
+		),
+
+		// Font weights
+		'font-weight': (
+			property: font-weight,
+			class: fw,
+			values: (
+				xl: var(--fw-xl),
+				l: var(--fw-l),
+				n: var(--fw-n),
+				m: var(--fw-m),
+				sb: var(--fw-sb),
+				b: var(--fw-b),
+				xb: var(--fw-xb),
+			),
+		),
+
+		// Text transformation
+		'text-transform': (
+			property: text-transform,
+			class: tt,
+			values: (
+				l: lowercase,
+				u: uppercase,
+				c: capitalize,
+			),
+		),
+
+		// Text decoration
+		'text-decoration': (
+			property: text-decoration,
+			class: null,
+			values: (
+				'underline': underline,
+				'line-through': line-through,
+				'no-underline': none,
+			),
+		),
+
+		// Text alignment
+		'text-align': (
+			property: text-align,
+			class: ta,
+			values: (
+				j: justify,
+				l: left,
+				r: right,
+				c: center,
+			),
+		),
+
+		'text-indent': (
+			property: text-indent,
+			class: ti,
+			values: create-range(
+				0,
+				3,
+				.5,
+				'em',
+			),
+		),
+
+		// Line heights
+		'line-height': (
+			property: line-height,
+			class: lh,
+			values: (
+				1: var(--lh-1),
+				xs: var(--lh-xs),
+				sm: var(--lh-sm),
+				md: var(--lh-md),
+				lg: var(--lh-lg),
+				xl: var(--lh-xl),
+			),
+		),
+
+		// Contextual colors
+		'text-color': (
+			property: color,
+			class: text,
+			values: (
+				white: var(--text-white-cl),
+				black: var(--text-black-cl),
+				light: var(--text-light-cl),
+				dark: var(--text-dark-cl),
+				primary: var(--text-primary-cl),
+				success: var(--text-success-cl),
+				warning: var(--text-warning-cl),
+				danger: var(--text-danger-cl),
+				info: var(--text-info-cl),
+				muted: var(--text-muted-cl),
+				reset: inherit,
+			),
+		),
+
+		'white-space': (
+			property: white-space,
+			class: text,
+			values: (
+				wrap: normal,
+				nowrap: nowrap
+			),
+		),
+		'word-wrap': (
+			property: word-wrap word-break,
+			class: text,
+			values: (
+				break: break-word
+			),
+		),
+
+		'background': (
+			property: background,
+			class: bg,
+			// INFO: 'none' transforms into '0 0' by SCSS
+			values: none,
+		),
+		'background-color': (
+			property: background-color,
+			class: bg,
+			values: (
+				white: var(--bg-white),
+				black: var(--bg-black),
+				light: var(--bg-light),
+				dark: var(--bg-dark),
+				primary: var(--bg-primary),
+				success: var(--bg-success),
+				warning: var(--bg-warning),
+				danger: var(--bg-danger),
+				info: var(--bg-info),
+				transparent: transparent,
+			)
+		),
+
+		'object-fit': (
+			property: object-fit,
+			class: obj,
+			values: (
+				contain,
+				cover,
+				fill,
+				none,
+				scale-down,
+			)
+		),
+		'object-position': (
+			property: object-position,
+			class: obj,
+			values: (
+				bottom: bottom,
+				center: center,
+				left: left,
+				left-bottom: left bottom,
+				left-top: left top,
+				right: right,
+				right-bottom: right bottom,
+				right-top: right top,
+				top: top,
+			)
+		),
+
+		'z-index': (
+			property: z-index,
+			class: z,
+			values: create-range(0, 100, 10, ''),
+		),
+
+		'visibility': (
+			property: visibility,
+			class: null,
+			values: (
+				visible: visible,
+				invisible: hidden,
+			)
+		),
+
+		'direction': (
+			property: direction,
+			class: dir,
+			values: (rtl, ltr)
+		),
+	),
+	$utilities
+);

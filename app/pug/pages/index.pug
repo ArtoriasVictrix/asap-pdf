@@ -1,0 +1,377 @@
+extends ./../templates/common
+
+//- Document variables
+block append vars
+	-
+		docTitle = 'Welcome!';
+
+//- Document scripts
+block appScripts
+	//- script(src='js/.js')
+
+//- Document styles
+block appStyles
+	//- link(href='libs/.css' rel='stylesheet')
+
+
+//- Document content
+block append content
+	.sheet.A4-m-15mm
+		h1.h1 Component examples
+
+		h1.h2.mt-44 Headings
+
+		hr.hr.my-20
+
+		h2.h2 Heading h2
+		h3.h3 Heading h3
+		h4.h4 Heading h4
+		h5.h5 Heading h5
+		h6.h6 Heading h6
+
+
+		h1.h2.mt-44 Text components
+
+		hr.hr.my-20
+
+		p.text-xxl text-xxl
+		p.text-xl text-xl
+		p.text-lg text-lg
+		p.text-md text-md
+		p.text-sm text-sm
+		p.text-xs text-xs
+		p.text-xxs text-xxs
+
+
+		h1.h2.mt-44 Dot leaders
+
+		hr.hr.my-20
+
+		.w-40p
+			dl.param
+				dt.param__prop Property 1
+				dd.param__value 11,253.23
+			dl.param
+				dt.param__prop Property 2
+				dd.param__value 2,253.27
+			dl.param
+				dt.param__prop Property 3
+				dd.param__value 353.28
+
+
+		h1.h2.mt-44 Text colors
+
+		hr.hr.my-20
+
+		.text-black.p-12 .text-black
+		.text-white.bg-dark.p-12 .text-white
+		.text-light.p-12 .text-light
+		.text-muted.bg-dark.p-12 .text-muted
+		.text-primary.p-12 .text-primary
+		.text-success.p-12 .text-success
+		.text-info.p-12 .text-info
+		.text-warning.p-12 .text-warning
+		.text-danger.p-12 .text-danger
+		.text-reset.p-12 .text-reset
+
+
+		h1.h2.mt-44 Borders
+
+		hr.hr.my-20
+
+		.bg-black.p-24.mt-32
+			.text-white.border-solid.border-white.border-1.p-12 .border-white
+			.text-light.border-solid.border-dark.border-1.p-12.mt-12 .border-dark
+		.border-solid.border-black.border-1.p-12.mt-12 .border-black
+		.bg-light.border-solid.border-light.border-1.p-12.mt-12 .border-light
+		.bg-primary.border-solid.border-primary.border-1.p-12.mt-12 .border-primary
+		.bg-success.border-solid.border-success.border-1.p-12.mt-12 .border-success
+		.bg-info.border-solid.border-info.border-1.p-12.mt-12 .border-info
+		.bg-warning.border-solid.border-warning.border-1.p-12.mt-12 .border-warning
+		.bg-danger.border-solid.border-danger.border-1.p-12.mt-12.mb-44 .border-danger
+
+
+		h1.h2.pg-bk-before-always Ordered lists
+
+		hr.hr.my-20
+
+		ol.ol.pg-bk-inside-avoid
+			li
+				p Ordered list
+				ol.ol.ol--nested
+					li Nested list item
+			li
+				p Ordered list
+				ol.ol.ol--nested
+					li Nested list item
+					li Nested list item
+			li.mb-0
+				p Ordered list
+				ol.ol.ol--nested
+					li Nested list item
+					li.mb-0 Nested list item
+						ol.ol.ol--nested.mt-12
+							li Nested list item
+							li.mb-0 Nested list item
+								ol.ol.ol--nested.mt-12
+									li Nested list item
+									li Nested list item
+
+		hr.hr.my-20
+
+		ol.ol.ol--flat
+			li Flat ordered list
+				ol.ol.ol--nested
+					li Nested list item
+					li Nested list item
+					li Nested list item
+			li Flat ordered list
+				ol.ol.ol--nested
+					li Nested list item
+			li Flat ordered list
+				ol.ol.ol--nested.ol--flat
+					li Nested list item
+					li Nested list item
+						ol.ol.ol--nested.ol--flat
+							li Nested list item
+								ol.ol.ol--nested
+									li Nested list item
+									li Nested list item
+									li Nested list item
+
+
+		h1.h2.mt-44 Unordered lists
+
+		hr.hr.my-20
+
+		ul.ul.ul--dashed
+			li.fz-xs First item
+			li.fz-sm Second item
+			li.fz-md Third item
+			li.fz-lg Fourth item
+			li.fz-xl Fifth item
+			li.fz-xxl Sixth item
+
+		hr.hr.pg-bk-before-always.mt-0.mb-20
+
+		ul.ul.ul--point
+			li.fz-xs First item
+			li.fz-sm Second item
+			li.fz-md Third item
+			li.fz-lg Fourth item
+			li.fz-xl Fifth item
+			li.fz-xxl Sixth item
+
+
+		h1.h2.mt-44 Checkboxes
+
+		hr.hr.my-20
+
+		.checkbox.checkbox--sm.mb-12
+			input#cb1.checkbox__input(type='checkbox')
+			label.checkbox__label(for='cb1') Small checkbox (unchecked)
+
+		br
+
+		.checkbox.checkbox--sm.mb-12
+			input#cb2.checkbox__input(type='checkbox' checked)
+			label.checkbox__label(for='cb2') Small checkbox (checked)
+
+		br
+
+		.checkbox.checkbox--sm.mb-12
+			input#cb3.checkbox__input(type='checkbox' disabled)
+			label.checkbox__label(for='cb3') Small checkbox (unchecked and disabled)
+
+		br
+
+		.checkbox.checkbox--sm.mb-12
+			input#cb4.checkbox__input(type='checkbox' checked disabled)
+			label.checkbox__label(for='cb4') Small checkbox (checked and disabled)
+
+		br
+
+		.checkbox.mb-12
+			input#cb5.checkbox__input(type='checkbox')
+			label.checkbox__label(for='cb5') Default checkbox (unchecked)
+
+		br
+
+		.checkbox.mb-12
+			input#cb6.checkbox__input(type='checkbox' checked)
+			label.checkbox__label(for='cb6') Default checkbox (checked)
+
+		br
+
+		.checkbox.mb-12
+			input#cb7.checkbox__input(type='checkbox' disabled)
+			label.checkbox__label(for='cb7') Default checkbox (unchecked and disabled)
+
+		br
+
+		.checkbox
+			input#cb8.checkbox__input(type='checkbox' disabled checked)
+			label.checkbox__label(for='cb8') Default checkbox (checked and disabled)
+
+
+		h1.h2.mt-44 Links
+
+		hr.hr.my-20
+
+		p.mt-32 This is a 
+			a(href='#') link
+			| !
+
+		p.mt-20.mb-32 This is a 
+			a.link.link--printable(href='https://validator.w3.org/') link
+			| !
+
+
+		h1.h2.pg-bk-before-always Grid
+
+		hr.hr.mt-20.mb-32
+
+		.row.row--gy-16.row--gx-16
+			div(class='col-1')
+				.bg-light.p-12 1
+			div(class='col-11')
+				.bg-light.p-12 11
+
+			div(class='col-2')
+				.bg-light.p-12 2
+			div(class='col-10')
+				.bg-light.p-12 10
+
+			div(class='col-3')
+				.bg-light.p-12 3
+			div(class='col-9')
+				.bg-light.p-12 9
+
+			div(class='col-4')
+				.bg-light.p-12 4
+			div(class='col-8')
+				.bg-light.p-12 8
+
+			div(class='col-5')
+				.bg-light.p-12 5
+			div(class='col-7')
+				.bg-light.p-12 7
+
+			div(class='col-6')
+				.bg-light.p-12 6
+			div(class='col-6')
+				.bg-light.p-12 6
+
+			div(class='col-7')
+				.bg-light.p-12 7
+			div(class='col-5')
+				.bg-light.p-12 5
+
+			div(class='col-8')
+				.bg-light.p-12 8
+			div(class='col-4')
+				.bg-light.p-12 4
+
+			div(class='col-9')
+				.bg-light.p-12 9
+			div(class='col-3')
+				.bg-light.p-12 3
+
+			div(class='col-10')
+				.bg-light.p-12 10
+			div(class='col-2')
+				.bg-light.p-12 2
+
+			div(class='col-11')
+				.bg-light.p-12 11
+			div(class='col-1')
+				.bg-light.p-12 1
+
+
+		h1.h2.pg-bk-before-always Tables
+
+		hr.hr.my-20
+
+		table.table.table--striped.mt-32
+			thead
+				tr
+					th Month
+					th Savings
+					th Savings
+			tbody
+				tr
+					td January
+					td $100
+					td
+						table.table.table--borders.table--borders-black.border-solid.border-1.cells-p-12
+							thead
+								tr
+									th Month
+									th Savings
+									th Savings
+							tbody
+								tr
+									td January
+									td $100
+									td $100
+								tr.cells-p-4
+									td February
+									td $80
+									td $100
+								tr
+									td January
+									td $100
+									td $100
+								tr
+									td February
+									td $80
+									td $100
+								tr
+									td January
+									td $100
+									td $100
+								tr
+									td February
+									td $80
+									td $100
+							tfoot
+								tr
+									td Sum
+									td $180
+									td $180
+				tr
+					td February
+					td $80
+					td $100
+				tr
+					td January
+					td $100
+					td $100
+				tr
+					td February
+					td $80
+					td $100
+				tr
+					td January
+					td $100
+					td $100
+				tr
+					td February
+					td $80
+					td $100
+			tfoot
+				tr
+					td Sum
+					td $180
+					td $180
+
+
+		h1.h2.mt-40 Horizontal Rule
+
+		hr.hr.mt-20
+
+		p.text-light.mt-32 Light:
+		hr.hr.hr--light.mt-12
+
+		p.mb-12.mt-28 Default:
+		hr.hr.mt-12

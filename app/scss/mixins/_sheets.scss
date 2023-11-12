@@ -1,0 +1,69 @@
+// ===============================================
+// SHEET MIXINS
+// ===============================================
+
+
+/*
+	Required parameters:
+	- width (to properly display sheet size in browser);
+	- height (to display sheet size properly in browser and generate "clipped" class);
+
+	Optional parameters:
+	- class (use custom class name if present)
+	- size (for @page at-rule; also used as class name if class is not set);
+	- margin (value or a list of values; if not specified, the default value will be used);
+
+	Width and height parameters will be used to generate a class name
+	if class and size parameters are not present.
+
+	If size value starts with a number or if a class name has been generated using
+	width and height parameters then the prefix "sheet-" will be added to
+	the class name.
+*/
+
+$default-sheet-margin: 15mm;
+
+@mixin generate-sheets($sheets) {
+	@each $key, $value in $sheets {
+		$class: if(map-has-key($value, class), map-get($value, class), '');
+		$width: map-get($value, width);
+		$height: map-get($value, height);
+		$size: if(map-has-key($value, size), map-get($value, size), $width + ' ' + $height);
+		$margins: if(map-has-key($value, margin), map-get($value, margin), $default-sheet-margin);
+
+
+		@if ($class == '') {
+			$class: string-replace(#{$size}, ' ', '-');
+
+			// Class name can't start with a digit
+			$first-symbol: str-slice($class, 0, 1);
+			$class: if(index('1' '2' '3' '4' '5' '6' '7' '8' '9' '0', $first-symbol), 'sheet-' + $class, $class);
+		}
+
+		@each $margin in $margins {
+			$name: $class + '-m-' + string-replace(#{$margin}, ' ', '-');
+			$name: string-replace(#{$name}, '.', '_');
+
+			@page #{$name} {
+				margin: $margin;
+				size: #{$size};
+			}
+
+			.#{$name} {
+				page: #{$name};
+			}
+
+			@media screen {
+				.#{$name} {
+					width: $width;
+					padding: $margin;
+
+					&--clipped {
+						height: $height;
+						overflow: hidden;
+					}
+				}
+			}
+		}
+	}
+}

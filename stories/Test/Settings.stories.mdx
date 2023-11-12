@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Test/Settings' />
+
+
+# 🛠 Test settings
+
+## Screenshot testing
+
+Screenshot testing (`npm run sc:compare`) generates a report with test results. By default, the *page template* for test
+results is stored in `tests/report-template/report-template.html`.
+
+Screenshot test settings are stored in the `gulp/config/test/sc.default.js` file.
+
+You can duplicate the `sc.default.js` file, rename it to `sc.js` and store custom screenshot testing settings there.
+Changes in the settings file will not be tracked by Git (`sc.js` added to gitignore).
+
+
+```js
+
+const screenOutputRoot = 'tests/screenshots/'; // Root directory for storing images generated through testing
+
+screenshotsConfig = {
+	testName: 'Screenshot diffs', // Test name. Displayed in the logo and in <title> on the report page
+	logoClass: 'logo--screenshot', // CSS class for the logo on the report page (needed to differentiate screenshot- and pdf2img-tests logos)
+
+	srcDir: './dist/', // HTML source files for testing
+
+	testAllPages: true, // Test all pages in srcDir
+	pageList: [ // List of individual pages in srcDir for testing (activates if testAllPages = false)
+		'collection-order', // Can be specified with or without the format (.html)
+		'comprehensive-service-agreement',
+		'index',
+		'payment assignment',
+		'some-folder/some-file.html',
+	],
+	removeOldImages: false, // Removes the beforeDir or afterDir folder (sc:init and sc:compare, respectively) before creating new images
+
+	outputRoot: screenOutputRoot, // Root directory for storing images generated through testing
+
+	beforeDir: path.join(screenOutputRoot, '/before/'), // Folder for golden images (for comparison)
+	afterDir: path.join(screenOutputRoot, '/after/'), // Folder for actual images (for comparison with images in the beforeDir folder)
+	diffDir: path.join(screenOutputRoot, '/difference/'), // Folder for image comparison results
+
+	reportTemplate: 'tests/report-template/report-template.html', // Test results report template
+	reportFile: path.join(screenOutputRoot, '../Screenshot test report.html'), // For saving the test results report
+
+	testOnPc: true, // Testing on PC
+	pcWidths: [ // Browser window widths for PC testing (activates if testOnPc = true)
+		// 1920,
+		// 1366,
+		1280
+	],
+
+	emulateDevices: false, // Mobile device emulation
+	devices: [
+		// List of mobile devices to emulate (activates if emulateDevices = true)
+		// https://github.com/puppeteer/puppeteer/blob/main/src/common/DeviceDescriptors.ts
+		'iPad',
+		'iPhone SE',
+	],
+}
+
+```
+
+## Pdf2img testing
+
+Pdf2img testing (`npm run pdf2img:compare`) generates a report with the test results.
+
+The pdf2img test settings are stored in the `gulp/config/test/pdf.js` file.
+
+You can duplicate the `pdf.default.js` file, rename it to `pdf.js`, and store custom pdf2img test settings there.
+Changes in the settings file will not be tracked by Git (`pdf.js` added to gitignore).
+
+```js
+const pdfOutputRoot = 'tests/pdf2img/'; // Root directory for storing images generated through testing
+
+pdfConfig = {
+	testName: 'Pdf2img diffs', // Test name. Displayed in the logo and in <title> on the report page
+	logoClass: 'logo--pdf', // CSS class for the logo on the report page (needed to differentiate screenshot- and pdf2img-test logos)
+
+	srcDir: './dist/pdf/', // Source PDFs for testing
+
+	testAllPages: true, // Test all pages in srcDir
+	pageList: [ // List of individual pages in srcDir for testing (activates if testAllPages = false)
+			'collection-order', // Can be specified with or without the format (.pdf)
+			'comprehensive-service-agreement',
+			'index',
+			'payment assignment',
+			'some-folder/some-file.pdf',
+		],
+	removeOldImages: false, // Removes the beforeDir or afterDir folder (pdf2img:init and pdf2img:compare, respectively) before creating new images
+
+	outputRoot: pdfOutputRoot, // Root directory for storing images generated through testing
+
+	tempDir: path.join(pdfOutputRoot, '/temp/'), // Temporary folder used for images created from PDF
+	beforeDir: path.join(pdfOutputRoot, '/before/'), // Folder for golden images (for comparison)
+	afterDir: path.join(pdfOutputRoot, '/after/'), // Folder for actual images (for comparison with images in the beforeDir folder)
+	diffDir: path.join(pdfOutputRoot, '/difference/'), // Folder for image comparison results
+
+
+	reportTemplate: 'tests/report-template/report-template.html', // Test results report template
+    reportFile: path.join(pdfOutputRoot, '../PDF test report.html'), // For saving the test results report
+}
+
+```

@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Layout/Page break' />
+
+
+# Page breaks
+
+## Page break inside
+
+Adjust [page break inside](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-inside) the current element
+with our `.pg-bk-inside` utilities.
+
+The format is `.pg-bk-inside-{value}`. Where *value* is one of:
+
+- `auto`
+- `avoid`
+
+### pg-bk-inside-auto
+
+<img src="./img/examples/pg-bk-inside-auto.jpg" class="storybook-image" alt="pg-bk-inside-auto" />
+
+### pg-bk-inside-avoid
+
+<img src="./img/examples/pg-bk-inside-avoid.jpg" class="storybook-image" alt="pg-bk-inside-avoid" />
+
+
+## Page break before
+
+Adjust [page break before](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-before) the current element
+with our `.pg-bk-before` utilities.
+
+The format is `.pg-bk-before-{value}`. Where *value* is one of:
+
+- `always`
+- `auto`
+- `avoid`
+- `left`
+- `right`
+
+<img src="./img/examples/pg-bk-before-always.jpg" class="storybook-image" alt="pg-bk-before-always" />
+
+
+## Page break after
+
+Adjust [page break after](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-after) the current element
+with our `.pg-bk-after` utilities.
+
+The format is `.pg-bk-after-{value}`. Where *value* is one of:
+
+- `always`
+- `auto`
+- `avoid`
+- `left`
+- `right`
+
+<img src="./img/examples/pg-bk-after-always.jpg" class="storybook-image" alt="pg-bk-after-always" />
+
+
+## SCSS (Sass)
+
+### Utilities API
+
+Page break utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Page break
+'page-break-inside': (
+	property: page-break-inside,
+	class: pg-bk-inside,
+	values: auto avoid,
+),
+'page-break-before': (
+	property: page-break-before,
+	class: pg-bk-before,
+	values: always auto avoid left right,
+),
+'page-break-after': (
+	property: page-break-after,
+	class: pg-bk-after,
+	values: always auto avoid left right,
+),
+```

@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Test/Mocking' />
+
+
+# Data mocking
+
+[Data mocking](https://en.wikipedia.org/wiki/Mock_object) means creating objects or data that simulate the behavior or
+content of real objects or data. This approach is primarily used in
+[unit testing](https://en.wikipedia.org/wiki/Unit_testing).
+
+When creating PDF documents, it’s important to check how the document will look after inserting real data (for example,
+a company name or a username from a database). Such data can be either too long or too short. When this data is inserted
+into a document, it can change the markup and require additional work on styling or HTML.
+
+To account for all the possibilities described above, ASAP PDF implements a very simple mocking process: json files are
+taken one by one from the `mocks/` folder, and the data from these files is inserted into each HTML document. After
+that, each mocked HTML file is stored in the `dist/mocked/` folder, split into subfolders named after json files (for
+example, `dist/mocked/mockMax/index.html`).
+
+Use the following npm scripts for data mocking:
+
+| Command                 | Description                                                                                                                               |
+|:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|
+| `npm run prod:mock`     | Running the project in production mode with data mocking on the fly                                                                       |
+| `npm run prod:mock-pdf` | Running the project in production mode with data mocking and PDF generation on the fly                                                    |
+| `npm run build:mock`    | Building the project in production mode with data mocking                                                                                 |
+| `npm run mock`          | Mocking HTML files (the project must be built in production mode)                                                                         |
+| `npm run mock-pdf`      | Mocking HTML files and generating PDF (the project must be running in [production mode](?path=/story/get-started-project-settings--page)) |
+
+The data in json is stored in the form of `"{{key}}": value`, where `{{key}}` is a string in the HTML document to be
+replaced with the value data.
+
+## Video guide
+
+<br/>
+<video class="storybook-video" controls>
+	<source src="./video/mock.mp4" alt="Video: data mocking" />
+</video>

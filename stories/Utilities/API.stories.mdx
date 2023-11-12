@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/API' />
+
+
+# Utilities API
+
+You can see how the Utility API works on the [Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/).
+
+ASAP PDF's approach to API utilities differs from Bootstrap in the following ways:
+- support for responsiveness is removed;
+- the name of some utilities has been changed (the full list of utilities is located in the `/app/scss/utilities/_utilities.scss` file);
+- the `create-range()` function has been added.
+
+## create-range()
+
+The `create-range()` function allows you to create maps
+([associative arrays](https://sass-lang.com/documentation/values/maps)) based on specified parameters:
+
+1. the opening value of the range;
+2. the ending value of the range;
+3. range step;
+4. postfix for the class name (determined by value type).
+
+For example, `create-range(4, 24, 4, '%')` will return the following associative array:
+
+```
+(
+	4p: 4%,
+	8p: 8%,
+	12p: 12%,
+	16p: 16%,
+	20p: 20%,
+	24p: 24%
+)
+```
+
+The purpose of this function is to eliminate the need to manually input all of the values for a given value range (for
+example, to create the `mb-0` - `mb-44` utilities).
+
+The `create-range()` function is located in the `/app/scss/_functions.scss file`.

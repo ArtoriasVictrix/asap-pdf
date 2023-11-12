@@ -1,0 +1,91 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Object position' />
+
+
+# Object position
+
+[Object position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) utilities control how a replaced
+element's content should be positioned within its container.
+
+| Class | Properties |
+|-|-|
+| obj-bottom | object-position: bottom; |
+| obj-center | object-position: center; |
+| obj-left | object-position: left; |
+| obj-left-bottom | object-position: left bottom; |
+| obj-left-top | object-position: left top; |
+| obj-right | object-position: right; |
+| obj-right-bottom | object-position: right bottom; |
+| obj-right-top | object-position: right top; |
+| obj-top | object-position: top; |
+
+Use the `obj-{side}` utilities to specify how a replaced element’s content should be positioned.
+
+## `.obj-none.obj-right-top`
+
+<Canvas>
+<img class="obj-none obj-right-top bg-info w-200 h-300" src="http://placekitten.com/300/200" alt="" />
+</Canvas>
+
+## `.obj-none.obj-center`
+
+<Canvas>
+<img class="obj-none obj-center bg-info w-200 h-300" src="http://placekitten.com/300/200" alt="" />
+</Canvas>
+
+## `.obj-fill`
+
+<Canvas>
+<img class="obj-fill bg-info w-200 h-300" src="http://placekitten.com/300/200" alt="" />
+</Canvas>
+
+## `.obj-cover.obj-left`
+
+<Canvas>
+<img class="obj-cover obj-left bg-info w-200 h-300" src="http://placekitten.com/300/200" alt="" />
+</Canvas>
+
+## `.obj-cover.obj-right`
+
+<Canvas>
+<img class="obj-cover obj-right bg-info w-200 h-300" src="http://placekitten.com/300/200" alt="" />
+</Canvas>
+
+## `.obj-contain.obj-top`
+
+<Canvas>
+<img class="obj-contain obj-top bg-info w-200 h-300" src="http://placekitten.com/300/200" alt="" />
+</Canvas>
+
+## `.obj-contain.obj-bottom`
+
+<Canvas>
+<img class="obj-contain obj-bottom bg-info w-200 h-300" src="http://placekitten.com/300/200" alt="" />
+</Canvas>
+
+
+## SCSS (Sass)
+
+### Utilities API
+
+Object position utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'object-position': (
+	property: object-position,
+	class: obj,
+	values: (
+		bottom: bottom,
+		center: center,
+		left: left,
+		left-bottom: left bottom,
+		left-top: left top,
+		right: right,
+		right-bottom: right bottom,
+		right-top: right top,
+		top: top,
+	)
+),
+```

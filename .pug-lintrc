@@ -1,0 +1,206 @@
+{
+	"disallowAttributeInterpolation": true,
+	"disallowBlockExpansion": true,
+	"disallowClassLiteralsBeforeIdLiterals": true,
+	"disallowDuplicateAttributes": true,
+	"disallowHtmlText": true,
+	"disallowIdAttributeWithStaticValue": true,
+	"disallowLegacyMixinCall": true,
+	"disallowSpacesInsideAttributeBrackets": true,
+	"disallowSpecificAttributes": [
+		{ "link": [
+			"rev",
+			"charset",
+			"target"
+		] },
+		{ "a": [
+			"rev",
+			"charset",
+			"shape",
+			"coords"
+		] },
+		{ "img": [
+			"longdesc",
+			"name",
+			"align",
+			"hspace",
+			"vspace"
+		] },
+		{ "iframe": [
+			"longdesc",
+			"align",
+			"frameborder",
+			"marginheight",
+			"marginwidth",
+			"scrolling"
+		] },
+		{ "area": [ "nohref" ] },
+		{ "head": [ "profile" ] },
+		{ "html": [ "version" ] },
+		{ "meta": [ "scheme" ] },
+		{ "object": [
+			"archive",
+			"classid",
+			"codebase",
+			"codetype",
+			"declare",
+			"standby",
+			"align",
+			"border",
+			"hspace",
+			"vspace"
+		] },
+		{ "param": [
+			"valuetype",
+			"type"
+		] },
+		{ "table": [
+			"align",
+			"bgcolor",
+			"border",
+			"cellpadding",
+			"cellspacing",
+			"frame",
+			"rules",
+			"width"
+		] },
+		{ "tbody": [
+			"align",
+			"char",
+			"charoff",
+			"valign"
+		] },
+		{ "thead": [
+			"align",
+			"char",
+			"charoff",
+			"valign"
+		] },
+		{ "tfoot": [
+			"align",
+			"char",
+			"charoff",
+			"valign"
+		] },
+		{ "tr": [
+			"align",
+			"bgcolor",
+			"char",
+			"charoff",
+			"valign"
+		] },
+		{ "th": [
+			"align",
+			"bgcolor",
+			"char",
+			"charoff",
+			"nowrap",
+			"valign",
+			"width"
+		] },
+		{ "td": [
+			"axis",
+			"abbr",
+			"scope",
+			"align",
+			"bgcolor",
+			"char",
+			"charoff",
+			"nowrap",
+			"valign",
+			"width"
+		] },
+		{ "t": [
+			"axis",
+			"abbr"
+		] },
+		{ "caption": [ "align" ] },
+		{ "input": [ "align" ] },
+		{ "legend": [ "align" ] },
+		{ "hr": [
+			"align",
+			"noshade",
+			"size",
+			"width"
+		] },
+		{ "div": [ "align" ] },
+		{ "h1": [ "align" ] },
+		{ "h2": [ "align" ] },
+		{ "h3": [ "align" ] },
+		{ "h4": [ "align" ] },
+		{ "h5": [ "align" ] },
+		{ "h6": [ "align" ] },
+		{ "p": [ "align" ] },
+		{ "col": [
+			"align",
+			"char",
+			"charoff",
+			"valign",
+			"width"
+		] },
+		{ "colgroup": [
+			"align",
+			"char",
+			"charoff",
+			"valign",
+			"width"
+		] },
+		{ "body": [
+			"alink",
+			"link",
+			"vlink",
+			"text",
+			"background",
+			"bgcolor"
+		] },
+		{ "br": [ "clear" ] },
+		{ "dl": [ "compact" ] },
+		{ "menu": [ "compact" ] },
+		{ "ol": [
+			"compact",
+			"type"
+		] },
+		{ "ul": [
+			"compact",
+			"type"
+		] },
+		{ "li": [ "type" ] },
+		{ "pre": [ "width" ] }
+	],
+	"disallowSpecificTags": [
+		"acronym",
+		"applet",
+		"basefont",
+		"big",
+		"center",
+		"dir",
+		"font",
+		"frame",
+		"frameset",
+		"isindex",
+		"noframes",
+		"s",
+		"strike",
+		"tt",
+		"u"
+	],
+	"maximumLineLength": 140,
+	"requireClassLiteralsBeforeAttributes": true,
+	"requireIdLiteralsBeforeAttributes": true,
+	"requireLineFeedAtFileEnd": true,
+	"requireLowerCaseAttributes": true,
+	"requireLowerCaseTags": true,
+	"requireSpaceAfterCodeOperator": [ "-" ],
+	"requireSpecificAttributes": [ { "img": [ "alt" ] } ],
+	"requireStrictEqualityOperators": true,
+	"validateAttributeQuoteMarks": "'",
+	"validateAttributeSeparator": {
+		"separator": " ",
+		"multiLineSeparator": "\n\t"
+	},
+	"validateDivTags": true,
+	"validateIndentation": "\t",
+	"validateLineBreaks": "LF",
+	"validateSelfClosingTags": true,
+	"validateTemplateString": true
+}

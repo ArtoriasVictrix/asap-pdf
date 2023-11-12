@@ -1,0 +1,116 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Layout/Grid' />
+
+
+# Grid
+
+> Use the powerful flexbox grid to build layouts of all shapes and sizes thanks to a twelve-column system, Sass
+> variables and mixins, and dozens of predefined classes.
+
+## Example
+
+Bootstrap’s grid system uses a series of rows, and columns to layout and align content. It’s built with
+[flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox).
+
+We've made some minor changes to the [Bootstrap grid system](https://getbootstrap.com/docs/5.1/layout/grid/):
+- We removed responsive breakpoints (they just aren't needed in static PDF);
+- We renamed gutter classes (for example: `.row-gx-4` &rarr; `.row--gx-4`);
+- The values for gutters are different from those used in Bootstrap.
+
+Below is an example of how the grid system comes together.
+
+> New to or unfamiliar with flexbox?
+> [Read this CSS Tricks flexbox guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background) for
+> background, terminology, guidelines, and code snippets.
+
+<Canvas>
+<div class="row">
+	<div class="col bg-light border-1 border-solid border-light p-12">
+		Column
+	</div>
+	<div class="col bg-light border-1 border-solid border-light p-12">
+		Column
+	</div>
+	<div class="col bg-light border-1 border-solid border-light p-12">
+		Column
+	</div>
+</div>
+</Canvas>
+
+<Canvas>
+<div class="row row--gx-12 row--gy-20 bg-info">
+	<div class="col-3">
+		<div class="bg-light border-1 border-solid border-light p-12">
+			Column
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="bg-light border-1 border-solid border-light p-12">
+			Column
+		</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light border-1 border-solid border-light p-12">
+			Column
+		</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light border-1 border-solid border-light p-12">
+			Column
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="bg-light border-1 border-solid border-light p-12">
+			Column
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="bg-light border-1 border-solid border-light p-12">
+			Column
+		</div>
+	</div>
+</div>
+</Canvas>
+
+## Gutters
+
+[Gutter classes are available](?path=/story/layout-gutters--page). Change horizontal gutters with `.row--gx-*` classes,
+vertical gutters with `.row--gy-*`, or all gutters with `.row--g-*` classes. `.row--g-0` is also available to remove
+gutters.
+
+### Variables
+
+Variables in the `/app/scss/variables/_grid.scss` determine the number of columns and the gutter widths. We use these to
+generate the predefined grid classes documented above, as well as for the custom mixins listed below.
+
+```
+// Number of columns
+$columns: 12;
+
+// Default columns gutter
+$columns-gutter-x-default: 32px;
+
+// Vertical margins and column gaps
+$columns-gutter: 0;
+$columns-gutter-end: 32;
+$columns-gutter-step: 4;
+
+// Vertical margins
+$columns-gutter-y: 0;
+$columns-gutter-y-end: 32;
+$columns-gutter-y-step: 4;
+
+// Column gaps
+$columns-gutter-x: 0;
+$columns-gutter-x-end: 32;
+$columns-gutter-x-step: 4;
+```
+
+`$columns` is used to generate the widths (in percent) of each individual column while `$columns-gutter-x-default` sets
+the default width for the column gutters.
+
+## More
+
+You can get more information about the grid system on the
+[Bootstrap documentation website](https://getbootstrap.com/docs/5.1/layout/grid/).

@@ -1,0 +1,138 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Lists' />
+
+
+# Lists
+
+`.ol` and `.ul` classes used together with different [modifiers](https://en.bem.info/methodology/quick-start/#modifier)
+let you create beautiful ordered and unordered lists.
+
+## Ordered lists
+
+### Default
+
+<Canvas>
+<ol class="ol">
+	<li>Ordered list item</li>
+	<li>Ordered list item</li>
+	<li>Ordered list item</li>
+</ol>
+</Canvas>
+
+### Nested
+
+To create ordered lists with any nesting depth, you need to use `.ol--nested` modifier. To keep a nested list properly
+structured, you need to apply this class to the nested `.ol`.
+
+<Canvas>
+<ol class="ol">
+	<li>First item</li>
+	<li>Second item</li>
+	<li>Third item
+		<ol class="ol ol--nested mt-12">
+			<li>Third item first subitem</li>
+			<li>Third item second subitem</li>
+			<li>Third item third subitem
+				<ol class="ol ol--nested mt-12">
+					<li>Third item third subitem first sub-subitem</li>
+					<li>Third item third subitem second sub-subitem</li>
+					<li>Third item third subitem third sub-subitem</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+</ol>
+</Canvas>
+
+### With different font sizes
+
+<Canvas>
+<ol class="ol text-lg">
+	<li class="text-lg">First item</li>
+	<li>Second item</li>
+	<li>Third item
+		<ol class="ol ol--nested text-xs mt-12">
+			<li>Third item first subitem</li>
+			<li>Third item second subitem</li>
+			<li>Third item third subitem
+				<ol class="ol ol--nested text-sm mt-12">
+					<li>Third item third subitem first sub-subitem</li>
+					<li>Third item third subitem second sub-subitem</li>
+					<li>Third item third subitem third sub-subitem</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+</ol>
+</Canvas>
+
+### No left margin (flat appearance)
+
+To create ordered lists with nested list items, but without left margins, you should use classes `.ol`, `.ol--flat`, and
+`.ol--nested`. The `.ol--nested` class is applied to the nested list items, while `.ol--flat` — to the parent list
+items.
+
+<Canvas>
+<ol class="ol ol--flat">
+	<li>First item
+		<ol class="ol ol--nested">
+			<li>First item first subitem</li>
+			<li>First item second subitem</li>
+			<li>First item third subitem</li>
+		</ol>
+	</li>
+	<li>Second item
+		<ol class="ol ol--nested">
+			<li>Second item first subitem</li>
+			<li>Second item second subitem</li>
+			<li>Second item third subitem</li>
+		</ol>
+	</li>
+	<li>Third item
+		<ol class="ol ol--nested ol--flat">
+			<li>Third item first subitem</li>
+			<li>Third item second subitem</li>
+			<li>Third item third subitem
+				<ol class="ol ol--nested ol--flat">
+					<li>Third item third subitem first sub-subitem</li>
+					<li>Third item third subitem second sub-subitem</li>
+					<li>Third item third subitem third sub-subitem
+						<ol class="ol ol--nested">
+							<li>Third item...</li>
+							<li>Third item...</li>
+							<li>Third item...</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+</ol>
+</Canvas>
+
+## Unordered lists
+
+You can change the marks in an unordered list with the `.ul--dashed` and `.ul--point` modifiers.
+
+<Canvas>
+<ul class="ul ul--dashed">
+	<li class="text-xs">First item</li>
+	<li class="text-sm">Second item</li>
+	<li class="text-md">Third item</li>
+	<li class="text-lg">Fourth item</li>
+	<li class="text-xl">Fifth item</li>
+	<li class="text-xxl">Sixth item</li>
+</ul>
+</Canvas>
+
+<Canvas>
+<ul class="ul ul--point">
+	<li class="text-xs">First item</li>
+	<li class="text-sm">Second item</li>
+	<li class="text-md">Third item</li>
+	<li class="text-lg">Fourth item</li>
+	<li class="text-xl">Fifth item</li>
+	<li class="text-xxl">Sixth item</li>
+</ul>
+</Canvas>

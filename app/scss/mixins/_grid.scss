@@ -1,0 +1,129 @@
+// ===============================================
+// GRID SYSTEM MIXINS
+// ===============================================
+
+
+// Generate semantic grid columns with these mixins.
+
+@mixin make-row($gutter: $columns-gutter-x-default) {
+	--gutter-x: #{$gutter};
+	--gutter-y: 0;
+
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: calc(-1 * var(--gutter-y));
+	// stylelint-disable-next-line order/properties-order
+	margin-right: calc(-.5 * var(--gutter-x));
+	margin-left: calc(-.5 * var(--gutter-x));
+}
+
+
+@mixin make-col-ready($gutter: $columns-gutter-x-default) {
+	/*
+		Prevent columns from becoming too narrow when at smaller grid tiers by
+		always setting `width: 100%;`. This works because we set the width
+		later on to override this initial width.
+	*/
+	flex-shrink: 0;
+	width: 100%;
+	// Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+	max-width: 100%;
+	margin-bottom: var(--gutter-y);
+	padding-right: calc(var(--gutter-x) * .5);
+	padding-left: calc(var(--gutter-x) * .5);
+}
+
+
+@mixin make-col($size: false, $columns: $grid-columns) {
+	@if $size {
+		// stylelint-disable-next-line property-disallowed-list
+		flex: 0 0 auto;
+		width: percentage(divide($size, $columns));
+	} @else {
+		// stylelint-disable-next-line property-disallowed-list
+		flex: 1 1 0;
+		max-width: 100%;
+	}
+}
+
+
+@mixin make-col-auto() {
+	// stylelint-disable-next-line property-disallowed-list
+	flex: 0 0 auto;
+	width: auto;
+}
+
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+	$num: divide($size, $columns);
+
+	margin-left: if($num == 0, 0, percentage($num));
+}
+
+
+/*
+	Row columns
+
+	Specify on a parent element(e.g., .row) to force immediate children into NN
+	numberof columns. Supports wrapping to new lines, but does not do a Masonry
+	style grid.
+*/
+@mixin row-cols($count) {
+	> * {
+		// stylelint-disable-next-line property-disallowed-list
+		flex: 0 0 auto;
+		width: divide(100%, $count);
+	}
+}
+
+
+/*
+	Framework grid generation
+
+	Used only by Bootstrap to generate the correct number of grid classes given any value of `$grid-columns`.
+*/
+@mixin make-grid-columns($columns: $columns) {
+	// Provide basic `.col-{bp}` classes for equal-width flexbox columns
+	.col {
+		// Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+		// stylelint-disable-next-line property-disallowed-list
+		flex: 1 0 0%;
+	}
+
+	// stylelint-disable-next-line scss/selector-nest-combinators
+	.row-cols-auto > * {
+		@include make-col-auto;
+	}
+
+	// stylelint-disable-next-line order/order
+	@if $columns > 0 {
+		@for $i from 1 through $columns {
+			.row-cols-#{$i} {
+				@include row-cols($i);
+			}
+		}
+	}
+
+	.col-auto {
+		@include make-col-auto;
+	}
+
+	// stylelint-disable-next-line order/order
+	@if $columns > 0 {
+		@for $i from 1 through $columns {
+			.col-#{$i} {
+				@include make-col($i, $columns);
+			}
+		}
+
+		// `$columns - 1` because offsetting by the width of an entire row isn't possible
+		@for $i from 0 through ($columns - 1) {
+			// Avoid emitting useless .offset-0
+			@if not ($i == 0) {
+				.offset-#{$i} {
+					@include make-col-offset($i, $columns);
+				}
+			}
+		}
+	}
+}

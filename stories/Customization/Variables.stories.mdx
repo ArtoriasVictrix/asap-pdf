@@ -1,0 +1,216 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Customization/Variables' />
+
+
+# Variables
+
+## Variable naming
+
+In ASAP PDF, the naming for all CSS variables 
+([CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)) follows the pattern of
+`{element}-{element state}-{part}-{part state}-{property}`, where:
+
+- `element` - the name of the element or component where the variable is used. For example, `checkbox`;
+- `element state` - the state or variation of the element. For example, `disabled`, `primary`, or `danger`;
+- `part` - section or part of the element/component. For example, in the `--checkbox-label-pl` variable, the `label` is
+part of the `checkbox` component;
+- `part state` - the state of the specific component part. For example, `disabled`, `primary`, or `danger`. This part of
+the variable name is needed when components may have specific parts where only their states change rather than the
+entire component;
+- `property` - the CSS property where the variable is applied. For example, `fz` (`font-size`), `cl` (`color`), or `ml`
+(`margin-left`).
+
+`Property` in ASAP PDF uses shorthand CSS property names. Typically, these are based on [Emmet](https://emmet.io/)
+abbreviations. Here is a table of recommended abbreviations for properties:
+
+| Abbreviation | Property |
+|-|-|
+| `bg-cl` | `background-color` |
+| `bg-img` | `background-image` |
+| `cl` | `color` |
+| `fz` | `font-size` |
+| `fw` | `font-weight` |
+| `lh` | `line-height` |
+| `w` | `width` |
+| `h` | `height` |
+| `m` | `margin` |
+| `mt`, `mr`, `mb`, `ml` | `margin-top`, `margin-right`, `margin-bottom`, `margin-left` |
+| `p` | `padding` |
+| `pt`, `pr`, `pb`, `pl` | `padding-top`, `padding-right`, `padding-bottom`, `padding-left` |
+| `va` | `vertical-align` |
+
+### Variable naming examples
+
+```
+--icon-size
+
+--checkbox-default-check-w
+
+--checkbox-default-label-pl
+
+--stamp-primary-border-cl
+```
+
+## Component variables
+
+*Component variables* in ASAP PDF are not stored in `:root[data-theme='theme-name']` but rather in the component’s CSS
+class. These variables set the component's default state and can be changed with
+[modifiers](https://en.bem.info/methodology/quick-start/#modifier).
+
+### Component variables example
+
+To gain a better understanding of component variables, let's take a closer look at the
+[stamp](?path=/story/components-stamp--page) component.
+
+Styles for `stamps` are described in the `app/scss/components/_stamps.scss` file:
+
+```
+.stamp {
+	// Component variables
+	--stamp-border-cl: var(--stamp-default-border-cl);
+	--stamp-cl: var(--stamp-default-cl);
+
+	// Assigning component variables to CSS properties
+	border: 2px solid var(--stamp-border-cl);
+	color: var(--stamp-cl);
+	font-weight: var(--stamp-fw);
+
+	...
+
+	&--danger {
+		// Assigning modifier variables to component variables
+		--stamp-border-cl: var(--stamp-danger-border-cl);
+		--stamp-cl: var(--stamp-danger-cl);
+	}
+}
+```
+
+The component variables `--stamp-border-cl` and `--stamp-cl` are set to the component's default state:
+`--stamp-default-border-cl` and `--stamp-default-cl`, respectively. These values are overridden with the
+`.stamp--danger` [modifier](https://en.bem.info/methodology/quick-start/#modifier).
+
+The variables used as default values and assigned with a modifier are defined in the
+`app/scss/variables/themes/asap/_stamps.scss` file:
+
+```
+:root[data-theme='asap'] {
+
+	// Common stamp variables
+	--stamp-fw: var(--fw-b);
+
+	// Default state variables
+	--stamp-default-border-cl: var(--cl-blue-300);
+	--stamp-default-cl: var(--cl-blue-300);
+
+	// Danger state variables
+	--stamp-danger-border-cl: var(--cl-red-300);
+	--stamp-danger-cl: var(--cl-red-300);
+
+}
+```
+
+These are theme variables (more in the section Theme Variables).
+
+> The value of the `font-weight` property is `--stamp-fw`. However, the `--stamp-fw` variable is not stored in the
+> `.stamp` class but rather defined in `:root[data-theme='asap']`. This makes it possible to change the variable in
+> another theme (for example, if a thin font style is used in another theme). That said, the value of `--stamp-fw`
+> cannot be changed by modifiers, so there is no need to store `--stamp-fw` in the `.stamp` class.
+
+## Theme variables
+
+*Theme variables* are stored in the `/app/scss/variables/themes/{theme-name}/` folder (ASAP PDF uses the `asap` theme by
+default). Their values may change depending on the theme chosen.
+
+For example, theme variables for background colors look like this:
+
+```
+:root[data-theme='asap'] {
+
+	--bg-white: var(--cl-white);
+	--bg-black: var(--cl-black);
+	--bg-light: var(--cl-gray-700);
+	--bg-dark: var(--cl-gray-100);
+	--bg-primary: var(--cl-blue-600);
+	--bg-success: var(--cl-green-600);
+	--bg-warning: var(--cl-orange-600);
+	--bg-danger: var(--cl-red-600);
+	--bg-info: var(--cl-yellow-600);
+
+}
+```
+
+> To learn more about working with themes in ASAP PDF, see the [Themes](?path=/story/customization-themes--page)
+> documentation page.
+
+**Example (theme variables in utilities):**
+
+The variables for the [text color utilities](?path=/story/utilities-typography-text-colors--page) are defined in the
+`/app/scss/variables/themes/asap/_text.scss` file:
+
+```
+:root[data-theme='asap'] {
+
+	--text-white-cl: var(--cl-white);
+	--text-black-cl: var(--cl-black);
+	--text-light-cl: var(--cl-gray-300);
+	--text-dark-cl: var(--cl-gray-100);
+	--text-primary-cl: var(--cl-blue-100);
+	--text-success-cl: var(--cl-green-100);
+	--text-warning-cl: var(--cl-orange-100);
+	--text-danger-cl: var(--cl-red-100);
+	--text-info-cl: var(--cl-yellow-100);
+	--text-muted-cl: var(--cl-gray-400);
+
+}
+```
+
+Then, the variables defined above are used in the `/app/scss/utilities/_utilities.scss` file during the generation of
+utilities:
+
+```
+'text-color': (
+	property: color,
+	class: text,
+	values: (
+		white: var(--text-white-cl),
+		black: var(--text-black-cl),
+		light: var(--text-light-cl),
+		dark: var(--text-dark-cl),
+		primary: var(--text-primary-cl),
+		success: var(--text-success-cl),
+		warning: var(--text-warning-cl),
+		danger: var(--text-danger-cl),
+		info: var(--text-info-cl),
+		muted: var(--text-muted-cl),
+		reset: inherit,
+	),
+),
+```
+
+The resulting code is as follows:
+
+```
+:root[data-theme='asap'] {
+	--text-white-cl: var(--cl-white);
+	--text-black-cl: var(--cl-black);
+	--text-light-cl: var(--cl-gray-300);
+	...
+}
+
+...
+
+.text-white {
+	color: var(--text-white-cl) !important
+}
+
+.text-black {
+	color: var(--text-black-cl) !important
+}
+
+.text-light {
+	color: var(--text-light-cl) !important
+}
+
+...
+```

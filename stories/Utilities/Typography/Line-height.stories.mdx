@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Line height' />
+
+
+# Line height
+
+Change the line height with `.lh-*` utilities.
+
+<Canvas>
+<div>
+	<div class="lh-xl fz-lg">
+		<span class="fw-b">.lh-xl:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus itaque
+		impedit quis asperiores explicabo adipisci similique nihil provident
+		quam iure maxime fuga sint corporis omnis atque dicta earum neque
+		delectus minus eligendi, velit, aliquid amet.
+	</div>
+	<div class="lh-lg fz-lg mt-8">
+		<span class="fw-b">.lh-lg:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus itaque
+		impedit quis asperiores explicabo adipisci similique nihil provident
+		quam iure maxime fuga sint corporis omnis atque dicta earum neque
+		delectus minus eligendi, velit, aliquid amet.
+	</div>
+	<div class="lh-md fz-lg mt-8">
+		<span class="fw-b">.lh-md:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus itaque
+		impedit quis asperiores explicabo adipisci similique nihil provident
+		quam iure maxime fuga sint corporis omnis atque dicta earum neque
+		delectus minus eligendi, velit, aliquid amet.
+	</div>
+	<div class="lh-sm fz-lg mt-8">
+		<span class="fw-b">.lh-sm:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus itaque
+		impedit quis asperiores explicabo adipisci similique nihil provident
+		quam iure maxime fuga sint corporis omnis atque dicta earum neque
+		delectus minus eligendi, velit, aliquid amet.
+	</div>
+	<div class="lh-xs fz-lg mt-8">
+		<span class="fw-b">.lh-xs:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus itaque
+		impedit quis asperiores explicabo adipisci similique nihil provident
+		quam iure maxime fuga sint corporis omnis atque dicta earum neque
+		delectus minus eligendi, velit, aliquid amet.
+	</div>
+	<div class="lh-1 fz-lg mt-8">
+		<span class="fw-b">.lh-1:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus itaque
+		impedit quis asperiores explicabo adipisci similique nihil provident
+		quam iure maxime fuga sint corporis omnis atque dicta earum neque
+		delectus minus eligendi, velit, aliquid amet.
+	</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Line height utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Line heights
+'line-height': (
+	property: line-height,
+	class: lh,
+	values: (
+		1: var(--lh-1),
+		xs: var(--lh-xs),
+		sm: var(--lh-sm),
+		md: var(--lh-md),
+		lg: var(--lh-lg),
+		xl: var(--lh-xl),
+	),
+),
+```

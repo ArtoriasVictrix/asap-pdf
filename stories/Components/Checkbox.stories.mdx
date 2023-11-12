@@ -1,0 +1,58 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Checkbox' />
+
+
+# Checkbox
+
+At first, it might seem like checkboxes make no sense in a framework used to create PDF files, but it’s not true.
+Typically, checkboxes are necessary to display that a user agrees to the terms and conditions of service.
+
+ASAP PDF has two types of checkboxes: small ones (with `.checkbox--sm`
+[modifier](https://en.bem.info/methodology/quick-start/#modifier)) and regular ones (without a modifier).
+
+## Default
+
+<Canvas>
+<div class="checkbox mb-12">
+	<input class="checkbox__input" id="cb1" type="checkbox" />
+	<label class="checkbox__label" for="cb1">Default checkbox</label>
+</div>
+</Canvas>
+
+<Canvas>
+<div class="checkbox mb-12">
+	<input class="checkbox__input" id="cb2" type="checkbox" checked />
+	<label class="checkbox__label" for="cb2">Default checkbox (checked)</label>
+</div>
+</Canvas>
+
+<Canvas>
+<div class="checkbox mb-12">
+	<input class="checkbox__input" id="cb3" type="checkbox" disabled />
+	<label class="checkbox__label" for="cb3">Default checkbox (disabled)</label>
+</div>
+</Canvas>
+
+<Canvas>
+<div class="checkbox">
+	<input class="checkbox__input" id="cb4" type="checkbox" disabled checked />
+	<label class="checkbox__label" for="cb4">Default checkbox (checked and disabled)</label>
+</div>
+</Canvas>
+
+## Small (`.checkbox--sm`)
+
+<Canvas>
+<div class="checkbox checkbox--sm mb-12">
+	<input class="checkbox__input" id="cb5" type="checkbox" />
+	<label class="checkbox__label" for="cb5">Small checkbox</label>
+</div>
+</Canvas>
+
+<Canvas>
+<div class="checkbox checkbox--sm mb-12">
+	<input class="checkbox__input" id="cb6" type="checkbox" checked />
+	<label class="checkbox__label" for="cb6">Small checkbox (checked)</label>
+</div>
+</Canvas>

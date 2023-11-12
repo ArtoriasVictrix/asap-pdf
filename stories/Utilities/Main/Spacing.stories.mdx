@@ -1,0 +1,273 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Main/Spacing' />
+
+
+# Spacing
+
+> ASAP PDF includes a wide range of shorthand margin, padding, and gap utility classes to modify an element’s
+> appearance.
+
+## Margin and padding
+
+Assign `margin` or `padding` values to an element or a subset of its sides with shorthand classes. Includes support for
+individual properties, all properties, and vertical and horizontal properties.
+
+> Using the CSS Grid layout module? Consider using [the gap utility](#gap).
+
+### Notation
+
+The classes are named using the format `{property}{sides}-{size}`.
+
+Where *property* is one of:
+
+- `m` - for classes that set `margin`
+- `p` - for classes that set `padding`
+
+Where *sides* is one of:
+
+- `t` - for classes that set `margin-top` or `padding-top`
+- `b` - for classes that set `margin-bottom` or `padding-bottom`
+- `l` - for classes that set `margin-left` or `padding-left`
+- `r` - for classes that set `margin-right` or `padding-right`
+- `x` - for classes that set both `*-left` and `*-right`
+- `y` - for classes that set both `*-top` and `*-bottom`
+- `blank` - for classes that set a `margin` or `padding` on all 4 sides of the element
+
+Where *size* is one of:
+
+- *For margin:* the value ranges from -16 to 44 in 4 pixel increments (-16, ..., -4, 0, 4, 8, ..., 44)
+- *For padding:* the value ranges from 0 to 44 in 4 pixel increments (0, 4, 8, ..., 44)
+- `auto` - for classes that set the `margin` to `auto`
+
+> You can set the other sizes by changing the values in the `/app/scss/variables/_spacing.scss` file.
+
+### Examples
+
+```
+.mt-0 {
+	margin-top: 0 !important;
+}
+
+.ml-4 {
+	margin-left: 4px !important;
+}
+
+.px-8 {
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+}
+
+.p-12 {
+	padding: 12px !important;
+}
+```
+
+### Horizontal centering
+
+Additionally, ASAP PDF also includes an `.mx-auto` class for horizontally centering fixed-width block level
+content—that is, content that has `display: block` and a width set—by setting the horizontal margins to `auto`.
+
+## Negative margin
+
+In CSS, `margin` properties can utilize negative values (`padding` cannot).
+
+The syntax is nearly the same as the default, positive margin utilities, but with the addition of `n` before the
+requested size. Here’s an example class that’s the opposite of `.mt-4`:
+
+```
+.mt-n4 {
+	margin-top: -4px !important;
+}
+```
+
+## Gap
+
+When using `display: grid` (`.d-grid`) or `display: flex` (`.d-flex`), you can make use of `gap` utilities on the parent
+grid container. This can save on having to add margin utilities to individual items (children of a `display: grid` or
+`display: flex` container).
+
+The format is `gap-{value}`. Where *value* is in the range from 0 to 32 in 4 pixel increments.
+
+**d-grid:**
+
+<Canvas>
+<div class="d-grid bg-info gap-12">
+	<div class="bg-light border-solid border-1 p-8">Grid item 1</div>
+	<div class="bg-light border-solid border-1 p-8">Grid item 2</div>
+	<div class="bg-light border-solid border-1 p-8">Grid item 3</div>
+</div>
+</Canvas>
+
+**d-flex:**
+
+<Canvas>
+<div class="d-flex bg-info gap-12">
+	<div class="bg-light border-solid border-1 p-8">Grid item 1</div>
+	<div class="bg-light border-solid border-1 p-8">Grid item 2</div>
+	<div class="bg-light border-solid border-1 p-8">Grid item 3</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Maps
+
+Spacing utilities are declared via Sass map using [create-range()](?path=/story/utilities-api--page#create-range) and
+then generated with utilities API.
+
+### Utilities API
+
+Spacing utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'margin': (
+	property: margin,
+	class: m,
+	values: map-merge(create-range(
+		$margin-start,
+		$margin-end,
+		$margin-step,
+		$margin-type,
+	), (auto: auto)),
+),
+'margin-x': (
+	property: margin-right margin-left,
+	class: mx,
+	values: map-merge(create-range(
+		$margin-start,
+		$margin-end,
+		$margin-step,
+		$margin-type,
+	), (auto: auto)),
+),
+'margin-y': (
+	property: margin-top margin-bottom,
+	class: my,
+	values: map-merge(create-range(
+		$margin-start,
+		$margin-end,
+		$margin-step,
+		$margin-type,
+	), (auto: auto)),
+),
+'margin-top': (
+	property: margin-top,
+	class: mt,
+	values: map-merge(create-range(
+		$margin-start,
+		$margin-end,
+		$margin-step,
+		$margin-type,
+	), (auto: auto)),
+),
+'margin-right': (
+	property: margin-right,
+	class: mr,
+	values: map-merge(create-range(
+		$margin-start,
+		$margin-end,
+		$margin-step,
+		$margin-type,
+	), (auto: auto)),
+),
+'margin-bottom': (
+	property: margin-bottom,
+	class: mb,
+	values: map-merge(create-range(
+		$margin-start,
+		$margin-end,
+		$margin-step,
+		$margin-type,
+	), (auto: auto)),
+),
+'margin-left': (
+	property: margin-left,
+	class: ml,
+	values: map-merge(create-range(
+		$margin-start,
+		$margin-end,
+		$margin-step,
+		$margin-type,
+	), (auto: auto)),
+),
+
+// Padding utilities
+'padding': (
+	property: padding,
+	class: p,
+	values: create-range(
+		$padding-start,
+		$padding-end,
+		$padding-step,
+		$padding-type,
+	),
+),
+'padding-x': (
+	property: padding-right padding-left,
+	class: px,
+	values: create-range(
+		$padding-start,
+		$padding-end,
+		$padding-step,
+		$padding-type,
+	),
+),
+'padding-y': (
+	property: padding-top padding-bottom,
+	class: py,
+	values: create-range(
+		$padding-start,
+		$padding-end,
+		$padding-step,
+		$padding-type,
+	),
+),
+'padding-top': (
+	property: padding-top,
+	class: pt,
+	values: create-range(
+		$padding-start,
+		$padding-end,
+		$padding-step,
+		$padding-type,
+	),
+),
+'padding-right': (
+	property: padding-right,
+	class: pr,
+	values: create-range(
+		$padding-start,
+		$padding-end,
+		$padding-step,
+		$padding-type,
+	),
+),
+'padding-bottom': (
+	property: padding-bottom,
+	class: pb,
+	values: create-range(
+		$padding-start,
+		$padding-end,
+		$padding-step,
+		$padding-type,
+	),
+),
+'padding-left': (
+	property: padding-left,
+	class: pl,
+	values: create-range(
+		$padding-start,
+		$padding-end,
+		$padding-step,
+		$padding-type,
+	),
+),
+
+'gap': (
+	property: gap,
+	class: gap,
+	values: create-range(0, 32, 4, 'px'),
+),
+```

@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Main/Z-index' />
+
+
+# Z-index
+
+The Z-index utilities helps control layout by providing a third axis to arrange content.
+
+```
+.z-0
+.z-10
+.z-20
+...
+.z-100
+```
+
+## SCSS (Sass)
+
+### Utilities API
+
+Z-index utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'z-index': (
+	property: z-index,
+	class: z,
+	values: create-range(0, 100, 10, ''),
+),
+```

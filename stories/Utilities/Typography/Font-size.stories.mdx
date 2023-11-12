@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Font size' />
+
+
+# Font size
+
+Quickly change the `font-size` of text. While our heading classes (e.g., `.h1`–`.h6`) apply `font-size`, `font-weight`,
+and `line-height`, these utilities *only* apply `font-size`.
+
+<Canvas>
+<div>
+	<div class="fz-xl">.fz-xl</div>
+	<div class="fz-lg mt-8">.fz-lg</div>
+	<div class="fz-n mt-8">.fz-n</div>
+	<div class="fz-md mt-8">.fz-md</div>
+	<div class="fz-sm mt-8">.fz-sm</div>
+	<div class="fz-xs mt-8">.fz-xs</div>
+</div>
+</Canvas>
+
+Customize your available `font-size`s by modifying the custom properties in the
+`/app/scss/variables/themes/main/_typography.scss` file.
+
+## SCSS (Sass)
+
+### Utilities API
+
+Font size utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'font-size': (
+	property: font-size,
+	class: fz,
+	values: (
+		xxs: var(--fz-xxs),
+		xs: var(--fz-xs),
+		sm: var(--fz-sm),
+		md: var(--fz-md),
+		lg: var(--fz-lg),
+		xl: var(--fz-xl),
+		xxl: var(--fz-xxl),
+	),
+),
+```

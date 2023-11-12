@@ -1,0 +1,161 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Main/Position' />
+
+
+# Position
+
+## Position values
+
+```
+<div class="pos-static">...</div>
+<div class="pos-relative">...</div>
+<div class="pos-absolute">...</div>
+<div class="pos-fixed">...</div>
+<div class="pos-sticky">...</div>
+```
+
+## Arrange elements
+
+Arrange elements easily with the edge positioning utilities. The format is `pos-{property}-{position}`.
+
+Where *property* is one of:
+
+- `top` - for the vertical top position
+- `left` - for the horizontal left position
+- `bottom` - for the vertical bottom position
+- `right` - for the horizontal right position
+
+Where *position* is one of:
+
+- `0` - for `0` edge position
+- `50` - for `50%` edge position
+- `100` - for `100%` edge position
+
+> You can change position values in `/app/scss/variables/_position.scss` file.
+
+<Canvas>
+<div class="pos-relative min-h-300 bg-light">
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-left-0"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-right-0"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-50p pos-left-50p"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-bottom-50p pos-right-50p"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-bottom-0 pos-left-0"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-bottom-0 pos-right-0"></div>
+</div>
+</Canvas>
+
+## Center elements
+
+In addition, you can also center the elements with the transform utility class `.translate-middle`.
+
+This class applies the transformations `translateX(-50%)` and `translateY(-50%)` to the element which, in combination
+with the edge positioning utilities, allows you to absolute center an element.
+
+<Canvas>
+<div class="pos-relative min-h-300 bg-light">
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-left-0 translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-left-50p translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-left-100p translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-50p pos-left-0 translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-50p pos-left-50p translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-50p pos-left-100p translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-100p pos-left-0 translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-100p pos-left-50p translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-100p pos-left-100p translate-middle"></div>
+</div>
+</Canvas>
+
+By adding `.translate-middle-x` or `.translate-middle-y` classes, elements can be positioned only in horizontal or
+vertical direction.
+
+<Canvas>
+<div class="pos-relative min-h-300 bg-light">
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-left-0"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-left-50p translate-middle-x"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-0 pos-right-0"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-50p pos-left-0 translate-middle-y"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-50p pos-left-50p translate-middle"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-top-50p pos-right-0 translate-middle-y"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-bottom-0 pos-left-0"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-bottom-0 pos-left-50p translate-middle-x"></div>
+	<div class="pos-absolute w-32 h-32 bg-dark brs-4 pos-bottom-0 pos-right-0"></div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Maps
+
+Default position utility values are declared in a Sass variables (`/app/scss/variables/_position.scss`), then used to
+generate the utilities.
+
+```
+$position-step: 50;
+$position-start: -100;
+$position-end: 100;
+$position-type: '%';
+```
+
+### Utilities API
+
+Position utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'position': (
+	property: position,
+	class: pos,
+	values: static relative absolute fixed sticky,
+),
+'position-top': (
+	property: top,
+	class: pos-top,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+'position-right': (
+	property: right,
+	class: pos-right,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+'position-bottom': (
+	property: bottom,
+	class: pos-bottom,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+'position-left': (
+	property: left,
+	class: pos-left,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+
+'translate-middle': (
+	property: transform,
+	class: translate-middle,
+	values: (
+		null: translate(-50%, -50%),
+		x: translateX(-50%),
+		y: translateY(-50%),
+	)
+),
+```

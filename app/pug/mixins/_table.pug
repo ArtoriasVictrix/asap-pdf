@@ -1,0 +1,10 @@
+mixin string-to-tr(data)
+	-
+		const {
+			str,
+			count,
+			classNames
+		} = data;
+	tr
+		- for (let i = 0; i < count; i++)
+			td(class=classNames)!= str[i] === undefined ? '' : str[i]

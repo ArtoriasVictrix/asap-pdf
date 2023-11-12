@@ -1,0 +1,35 @@
+// ===============================================
+// PRINT STYLES
+// ===============================================
+
+
+@media print {
+	pre {
+		white-space: pre-wrap;
+	}
+
+	pre,
+	blockquote {
+		page-break-inside: avoid;
+	}
+
+	tr,
+	img,
+	figure {
+		page-break-inside: avoid;
+	}
+
+	p,
+	h2,
+	h3,
+	h4 {
+		orphans: 3;
+		widows: 3;
+	}
+
+	h2,
+	h3,
+	h4 {
+		page-break-after: avoid;
+	}
+}

@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Code linting/Pug' />
+
+
+# Pug-lint
+
+For [Pug](https://pugjs.org/) (formerly Jade) linting, ASAP PDF uses [pug-lint](https://github.com/pugjs/pug-lint). All pug-lint
+settings are stored in the ASAP PDF root directory in the `.pug-lintrc` file. You can change these settings as needed
+and agreed upon by your team.
+
+## Pre-commit hook
+
+Pug-lint is run automatically on pre-commit ([husky](https://github.com/typicode/husky)):
+
+```
+"husky": {
+	"hooks": {
+		"pre-commit": "lint-staged"
+	}
+},
+"lint-staged": {
+	...
+	"./app/pug/**/*.pug": [
+		"pug-lint"
+	]
+}
+```
+
+## Setting up VS Code
+
+To ensure VS Code highlights errors in Pug files as specified in the `.pug-lintrc` linter settings file, install the
+[puglint](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-puglint) plugin and change settings in the
+`.vscode/settings.json` file:
+
+Windows: `File → Preferences → Settings`
+
+macOS: `Code → Preferences → Settings`
+
+Press `Open Settings (JSON)`:
+
+<img src="./img/examples/vs-code/1.jpg" alt="VS Code settings" />
+
+And paste the following code snippet:
+
+```
+{
+	"puglint.enable": true
+}
+```

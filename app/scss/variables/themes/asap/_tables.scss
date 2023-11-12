@@ -1,0 +1,24 @@
+// ===============================================
+// TABLE VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	--table-header-cl: var(--cl-gray-100);
+	--table-header-bg-cl: var(--cl-gray-600);
+
+	--table-footer-cl: var(--cl-gray-100);
+	--table-footer-bg-cl: var(--cl-gray-600);
+
+	--table-default-border-cl: var(--cl-gray-500);
+	--table-black-border-cl: var(--cl-black);
+
+	--table-striped-row-bg-cl: var(--cl-gray-700);
+	--table-striped-col-bg-cl: var(--cl-gray-700);
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

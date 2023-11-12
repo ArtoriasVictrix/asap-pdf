@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Get started/Install and launch' />
+
+
+# 🚀 Install and Launch
+
+1. Download the [ASAP PDF repository](https://github.com/ArtoriasVictrix/asap-pdf);
+2. Run `npm i` in the root folder of the repository;
+3. Run `npm start` or `npm run dev` (depending on the
+[build mode](?path=/story/get-started-project-settings--page#about-build-modes) you need).
+
+The following commands should be enough for daily tasks:
+
+| Command                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `npm start`             | Running the project in [production mode](?path=/story/get-started-npm-scripts--page#production) (on the fly: resources are encoded in Base64 and inserted into HTML, HTML is converted to PDF)                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `npm run prod:mock-pdf` | Same as `npm start` + [data mocking](?path=/story/test-mocking--page) (string substitution into labels like  `{{example}}`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `npm run dev`           | Launching the project in [development mode](?path=/story/get-started-npm-scripts--page#development) (resources are not Base64 encoded or inlined, sourcemaps are available)                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `npm run test:init`     | Creating golden images from a PDF and page golden screenshots.<br /><br />The project must be run with an HTML to PDF converter (such as `npm start` or `npm run prod:mock-pdf`) in a **separate terminal tab**.                                                                                                                                                                                                                                                                                                                                                                                            |
+| `npm test`              | - [Screenshot testing](?path=/story/test-about--page#screenshot)<br />- [pdf2img testing](?path=/story/test-about--page#pdf2img)<br /><br />The project must be run with an HTML to PDF converter (such as `npm start` or `npm run prod:mock-pdf`) in a **separate terminal tab**. Golden screenshots and images must be created before testing (`npm run test:init`).<br /><br />- To run the `npm test` script, you need to [install the Poppler library](?path=/story/get-started-install-poppler--page);<br />- Settings for screenshot and pdf testing are stored in the `gulp/config/test/` folder.   |
+| `npm run test:refresh`  | - Replacing old golden screenshots with new ones<br />- Replacing old PDF golden images with new ones<br />- Cleaning up folders with actual screenshots and PDF images                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+To run the `npm test` script, you need to [install the Poppler library](?path=/story/get-started-install-poppler--page);
+
+> In ASAP PDF, **pdf2img testing** involves converting PDFs to images while
+> keeping the pages divided. The resulting images are then compared with the
+> golden ones. You can learn more about testing in ASAP PDF by going to the
+> ["About testing"](?path=/story/test-about--page) page.
+
+> If you are using data mocking, running the project with the
+> `npm run prod:mock-pdf` command is the recommended option for testing. This
+> way, you will get information about the project status in greater detail.
+
+Builds and tests can be customized. You can learn about the settings here:
+1. [Project settings](?path=/story/get-started-project-settings--page);
+2. [Test settings](?path=/story/test-settings--page).
+
+Check a detailed description of other scripts on the
+[npm scripts](?path=/story/get-started-npm-scripts--page) page.

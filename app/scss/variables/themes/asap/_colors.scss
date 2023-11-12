@@ -1,0 +1,94 @@
+// ===============================================
+// COLOR VARIABLES
+// ===============================================
+
+
+// stylelint-disable order/order,block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	// BASE COLORS
+	// -----------------------------------------------
+
+	$cl: (
+		black: #000000,
+		white: #FFFFFF,
+		gray-100: #18181D,
+		gray-200: #474A50,
+		gray-300: #7A7D82,
+		gray-400: #AEB0B4,
+		gray-500: #C8C9CD,
+		gray-600: #E1E2E6,
+		gray-700: #F0F1F5,
+		gray-800: #F8F8FB,
+		green-100: #10A863,
+		green-200: #25EB92,
+		green-300: #67F0AA,
+		green-400: #91F4C0,
+		green-500: #B5F7D5,
+		green-600: #D8F9E8,
+		blue-100: #1275F8,
+		blue-200: #378CF9,
+		blue-300: #68A5FC,
+		blue-400: #91BEFD,
+		blue-500: #B8D6FE,
+		blue-600: #E1EEFE,
+		violet-100: #603AF8,
+		violet-200: #7758F9,
+		violet-300: #947AFD,
+		violet-400: #AF9CFF,
+		violet-500: #CABDFF,
+		violet-600: #E4DEFE,
+		red-100: #FD214D,
+		red-200: #FD3F64,
+		red-300: #FD5662,
+		red-400: #FD6F7A,
+		red-500: #FDA2A9,
+		red-600: #FDD5D7,
+		orange-100: #FF780A,
+		orange-200: #FF943D,
+		orange-300: #FFAB63,
+		orange-400: #FFC089,
+		orange-500: #FFD5B0,
+		orange-600: #FFEAD8,
+		yellow-100: #E0A100,
+		yellow-200: #FFC93F,
+		yellow-300: #FFD469,
+		yellow-400: #FFDF8F,
+		yellow-500: #FFEAB4,
+		yellow-600: #FFF4D9,
+	);
+
+	@include get-colors($cl);
+
+	// -----------------------------------------------
+	// BASE COLORS
+
+
+	// TRANSPARENT COLORS
+	// -----------------------------------------------
+
+	@include
+		get-alpha(
+			$cl,
+			'gray-100',
+			(
+				30: .3
+			)
+		);
+
+	@include
+		get-alpha(
+			$cl,
+			'gray-300',
+			(
+				50: .5
+			)
+		);
+
+	// -----------------------------------------------
+	// TRANSPARENT COLORS
+
+
+}
+// stylelint-enable order/order, block-closing-brace-empty-line-before, scss/selector-nest-combinators

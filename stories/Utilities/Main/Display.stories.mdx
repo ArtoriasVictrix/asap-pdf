@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Main/Display' />
+
+
+# Display
+
+## How it works
+
+Change the value of the [display property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) with our display
+utility classes. We purposely support only a subset of all possible values for `display`.
+
+## Notation
+
+The classes are named using the format `d-{value}`.
+
+Where *value* is one of:
+
+- none
+- inline
+- inline-block
+- block
+- table
+- table-row
+- table-cell
+- flex
+- inline-flex
+- grid
+- inline-grid
+- contents
+
+## Sass
+
+### Utilities API
+
+Display utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'display': (
+	print: true,
+	property: display,
+	class: d,
+	values: inline inline-block block table table-row table-cell flex inline-flex grid inline-grid contents none,
+),
+```

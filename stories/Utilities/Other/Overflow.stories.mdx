@@ -1,0 +1,80 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Overflow' />
+
+
+# Overflow
+
+> Use these shorthand utilities for quickly configuring how content overflows an element.
+
+Adjust the `overflow` property on the fly with four default values and classes.
+
+<Canvas>
+<div class="d-flex text-lg">
+	<div class="ov-auto bg-light p-8 mb-8" style={{ 'max-width': '170px', 'max-height': '100px' }}>
+		This is an example of using <code>.ov-auto</code> on an element with set width and height dimensions. By design,
+		this content will vertically scroll.
+	</div>
+	<div class="ov-hidden bg-light p-8 mb-8" style={{ 'max-width': '170px', 'max-height': '100px' }}>
+		This is an example of using <code>.ov-hidden</code> on an element with set width and height dimensions.
+	</div>
+	<div class="ov-visible bg-light p-8 mb-8" style={{ 'max-width': '170px', 'max-height': '100px' }}>
+		This is an example of using <code>.ov-visible</code> on an element with set width and height dimensions.
+	</div>
+	<div class="ov-scroll p-8 bg-light" style={{ 'max-width': '170px', 'max-height': '100px' }}>
+		This is an example of using <code>.ov-scroll</code> on an element with set width and height dimensions.
+	</div>
+</div>
+</Canvas>
+
+```
+<div class="ov-auto">...</div>
+<div class="ov-hidden">...</div>
+<div class="ov-visible">...</div>
+<div class="ov-scroll">...</div>
+```
+
+## `overflow-x` and `overflow-y`
+
+You can change overflow for the `x` and `y` axis separately using `ov-{axis}-{value}` classes. Where *axis* is `x` or
+`y` and *value* is one of:
+
+- `auto`
+- `hidden`
+- `visible`
+- `scroll`
+
+<Canvas>
+<div class="ov-x-hidden ov-y-scroll text-nowrap" style={{height: '80px', width: '50%'}}>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+	<p>Sunt possimus modi ducimus at corrupti inventore, excepturi,</p>
+	<p>eum atque quae aperiam nostrum assumenda reprehenderit similique enim!</p>
+	<p>Iusto adipisci, voluptatum pariatur illum tempore neque eligendi mollitia?</p>
+	<p>Itaque dolores explicabo sunt accusantium ipsa?</p>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Overflow utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'overflow': (
+	property: overflow,
+	class: ov,
+	values: auto hidden visible scroll,
+),
+'overflow-x': (
+	property: overflow-x,
+	class: ov-x,
+	values: auto hidden visible scroll,
+),
+'overflow-y': (
+	property: overflow-y,
+	class: ov-y,
+	values: auto hidden visible scroll,
+),
+```

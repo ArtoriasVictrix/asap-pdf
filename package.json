@@ -1,0 +1,139 @@
+{
+	"name": "asap-pdf",
+	"version": "1.0.0",
+	"description": "HTML/PDF Framework based on Bootstrap. Perfect for developing beautiful PDFs using web technologies.",
+	"main": "index.js",
+	"homepage": "https://asap-pdf.com/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ArtoriasVictrix/asap-pdf.git"
+	},
+	"keywords": [
+		"css",
+		"gulp",
+		"html",
+		"sass",
+		"bootstrap",
+		"pdf",
+		"framework",
+		"scss",
+		"pug",
+		"screenshot-testing",
+		"pdf-document",
+		"pdf-generation"
+	],
+	"bugs": {
+		"url": "https://github.com/ArtoriasVictrix/asap-pdf/issues"
+	},
+	"engines": {
+		"node": ">=14.15.0"
+	},
+	"scripts": {
+		"start": "cross-env NODE_ENV=production PDF=true gulp",
+		"prod": "cross-env NODE_ENV=production gulp",
+		"prod:mock": "cross-env NODE_ENV=production MOCK=true gulp",
+		"prod:mock-pdf": "cross-env NODE_ENV=production MOCK=true PDF=true gulp",
+		"dev": "cross-env NODE_ENV=development gulp",
+		"dev:pdf": "cross-env NODE_ENV=development PDF=true gulp",
+		"build": "cross-env NODE_ENV=production gulp build",
+		"build:mock": "cross-env NODE_ENV=production MOCK=true gulp build",
+		"build-dev": "cross-env NODE_ENV=development gulp build:dev",
+		"pdf": "gulp html2pdf",
+		"mock": "gulp mock",
+		"mock-pdf": "gulp --series mock html2pdf",
+		"sc:init": "gulp screenshotsInit",
+		"sc:compare": "gulp screenshotsCompare",
+		"sc:refresh": "gulp screenshotsRefresh",
+		"pdf2img:init": "gulp pdf2imgInit",
+		"pdf2img:compare": "gulp pdf2imgCompare",
+		"pdf2img:refresh": "gulp pdf2imgRefresh",
+		"scss:lint": "stylelint 'app/scss/**/*.scss' --custom-syntax postcss-scss",
+		"scss:fix": "stylelint 'app/scss/**/*.scss' --custom-syntax postcss-scss --fix",
+		"test:init": "gulp --series screenshotsInit pdf2imgInit",
+		"test": "cross-env NODE_ENV=production gulp --series screenshotsCompare pdf2imgCompare",
+		"test:refresh": "gulp --series pdf2imgRefresh screenshotsRefresh",
+		"clean": "gulp clean",
+		"storybook": "cross-env STORYBOOK=true NODE_ENV=production gulp --series scss fonts && start-storybook -p 6006 -s stories/assets",
+		"build-storybook": "cross-env STORYBOOK=true NODE_ENV=production gulp --series scss fonts && build-storybook -s stories/assets"
+	},
+	"author": "Nikolay Zhidkov",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "7.14.6",
+		"@babel/preset-env": "7.14.5",
+		"@storybook/addon-actions": "6.5.16",
+		"@storybook/addon-essentials": "6.5.16",
+		"@storybook/addon-links": "6.5.16",
+		"@storybook/addons": "6.5.16",
+		"@storybook/html": "6.5.16",
+		"@storybook/theming": "6.5.16",
+		"babel-loader": "8.2.2",
+		"beeper": "2.0.0",
+		"browser-sync": "2.27.10",
+		"cheerio": "1.0.0-rc.11",
+		"cross-env": "7.0.3",
+		"fs-extra": "10.1.0",
+		"glob": "8.0.3",
+		"gulp": "4.0.2",
+		"gulp-autoprefixer": "8.0.0",
+		"gulp-babel": "8.0.0",
+		"gulp-beautify": "3.0.0",
+		"gulp-cached": "1.1.1",
+		"gulp-cheerio": "1.0.0",
+		"gulp-clean-css": "4.3.0",
+		"gulp-concat": "2.6.1",
+		"gulp-css-base64": "2.0.0",
+		"gulp-if": "3.0.0",
+		"gulp-imagemin": "7.1.0",
+		"gulp-notify": "4.0.0",
+		"gulp-plumber": "1.2.1",
+		"gulp-pug": "5.0.0",
+		"gulp-rename": "2.0.0",
+		"gulp-sass": "5.1.0",
+		"gulp-sourcemaps": "3.0.0",
+		"gulp-tap": "2.0.0",
+		"gulp-uglify": "3.0.2",
+		"husky": "4.3.0",
+		"imagemin-pngquant": "9.0.2",
+		"inline-source": "7.2.0",
+		"join-images": "1.1.5",
+		"lint-staged": "13.0.1",
+		"open": "8.4.0",
+		"pdftoimage": "1.0.0",
+		"pixelmatch": "5.3.0",
+		"pngjs": "6.0.0",
+		"postcss": "8.4.14",
+		"postcss-scss": "4.0.4",
+		"pug-lint": "2.6.0",
+		"puppeteer": "14.3.0",
+		"purgecss": "4.1.3",
+		"sass": "1.52.3",
+		"sharp": "0.32.0",
+		"stylelint": "14.9.0",
+		"stylelint-order": "5.0.0",
+		"stylelint-scss": "4.2.0"
+	},
+	"overrides": {
+		"es5-ext": "0.10.53"
+	},
+	"resolutions": {
+		"es5-ext": "0.10.53"
+	},
+	"browserslist": [
+		"last 2 versions"
+	],
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"./app/scss/**/*.scss": [
+			"stylelint --custom-syntax postcss-scss --fix --config .stylelintrc",
+			"git add"
+		],
+		"./app/pug/**/*.pug": [
+			"pug-lint"
+		]
+	}
+}

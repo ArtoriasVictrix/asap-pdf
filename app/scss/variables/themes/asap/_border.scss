@@ -1,0 +1,22 @@
+// ===============================================
+// BACKGROUND VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	--border-white-cl: var(--cl-white);
+	--border-black-cl: var(--cl-black);
+	--border-light-cl: var(--cl-gray-500);
+	--border-dark-cl: var(--cl-gray-300);
+	--border-primary-cl: var(--cl-blue-400);
+	--border-success-cl: var(--cl-green-200);
+	--border-info-cl: var(--cl-yellow-200);
+	--border-warning-cl: var(--cl-orange-300);
+	--border-danger-cl: var(--cl-red-500);
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

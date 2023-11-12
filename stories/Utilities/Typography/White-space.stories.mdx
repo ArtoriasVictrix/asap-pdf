@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/White space' />
+
+
+# White space
+
+The `text-wrap` and `text-nowrap` utilities set how
+[white space](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space) inside an element is handled.
+
+**text-wrap:**
+
+<Canvas>
+<div class="text-wrap bg-light w-120 p-12">
+	Lorem ipsum dolor sit amet
+</div>
+</Canvas>
+
+**text-nowrap:**
+
+<Canvas>
+<div class="text-nowrap bg-light w-120 p-12">
+	Lorem ipsum dolor sit amet
+</div>
+</Canvas>
+
+## Sass
+
+### Utilities API
+
+White space utility is declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'white-space': (
+	property: white-space,
+	class: text,
+	values: (
+		wrap: normal,
+		nowrap: nowrap
+	),
+),
+```

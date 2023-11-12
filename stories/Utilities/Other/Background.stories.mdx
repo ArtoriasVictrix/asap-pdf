@@ -1,0 +1,92 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Background' />
+
+
+# Background
+
+> Convey meaning through `background-color`.
+
+## No background
+
+<Canvas>
+<div class="bg-none">
+	.bg-none
+</div>
+</Canvas>
+
+## Background color
+
+Similar to the contextual text color classes, set the background of an element to any contextual class. Background
+utilities **do not set** `color`, so in some cases you’ll want to use `.text-*`
+[color utilities](?path=/story/utilities-typography-text-colors--page).
+
+<Canvas>
+<div>
+	<div class="bg-body p-12">
+		.bg-body
+	</div>
+	<div class="bg-white p-12">
+		.bg-white
+	</div>
+	<div class="bg-light p-12">
+		.bg-light
+	</div>
+	<div class="bg-dark text-light p-12">
+		.bg-dark
+	</div>
+	<div class="bg-black text-light p-12">
+		.bg-black
+	</div>
+	<div class="bg-primary p-12">
+		.bg-primary
+	</div>
+	<div class="bg-success p-12">
+		.bg-success
+	</div>
+	<div class="bg-info p-12">
+		.bg-info
+	</div>
+	<div class="bg-warning p-12">
+		.bg-warning
+	</div>
+	<div class="bg-danger p-12">
+		.bg-danger
+	</div>
+	<div class="bg-transparent p-12">
+		.bg-transparent
+	</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Background utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'background': (
+	property: background,
+	class: bg,
+	// INFO: 'none' transforms into '0 0' by SCSS
+	values: none,
+),
+'background-color': (
+	property: background-color,
+	class: bg,
+	values: (
+		white: var(--bg-white),
+		black: var(--bg-black),
+		light: var(--bg-light),
+		dark: var(--bg-dark),
+		primary: var(--bg-primary),
+		success: var(--bg-success),
+		warning: var(--bg-warning),
+		danger: var(--bg-danger),
+		info: var(--bg-info),
+		transparent: transparent,
+	)
+),
+```

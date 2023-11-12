@@ -1,0 +1,100 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Code linting/SCSS' />
+
+
+# Stylelint
+
+[Stylelint](https://stylelint.io/) is used by ASAP PDF to lint SCSS code, and the
+[stylelint-order](https://github.com/hudochenkov/stylelint-order) and
+[stylelint-scss](https://github.com/stylelint-scss/stylelint-scss) plugins are used to expand linting capabilities. All
+SCSS linting settings are stored in the ASAP PDF root directory in the `.stylelintrc` file. You can change these
+settings as needed and agreed upon by your team.
+
+## Pre-commit hook
+
+Stylelint is run automatically on pre-commit ([husky](https://github.com/typicode/husky)) with the `--fix` option.
+Essentially, the commit is performed after the code is checked by the linter and, if possible, corrected:
+
+```
+"husky": {
+	"hooks": {
+		"pre-commit": "lint-staged"
+	}
+},
+"lint-staged": {
+	"./app/scss/**/*.scss": [
+		"stylelint --custom-syntax postcss-scss --fix --config .stylelintrc",
+		"git add"
+	],
+	...
+}
+```
+
+## Setting up VS Code
+
+To ensure VS Code highlights errors in style files as specified in the `.stylelintrc` linter settings file, install the
+[stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) plugin and change settings
+in `.vscode/settings.json` file:
+
+Windows: `File → Preferences → Settings`
+
+macOS: `Code → Preferences → Settings`
+
+Press `Open Settings (JSON)`:
+
+<img src="./img/examples/vs-code/1.jpg" alt="VS Code settings" />
+
+And paste the following code snippet:
+
+```
+{
+	"scss.validate": false,
+	"css.validate": false,
+	"less.validate": false,
+	"stylelint.validate": [
+		"css",
+		"scss"
+	],
+	// If source.fixAll.stylelint property set to true, all auto-fixable Stylelint errors will be fixed on save:
+	// "editor.codeActionsOnSave": {
+	// 	"source.fixAll.stylelint": true
+	// },
+}
+```
+
+These settings disable VS Code's built-in stylelint so that it doesn't conflict with stylelint and add automatic error
+correction when saving the file (uncomment the relevant code if needed).
+
+To automatically correct the file by pressing `Shift` + `Option` + `F`, open the `keybindings.json` file:
+
+Windows: `File → Preferences → Keyboard Shortcuts, "Open Keyboard Shortcuts (JSON)" button`
+
+macOS: `Code → Preferences → Keyboard Shortcuts, "Open Keyboard Shortcuts (JSON)" button`
+
+<img src="./img/examples/vs-code/2.jpg" alt="VS Code Keyboard Shortcuts" />
+
+And paste the following code snippet:
+
+```
+[
+	{
+		"key": "alt+shift+f",
+		"command": "stylelint.executeAutofix",
+		"when": "editorTextFocus && editorLangId == 'css'"
+	},
+	{
+		"key": "alt+shift+f",
+		"command": "stylelint.executeAutofix",
+		"when": "editorTextFocus && editorLangId == 'scss'"
+	},
+	{
+		"key": "alt+shift+f",
+		"command": "stylelint.executeAutofix",
+		"when": "editorTextFocus && editorLangId == 'less'"
+	}
+]
+```
+
+This ensures that `Option/Alt` + `Shift` + `F` will automatically fix the style file as specified in the stylelintrc
+settings.

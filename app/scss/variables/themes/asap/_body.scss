@@ -1,0 +1,19 @@
+// ===============================================
+// BODY VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	--body-bg: var(--cl-gray-600);
+	--body-cl: var(--cl-black);
+	--body-ff: var(--ff-nunito-sans);
+	--body-fz: var(--fz-md);
+	--body-fw: var(--fw-n);
+	--body-lh: 1.15;
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

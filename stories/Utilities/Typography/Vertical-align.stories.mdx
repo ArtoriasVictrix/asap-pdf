@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Vertical align' />
+
+
+# Vertical alignment
+
+> Easily change the vertical alignment of inline, inline-block, inline-table, and table cell elements.
+
+Change the alignment of elements with the
+[vertical-alignment](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align) utilities. Please note that
+vertical-align only affects inline, inline-block, inline-table, and table cell elements.
+
+Choose from `.va-bl`, `.va-t`, `.va-m`, `.va-b`, `.va-tb`, and `.va-tt` as needed.
+
+To vertically center non-inline content (like `<div>`s and more), use the
+[flex box utilities](?path=/story/utilities-main-flex--page#align-items).
+
+<Canvas>
+<div>
+	<span class="va-bl">baseline</span>
+	<span class="va-t">top</span>
+	<span class="va-m">middle</span>
+	<span class="va-b">bottom</span>
+	<span class="va-tt">text-top</span>
+	<span class="va-tb">text-bottom</span>
+</div>
+</Canvas>
+
+With table cells:
+
+<Canvas>
+<table style={{ height: '100px' }}>
+	<tbody>
+		<tr>
+			<td class="va-bl">baseline</td>
+			<td class="va-t">top</td>
+			<td class="va-m">middle</td>
+			<td class="va-b">bottom</td>
+			<td class="va-tt">text-top</td>
+			<td class="va-tb">text-bottom</td>
+		</tr>
+	</tbody>
+</table>
+</Canvas>
+
+## Sass
+
+### Utilities API
+
+Vertical align utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'align': (
+	property: vertical-align,
+	class: va,
+	values: (
+		bl: baseline,
+		t: top,
+		m: middle,
+		b: bottom,
+		tb: text-bottom,
+		tt: text-top
+	)
+),
+```

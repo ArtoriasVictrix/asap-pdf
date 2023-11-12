@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Text truncation' />
+
+
+# Text truncation
+
+> Truncate long strings of text with an ellipsis.
+
+For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis. Requires
+`display: inline-block` or `display: block`.
+
+<Canvas>
+<div>
+	<div class="row">
+		<div class="col-2 text-truncate">
+			Praeterea iter est quasdam res quas ex communi.
+		</div>
+	</div>
+	<span class="d-inline-block max-w-140 text-truncate">
+		Praeterea iter est quasdam res quas ex communi.
+	</span>
+</div>
+</Canvas>
+
+## Mixin
+
+You can also use the `text-truncate()` mixin in your own styles.
+
+```
+.example {
+	@include text-truncate;
+
+	display: inline-block;
+	width: 142px;
+}
+```

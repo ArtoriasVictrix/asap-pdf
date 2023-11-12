@@ -1,0 +1,112 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Customization/Themes' />
+
+
+# Themes
+
+## SCSS
+
+Theming in ASAP PDF is implemented using CSS variables
+([CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)).
+
+Style files accountable for the theme (font sizes, colors, theme variables for components) are stored in the 
+`/app/scss/variables/themes/{theme-name}/` folder. These files are connected to one common theme SCSS file
+`/app/scss/variables/themes/{theme-name}.scss`, which, in turn, is connected to the file for all themes
+`/app/scss/_themes.scss`.
+
+```
+app
+└ scss
+  ├ _themes.scss
+  └ variables
+    └ themes
+      ├ {theme-name}.scss
+      └ {theme-name}
+```
+
+In theme files, CSS variables are bound to the `:root[data-theme='theme-name']` selector. Example: (file
+`/app/scss/variables/themes/asap/_bg.scss`):
+
+```SCSS
+:root[data-theme='asap'] {
+
+	--bg-white: var(--cl-white);
+	--bg-black: var(--cl-black);
+	--bg-light: var(--cl-gray-700);
+	--bg-dark: var(--cl-gray-100);
+	--bg-primary: var(--cl-blue-600);
+	--bg-success: var(--cl-green-600);
+	--bg-warning: var(--cl-orange-600);
+	--bg-danger: var(--cl-red-600);
+	--bg-info: var(--cl-yellow-600);
+
+}
+```
+
+By this means, these variables will apply to a document that has its `data-theme` attribute set to `asap` in the
+`<html>` tag.
+
+
+## HTML
+
+The `app/html/` folder contains examples of completed documents that you can use to create your own. The default theme
+in them is `asap`. This value can be changed in the `data-theme` attribute in the `<html>` tag:
+
+```HTML
+<!DOCTYPE html>
+<html lang="en" data-theme="asap">
+...
+```
+
+> You can choose any theme for each separate file in the `app/html/` folder.
+
+
+## Pug
+
+ASAP PDF has the `asap` theme selected by default. This value can be changed in the `/app/pug/templates/common.pug`
+file:
+
+```
+...
+
+doctype html
+html(lang='en' data-theme=theme ? theme : 'asap')
+
+...
+```
+
+You can set the theme of your choice for each separate document. To do this, create a theme variable in the document
+file and assign the name of the desired theme. Example (`/app/pug/pages/index.pug`):
+
+```Pug
+//- Document variables
+block append vars
+	-
+		let theme = 'dark'
+```
+
+If you have multiple pages with a theme other than the default one in the `common.pug` file, you can create a copy of
+the `common.pug` file and use it as the main template for new pages. For example:
+
+```
+//-
+	1. Create a copy of the 'common.pug' file and name it 'common-dark.pug', for example;
+	2. In the 'common-dark.pug' file, change the value of the 'data-theme' attribute to 'dark' :
+...
+
+doctype html
+html(lang='en' data-theme=theme ? theme : 'dark')
+
+...
+
+-----------------------
+
+//-
+	3. In your document file (create a copy of the app/pug/pages/index.pug file and name it as required), change the
+	path to the main document template from 'common' to 'common-dark':
+
+extends ./../templates/common-dark
+
+...
+```

@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Font style' />
+
+
+# Font style
+
+Quickly change the `font-style` of text with this utility.
+
+<Canvas>
+<p class="font-italic">
+	.font-italic
+</p>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Font style utility is declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'italic': (
+	property: font-style,
+	class: font,
+	values: italic,
+),
+```

@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Float' />
+
+
+# Float
+
+These utility classes float an element to the left or right, or disable floating, using the
+[CSS float property](https://developer.mozilla.org/en-US/docs/Web/CSS/float).
+
+> Please be aware float utilities have no effect on flex items.
+
+<Canvas>
+<div>
+	<img src="http://placekitten.com/200/100" alt="" />
+	<span class="float-left bg-light">.float-left</span>
+</div>
+</Canvas>
+
+<Canvas>
+<div>
+	<img src="http://placekitten.com/200/100" alt="" />
+	<span class="float-right bg-light">.float-right</span>
+</div>
+</Canvas>
+
+<Canvas>
+<div>
+	<img src="http://placekitten.com/200/100" alt="" />
+	<span class="float-none bg-light">.float-none</span>
+</div>
+</Canvas>
+
+Here are all the support classes:
+- .float-right
+- .float-left
+- .float-none
+
+## Sass
+
+### Utilities API
+
+Float utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'float': (
+	property: float,
+	values: (left, right, none),
+),
+```

@@ -1,0 +1,129 @@
+// ===============================================
+// TYPOGRAPHY VARIABLES
+// ===============================================
+
+
+// stylelint-disable block-closing-brace-empty-line-before, scss/selector-nest-combinators
+:root[data-theme='asap'] {
+
+
+	// FONT FAMILIES
+	// -----------------------------------------------
+
+	--ff-nunito-sans: 'Nunito Sans', 'Helvetica Neue', 'Arial', sans-serif;
+
+	// -----------------------------------------------
+	// FONT FAMILIES
+
+
+	// FONT WEIGHTS
+	// -----------------------------------------------
+
+	--fw-xl: 200;
+	--fw-l: 300;
+	--fw-n: 400;
+	--fw-m: 500;
+	--fw-sb: 600;
+	--fw-b: 700;
+	--fw-xb: 800;
+
+	--h1-fw: var(--fw-b);
+	--h2-fw: var(--fw-b);
+	--h3-fw: var(--fw-b);
+	--h4-fw: var(--fw-b);
+	--h5-fw: var(--fw-b);
+	--h6-fw: var(--fw-n);
+
+	// -----------------------------------------------
+	// FONT WEIGHTS
+
+
+	// FONT SIZES
+	// -----------------------------------------------
+
+	--fz-xxs: 8px;
+	--fz-xs: 10px;
+	--fz-sm: 12px;
+	--fz-md: 14px;
+	--fz-lg: 16px;
+	--fz-xl: 18px;
+	--fz-xxl: 20px;
+
+	--h1-fz: 32px;
+	--h2-fz: 24px;
+	--h3-fz: 22px;
+	--h4-fz: 18px;
+	--h5-fz: 14px;
+
+	// -----------------------------------------------
+	// FONT SIZES
+
+
+	// LINE HEIGHTS
+	// -----------------------------------------------
+
+	--lh-1: 1;
+	--lh-xs: 1.25;
+	--lh-sm: 1.27;
+	--lh-md: 1.33;
+	--lh-lg: 1.43;
+	--lh-xl: 1.5;
+
+	// -----------------------------------------------
+	// LINE HEIGHTS
+
+
+	// HR
+	// -----------------------------------------------
+
+	--hr-my: 16px;
+	--hr-height: 1px;
+
+	--hr-default-bg-cl: var(--cl-black);
+	--hr-light-bg-cl: var(--cl-gray-600);
+
+	// -----------------------------------------------
+	// HR
+
+
+	// UNORDERED LIST
+	// -----------------------------------------------
+
+	--ul-dashed-dash-t: -.1em;
+	--ul-dashed-dash-pr: .75em;
+
+	--ul-point-dot-t: -.2em;
+	--ul-point-dot-pr: .9em;
+	--ul-point-dot-fz: .7em;
+	--ul-point-dot-lh: 1em;
+
+	// -----------------------------------------------
+	// UNORDERED LIST
+
+
+	// ORDERED LIST
+	// -----------------------------------------------
+
+	--ol-number-ff: var(--ff-nunito-sans);
+	--ol-number-default-pr: .25em;
+	--ol-number-flat-pr: 0;
+	--ol-number-ls: normal;
+
+	// -----------------------------------------------
+	// ORDERED LIST
+
+
+	// LEADER (DOTTED UNDERLINE)
+	// -----------------------------------------------
+
+	--param-dots-border-cl: var(--cl-gray-300);
+	--param-fz: var(--text-md-fz);
+	--param-fw: var(--text-md-fw);
+	--param-lh: var(--text-md-lh);
+
+	// -----------------------------------------------
+	// LEADER (DOTTED UNDERLINE)
+
+
+}
+// stylelint-enable block-closing-brace-empty-line-before, scss/selector-nest-combinators

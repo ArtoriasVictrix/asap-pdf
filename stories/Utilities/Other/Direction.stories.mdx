@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Direction' />
+
+
+# Direction
+
+Set the direction of text in a container with direction utilities.
+
+<Canvas>
+<div class="dir-ltr">
+	.dir-ltr
+</div>
+</Canvas>
+
+<Canvas>
+<div class="dir-rtl">
+	.dir-rtl
+</div>
+</Canvas>
+
+Text is clipped with three dots on the left. Note that the last...
+
+<Canvas>
+<div class="d-flex dir-ltr w-400">
+	<div class="dir-rtl text-truncate">Text is clipped with three dots on the left. Note that the last punctuation mark can end up at the beginning of the utterance.</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Direction utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'direction': (
+	property: direction,
+	class: dir,
+	values: (rtl, ltr)
+),
+```

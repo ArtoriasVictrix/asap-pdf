@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Test/About' />
+
+
+# About the testing
+
+> Learn about testing settings by visiting the corresponding [documentation page](?path=/story/test-settings--page).
+
+## Screenshot
+
+Screenshot testing is a type of [regression testing](https://en.wikipedia.org/wiki/Regression_testing) carried out in
+the following order:
+
+1. For screenshot testing to work, the project must be **built** or **running** (the `dist/` folder must have HTML
+files), and the `npm run sc:init` or `npm run sc:compare` commands must be executed in a separate terminal or in a
+separate tab of the terminal.
+2. Create **golden screenshots** with the `npm run sc:init` command for all new pages in the project. They will be saved
+in the `tests/screenshots/before/` folder and compared with new (**actual**) screenshots (for example, if the project
+goes through significant changes that are difficult to track manually);
+3. If the project goes through significant changes (for example, the change in the font size of text components), ensure
+the integrity of the markup in the documents. For this, you need to create screenshots documenting the current state of
+the project (**actual** screenshots) and compare them with the golden ones by running `npm run sc:compare`. Actual
+screenshots will be saved in the `tests/screenshots/after/` folder, and images showing comparison results will be saved
+in `tests/screenshots/difference/`. The test results report will be saved in the `tests/Screenshot test report.html`
+file;
+4. If golden screenshots created prior need to be replaced with new (actual) ones, run the `npm run sc:refresh` command.
+
+### `npm run sc:init` (steps 1 and 2)
+
+<video class="storybook-video" controls>
+	<source src="./video/screenshot.mp4" alt="Video: steps 1 and 2" />
+</video>
+
+### `npm run sc:compare` (step 3)
+
+<video class="storybook-video" controls>
+	<source src="./video/compare.mp4" alt="Video: step 3" />
+</video>
+
+
+## pdf2img
+
+> ❗️ For pdf2img testing to work, install Poppler ([instructions](?path=/story/get-started-install-poppler--page)).
+
+In ASAP PDF, pdf2img testing involves converting PDF files to images (with page breaks displayed) and comparing
+resulting images with golden images. So, it is based on the same principle as screenshot testing. Pdf2img testing is
+carried out in the following order:
+
+1. For pdf2img testing to work, the project must be **launched** in PDF generation mode (the `dist/pdf/` folder must
+have pdf files). For example, `npm start` or `npm run prod:mock-pdf`. Also, the commands `npm run pdf2img:init` and
+`npm run pdf2img:compare` must be executed in a separate terminal or in a separate tab of the terminal.
+2. **Golden images** must be created with `npm run pdf2img:init` for all new PDFs in the project. They will be saved in
+the `tests/pdf2img/before/` folder and compared with new (**actual**) images (for example, if the project goes through
+significant changes that are difficult to track manually);
+3. If the project goes through significant changes (for example, the change in the font size of text components), ensure
+the integrity of the markup in the documents and maintain the correct page breaks. For this, you need to create images
+documenting the current state of the project (**actual** images) and compare them with the golden images by running
+`npm run pdf2img:compare`. Actual images will be saved in the `tests/pdf2img/after/` folder, and images showing
+comparison results will be saved in `tests/pdf2img/difference/`. The test report will be saved in the
+`tests/PDF test report.html` file;
+4. If golden images created prior need to be replaced with new (actual) ones, run the `npm run pdf2img:refresh` command.

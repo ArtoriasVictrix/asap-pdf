@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Helpers/Clearfix' />
+
+
+# Clearfix
+
+> Quickly and easily clear floated content within a container by adding a clearfix utility.
+
+Easily clear `float`s by adding `.clearfix` **to the parent element**. Can also be used as a mixin.
+
+Use in Pug:
+
+```scss
+.clearfix ...
+```
+
+The mixin source code:
+
+```scss
+@mixin clearfix() {
+	&::after {
+		display: block;
+		clear: both;
+		content: '';
+	}
+}
+```
+
+Use the mixin in SCSS:
+
+```scss
+.element {
+	@include clearfix;
+}
+```
+
+The following example shows how the clearfix can be used. Without the clearfix the wrapping div would not span around
+the buttons which would cause a broken layout.
+
+<Canvas>
+<div class="bg-info clearfix">
+	<div class="bg-light p-12 float-left">Example Button floated left</div>
+	<div class="bg-light p-12 float-right">Example Button floated right</div>
+</div>
+</Canvas>

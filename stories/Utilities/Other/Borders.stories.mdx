@@ -1,0 +1,568 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Borders' />
+
+
+# Borders
+
+With these utility classes you can set:
+
+- `border-style`
+- `border-width`
+- `border-radius`
+- `border-color`
+
+for every edge or corner of your elements.
+
+## Border style
+
+Set `border-style` of the current element with our `.border` utilities.
+
+The format is `.border-{side}-{value}`.
+
+Where *side* is one of:
+
+- `t` - for classes that set `border-top-style`
+- `b` - for classes that set `border-bottom-style`
+- `l` - for classes that set `border-left-style`
+- `r` - for classes that set `border-right-style`
+- `x` - for classes that set both `border-left-style` and `border-right-style`
+- `y` - for classes that set both `border-top-style` and `border-bottom-style`
+- `blank` - for classes that set a `border-style` on all 4 sides of the element
+
+Where *value* is one of:
+
+- `none` - for classes that set `border-style` to `none`
+- `hidden` - for classes that set `border-style` to `hidden`
+- `dotted` - for classes that set `border-style` to `dotted`
+- `dashed` - for classes that set `border-style` to `dashed`
+- `solid` - for classes that set `border-style` to `solid`
+- `double` - for classes that set `border-style` to `double`
+- `groove` - for classes that set `border-style` to `groove`
+- `ridge` - for classes that set `border-style` to `ridge`
+- `inset` - for classes that set `border-style` to `inset`
+- `outset` - for classes that set `border-style` to `outset`
+
+<Canvas>
+<div>
+	<div class="bg-light border-t-solid p-12">
+		.border-t-solid
+	</div>
+	<div class="bg-light border-x-groove p-12 mt-12">
+		.border-x-solid
+	</div>
+	<div class="bg-light border-dotted border-y-dashed p-12 mt-12">
+		.border-dotted, .border-y-dashed
+	</div>
+</div>
+</Canvas>
+
+<Canvas>
+<div>
+	<div class="bg-light border-dotted p-12">
+		.border-dotted
+	</div>
+	<div class="bg-light border-dashed p-12 mt-12">
+		.border-dashed
+	</div>
+</div>
+</Canvas>
+
+## Border width
+
+Adjust `border-width` of the current element with our `.border` utilities.
+
+The format is `.border-{side}-{value}`.
+
+Where *side* is one of:
+
+- `t` - for classes that set `border-top-width`
+- `b` - for classes that set `border-bottom-width`
+- `l` - for classes that set `border-left-width`
+- `r` - for classes that set `border-right-width`
+- `x` - for classes that set both `border-left-width` and `border-right-width`
+- `y` - for classes that set both `border-top-width` and `border-bottom-width`
+- `blank` - for classes that set a `border-width` on all 4 sides of the element
+
+Where *value* is in the range from **0** to **6** in 1 pixel increments.
+
+<Canvas>
+<div class="bg-light border-solid border-3 p-12">
+	.border-2
+</div>
+</Canvas>
+
+<Canvas>
+<div class="bg-light border-solid border-1 border-l-6 p-12">
+	.border-1, .border-l-3
+</div>
+</Canvas>
+
+## Border color
+
+Set `border-color` of the current element with our `.border` utilities.
+
+The format is `.border-{side}-{value}`.
+
+Where *side* is one of:
+
+- `t` - for classes that set `border-top-color`
+- `b` - for classes that set `border-bottom-color`
+- `l` - for classes that set `border-left-color`
+- `r` - for classes that set `border-right-color`
+- `x` - for classes that set both `border-left-color` and `border-right-color`
+- `y` - for classes that set both `border-top-color` and `border-bottom-color`
+- `blank` - for classes that set a `border-color` on all 4 sides of the element
+
+Where *value* is one of:
+
+- `white` - for classes that set `border-color` to `var(--border-white-cl)`
+- `black` - for classes that set `border-color` to `var(--border-black-cl)`
+- `light` - for classes that set `border-color` to `var(--border-light-cl)`
+- `dark` - for classes that set `border-color` to `var(--border-dark-cl)`
+- `primary` - for classes that set `border-color` to `var(--border-primary-cl)`
+- `success` - for classes that set `border-color` to `var(--border-success-cl)`
+- `warning` - for classes that set `border-color` to `var(--border-warning-cl)`
+- `danger` - for classes that set `border-color` to `var(--border-danger-cl)`
+- `info` - for classes that set `border-color` to `var(--border-info-cl)`
+- `transparent` - for classes that set `border-color` to `transparent`
+
+<Canvas>
+<div>
+	<div class="bg-black p-24">
+		<div class="text-white border-solid border-white border-1 p-12">
+			.border-white
+		</div>
+		<div class="text-light border-solid border-dark border-1 p-12 mt-12">
+			.border-dark
+		</div>
+	</div>
+	<div class="border-solid border-black border-1 p-12 mt-12">
+		.border-black
+	</div>
+	<div class="bg-light border-solid border-light border-1 p-12 mt-12">
+		.border-light
+	</div>
+	<div class="bg-primary border-solid border-primary border-1 p-12 mt-12">
+		.border-primary
+	</div>
+	<div class="bg-success border-solid border-success border-1 p-12 mt-12">
+		.border-success
+	</div>
+	<div class="bg-info border-solid border-info border-1 p-12 mt-12">
+		.border-info
+	</div>
+	<div class="bg-warning border-solid border-warning border-1 p-12 mt-12">
+		.border-warning
+	</div>
+	<div class="bg-danger border-solid border-danger border-1 p-12 mt-12">
+		.border-danger
+	</div>
+</div>
+</Canvas>
+
+<Canvas>
+<div>
+	<div class="border-solid border-t-success border-r-info border-b-primary border-l-danger border-3 p-12 mt-12">
+		.border-t-success, .border-r-info, .border-b-primary, .border-l-danger
+	</div>
+</div>
+</Canvas>
+
+## Border radius
+
+Adjust `border-radius` of the current element with our `.brs` utilities.
+
+The format is `.brs-{corner}-{value}`.
+
+Where *corner* is one of:
+
+- `tr` - for classes that set `border-top-right-radius`
+- `br` - for classes that set `border-bottom-right-radius`
+- `bl` - for classes that set `border-bottom-left-radius`
+- `tl` - for classes that set `border-top-left-radius`
+- `blank` - for classes that set a `border-radius` on all 4 corners of the element
+
+Where *value* is in the range from **0** to **32** in 4 pixel increments.
+
+<Canvas>
+<div>
+	<div class="bg-info brs-4 p-12">
+		.brs-4
+	</div>
+	<div class="bg-info brs-12 p-12 mt-12">
+		.brs-12
+	</div>
+	<div class="bg-info brs-tl-20 brs-br-20 p-12 mt-12">
+		.brs-tl-20, .brs-br-20
+	</div>
+	<div class="bg-info brs-tr-20 brs-bl-20 p-12 mt-12">
+		.brs-tr-20, .brs-bl-20
+	</div>
+</div>
+</Canvas>
+
+## No border
+
+Remove borders of the current element with our `.no-border` utilities.
+
+The format is `.no-border-{side}`.
+
+Where *side* is one of:
+
+- `t` - for classes that set `border-top`
+- `b` - for classes that set `border-bottom`
+- `l` - for classes that set `border-left`
+- `r` - for classes that set `border-right`
+- `x` - for classes that set both `border-left` and `border-right`
+- `y` - for classes that set both `border-top` and `border-bottom`
+- `blank` - for classes that remove a `border` on all 4 sides of the element
+
+<Canvas>
+<div>
+	<div class="bg-info border-solid border-1 no-border p-12">
+		.no-border
+	</div>
+	<div class="bg-info border-solid border-1 no-border-t p-12 mt-12">
+		.no-border-t
+	</div>
+	<div class="bg-info border-solid border-1 no-border-r no-border-b p-12 mt-12">
+		.no-border-r, .no-border-b
+	</div>
+	<div class="bg-info border-solid border-1 no-border-l no-border-t p-12 mt-12">
+		.no-border-l, .no-border-t
+	</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Border utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Border radius
+'border-radius': (
+	property: border-radius,
+	class: brs,
+	values: create-range(
+		$border-radius-start,
+		$border-radius-end,
+		$border-radius-step,
+		'px'
+	),
+),
+'border-radius-tr': (
+	property: border-top-right-radius,
+	class: brs-tr,
+	values: create-range(
+		$border-radius-start,
+		$border-radius-end,
+		$border-radius-step,
+		'px'
+	),
+),
+'border-radius-br': (
+	property: border-bottom-right-radius,
+	class: brs-br,
+	values: create-range(
+		$border-radius-start,
+		$border-radius-end,
+		$border-radius-step,
+		'px'
+	),
+),
+'border-radius-bl': (
+	property: border-bottom-left-radius,
+	class: brs-bl,
+	values: create-range(
+		$border-radius-start,
+		$border-radius-end,
+		$border-radius-step,
+		'px'
+	),
+),
+'border-radius-tl': (
+	property: border-top-left-radius,
+	class: brs-tl,
+	values: create-range(
+		$border-radius-start,
+		$border-radius-end,
+		$border-radius-step,
+		'px'
+	),
+),
+
+// Border
+'border-width': (
+	property: border-width,
+	class: border,
+	values: create-range(
+		$border-width-start,
+		$border-width-end,
+		$border-width-step,
+		'px'
+	),
+),
+'border-width-x': (
+	property: border-left-width border-right-width,
+	class: border-x,
+	values: create-range(
+		$border-width-start,
+		$border-width-end,
+		$border-width-step,
+		'px'
+	),
+),
+'border-width-y': (
+	property: border-top-width border-bottom-width,
+	class: border-y,
+	values: create-range(
+		$border-width-start,
+		$border-width-end,
+		$border-width-step,
+		'px'
+	),
+),
+'border-width-t': (
+	property: border-top-width,
+	class: border-t,
+	values: create-range(
+		$border-width-start,
+		$border-width-end,
+		$border-width-step,
+		'px'
+	),
+),
+'border-width-r': (
+	property: border-right-width,
+	class: border-r,
+	values: create-range(
+		$border-width-start,
+		$border-width-end,
+		$border-width-step,
+		'px'
+	),
+),
+'border-width-b': (
+	property: border-bottom-width,
+	class: border-b,
+	values: create-range(
+		$border-width-start,
+		$border-width-end,
+		$border-width-step,
+		'px'
+	),
+),
+'border-width-l': (
+	property: border-left-width,
+	class: border-l,
+	values: create-range(
+		$border-width-start,
+		$border-width-end,
+		$border-width-step,
+		'px'
+	),
+),
+
+'border-style': (
+	property: border-style,
+	class: border,
+	values: none hidden dotted dashed solid double groove ridge inset outset,
+),
+'border-style-x': (
+	property: border-left-style border-right-style,
+	class: border-x,
+	values: none hidden dotted dashed solid double groove ridge inset outset,
+),
+'border-style-y': (
+	property: border-top-style border-bottom-style,
+	class: border-y,
+	values: none hidden dotted dashed solid double groove ridge inset outset,
+),
+'border-style-t': (
+	property: border-top-style,
+	class: border-t,
+	values: none hidden dotted dashed solid double groove ridge inset outset,
+),
+'border-style-r': (
+	property: border-right-style,
+	class: border-r,
+	values: none hidden dotted dashed solid double groove ridge inset outset,
+),
+'border-style-b': (
+	property: border-bottom-style,
+	class: border-b,
+	values: none hidden dotted dashed solid double groove ridge inset outset,
+),
+'border-style-l': (
+	property: border-left-style,
+	class: border-l,
+	values: none hidden dotted dashed solid double groove ridge inset outset,
+),
+
+'border-color': (
+	property: border-color,
+	class: border,
+	values: (
+		white: var(--border-white-cl),
+		black: var(--border-black-cl),
+		light: var(--border-light-cl),
+		dark: var(--border-dark-cl),
+		primary: var(--border-primary-cl),
+		success: var(--border-success-cl),
+		warning: var(--border-warning-cl),
+		danger: var(--border-danger-cl),
+		info: var(--border-info-cl),
+		transparent: transparent
+	),
+),
+'border-color-x': (
+	property: border-right-color border-left-color,
+	class: border-x,
+	values: (
+		white: var(--border-white-cl),
+		black: var(--border-black-cl),
+		light: var(--border-light-cl),
+		dark: var(--border-dark-cl),
+		primary: var(--border-primary-cl),
+		success: var(--border-success-cl),
+		warning: var(--border-warning-cl),
+		danger: var(--border-danger-cl),
+		info: var(--border-info-cl),
+		transparent: transparent
+	),
+),
+'border-color-y': (
+	property: border-top-color border-bottom-color,
+	class: border-y,
+	values: (
+		white: var(--border-white-cl),
+		black: var(--border-black-cl),
+		light: var(--border-light-cl),
+		dark: var(--border-dark-cl),
+		primary: var(--border-primary-cl),
+		success: var(--border-success-cl),
+		warning: var(--border-warning-cl),
+		danger: var(--border-danger-cl),
+		info: var(--border-info-cl),
+		transparent: transparent
+	),
+),
+'border-t-color': (
+	property: border-top-color,
+	class: border-t,
+	values: (
+		white: var(--border-white-cl),
+		black: var(--border-black-cl),
+		light: var(--border-light-cl),
+		dark: var(--border-dark-cl),
+		primary: var(--border-primary-cl),
+		success: var(--border-success-cl),
+		warning: var(--border-warning-cl),
+		danger: var(--border-danger-cl),
+		info: var(--border-info-cl),
+		transparent: transparent
+	),
+),
+'border-r-color': (
+	property: border-right-color,
+	class: border-r,
+	values: (
+		white: var(--border-white-cl),
+		black: var(--border-black-cl),
+		light: var(--border-light-cl),
+		dark: var(--border-dark-cl),
+		primary: var(--border-primary-cl),
+		success: var(--border-success-cl),
+		warning: var(--border-warning-cl),
+		danger: var(--border-danger-cl),
+		info: var(--border-info-cl),
+		transparent: transparent
+	),
+),
+'border-b-color': (
+	property: border-bottom-color,
+	class: border-b,
+	values: (
+		white: var(--border-white-cl),
+		black: var(--border-black-cl),
+		light: var(--border-light-cl),
+		dark: var(--border-dark-cl),
+		primary: var(--border-primary-cl),
+		success: var(--border-success-cl),
+		warning: var(--border-warning-cl),
+		danger: var(--border-danger-cl),
+		info: var(--border-info-cl),
+		transparent: transparent
+	),
+),
+'border-l-color': (
+	property: border-left-color,
+	class: border-l,
+	values: (
+		white: var(--border-white-cl),
+		black: var(--border-black-cl),
+		light: var(--border-light-cl),
+		dark: var(--border-dark-cl),
+		primary: var(--border-primary-cl),
+		success: var(--border-success-cl),
+		warning: var(--border-warning-cl),
+		danger: var(--border-danger-cl),
+		info: var(--border-info-cl),
+		transparent: transparent
+	),
+),
+
+'no-border': (
+	property: border,
+	class: null,
+	values: (
+		'no-border': 0,
+	)
+),
+'no-border-t': (
+	property: border-top,
+	class: no-border,
+	values: (
+		t: 0
+	),
+),
+'no-border-r': (
+	property: border-right,
+	class: no-border,
+	values: (
+		r: 0
+	),
+),
+'no-border-b': (
+	property: border-bottom,
+	class: no-border,
+	values: (
+		b: 0
+	),
+),
+'no-border-l': (
+	property: border-left,
+	class: no-border,
+	values: (
+		l: 0
+	),
+),
+'no-border-x': (
+	property: border-left border-right,
+	class: no-border,
+	values: (
+		x: 0
+	),
+),
+'no-border-y': (
+	property: border-top border-bottom,
+	class: no-border,
+	values: (
+		y: 0
+	),
+),
+```

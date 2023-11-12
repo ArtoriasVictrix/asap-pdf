@@ -1,0 +1,198 @@
+// ===============================================
+// TYPOGRAPHY
+// ===============================================
+
+
+// HEADINGS
+// -----------------------------------------------
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+// -----------------------------------------------
+// HEADINGS
+
+
+// TEXT COMPONENTS
+// -----------------------------------------------
+
+$i: $h-start;
+
+@each $key in $text-sizes {
+	.text-#{$key} {
+		font-size: var(--text-#{$key}-fz);
+		font-weight: var(--fw-n);
+		line-height: var(--text-#{$key}-lh);
+	}
+}
+
+@while $i <= $h-end {
+	.h#{$i} {
+		font-size: var(--h#{$i}-fz);
+		font-weight: var(--h#{$i}-fw);
+		line-height: var(--h#{$i}-lh);
+	}
+
+	// stylelint-disable-next-line
+	$i: $i + 1;
+}
+
+// -----------------------------------------------
+// TEXT COMPONENTS
+
+
+// LISTS
+// -----------------------------------------------
+
+.ol,
+.ul {
+	margin: 0;
+	padding: 0;
+	list-style-position: inside;
+}
+
+.ul {
+	&--dashed {
+		list-style: none;
+
+		> li {
+			display: table;
+			margin: .5em 0;
+
+			&::before {
+				content: '\2014';
+				position: relative;
+				top: var(--ul-dashed-dash-t);
+				display: table-cell;
+				padding-right: var(--ul-dashed-dash-pr);
+			}
+		}
+	}
+
+	&--point {
+		list-style: none;
+
+		> li {
+			display: table;
+			margin: .5em 0;
+
+			&::before {
+				content: '\2022';
+				position: relative;
+				top: var(--ul-point-dot-t);
+				display: table-cell;
+				padding-right: var(--ul-point-dot-pr);
+				font-size: var(--ul-point-dot-fz);
+				line-height: var(--ul-point-dot-lh);
+			}
+		}
+	}
+}
+
+.ol {
+	--ol-number-pr: var(--ol-number-default-pr);
+
+	counter-reset: item;
+	list-style: none;
+
+	> li {
+		counter-increment: item;
+		display: table;
+		margin: .5em 0;
+
+		&::before {
+			content: counter(item) '. ';
+			display: table-cell;
+			padding-right: var(--ol-number-pr);
+			font-family: var(--ol-number-ff);
+			letter-spacing: var(--ol-number-ls);
+		}
+	}
+
+	&--nested {
+		counter-reset: item;
+
+		> li {
+			&::before {
+				content: counters(item, '.') '. ';
+			}
+		}
+	}
+
+	&--flat {
+		--ol-number-pr: var(--ol-number-flat-pr);
+
+		> li {
+			display: list-item;
+
+			&::before {
+				display: inline;
+			}
+		}
+	}
+}
+
+// -----------------------------------------------
+// LISTS
+
+
+// HORIZONTAL SEPARATOR
+// -----------------------------------------------
+
+.hr {
+	--hr-bg-cl: var(--hr-default-bg-cl);
+
+	height: var(--hr-height);
+	margin-top: var(--hr-my);
+	margin-bottom: var(--hr-my);
+	background-color: var(--hr-bg-cl);
+
+	&--light {
+		--hr-bg-cl: var(--hr-light-bg-cl);
+	}
+}
+
+// -----------------------------------------------
+// HORIZONTAL SEPARATOR
+
+
+// LEADER (DOTTED UNDERLINE)
+// -----------------------------------------------
+
+.param {
+	display: flex;
+	align-items: flex-end;
+	margin: 0;
+	font-size: var(--param-fz);
+	font-weight: var(--param-fw);
+	line-height: var(--param-lh);
+
+	&::after {
+		content: '';
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: auto;
+		order: 2;
+		margin: 0 .3em .3em;
+		border-bottom: .1em dotted var(--param-dots-border-cl);
+	}
+
+	&__prop {
+		order: 1;
+	}
+
+	&__value {
+		order: 3;
+		margin-left: 0;
+	}
+}
+
+// -----------------------------------------------
+// LEADER (DOTTED UNDERLINE)

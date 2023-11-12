@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Font weight' />
+
+
+# Font weight
+
+## Tags
+
+### `<strong>`
+
+<Canvas>
+<strong>
+	The &lt;strong&gt; HTML element indicates that its contents have strong importance.
+</strong>
+</Canvas>
+
+### `<b>`
+
+<Canvas>
+<b>
+	The &lt;b&gt; HTML element draws attention to certain text without indicating a higher level of importance.
+</b>
+</Canvas>
+
+## Classes
+
+Quickly change the `font-weight` of text with this utilities.
+
+<Canvas>
+<div>
+	<div class="fw-xb">.fw-xb — 800</div>
+	<div class="fw-b">.fw-b — 700</div>
+	<div class="fw-sb">.fw-sb — 600</div>
+	<div class="fw-m">.fw-m — 500</div>
+	<div class="fw-n">.fw-n — 400</div>
+	<div class="fw-l">.fw-l — 300</div>
+	<div class="fw-xl">.fw-xl — 200</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Font weight utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Font weights
+'font-weight': (
+	property: font-weight,
+	class: fw,
+	values: (
+		xl: var(--fw-xl),
+		l: var(--fw-l),
+		n: var(--fw-n),
+		m: var(--fw-m),
+		sb: var(--fw-sb),
+		b: var(--fw-b),
+		xb: var(--fw-xb),
+	),
+),
+```

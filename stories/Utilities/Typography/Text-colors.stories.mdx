@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Text colors' />
+
+
+# Text colors
+
+> Convey meaning through color with a handful of color utility classes.
+
+Colorize text with color utilities.
+
+<Canvas>
+<div>
+	<div class="text-black p-12">.text-black</div>
+	<div class="text-white bg-dark p-12">.text-white</div>
+	<div class="text-light p-12">.text-light</div>
+	<div class="text-muted bg-dark p-12">.text-muted</div>
+	<div class="text-primary p-12">.text-primary</div>
+	<div class="text-success p-12">.text-success</div>
+	<div class="text-info p-12">.text-info</div>
+	<div class="text-warning p-12">.text-warning</div>
+	<div class="text-danger p-12">.text-danger</div>
+	<div class="text-reset p-12">.text-reset</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Utilities API
+
+Text color utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Contextual colors
+'text-color': (
+	property: color,
+	class: text,
+	values: (
+		white: var(--text-white-cl),
+		black: var(--text-black-cl),
+		light: var(--text-light-cl),
+		dark: var(--text-dark-cl),
+		primary: var(--text-primary-cl),
+		success: var(--text-success-cl),
+		warning: var(--text-warning-cl),
+		danger: var(--text-danger-cl),
+		info: var(--text-info-cl),
+		muted: var(--text-muted-cl),
+		reset: inherit,
+	),
+),
+```

@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/addon-docs';
+import '../common.css';
+
+<Meta title='Introduction/About' />
+
+
+# About
+## What is this framework for?
+
+ASAP PDF is designed to create PDF files using HTML and CSS (Pug/SCSS).
+
+<video class="storybook-video" controls>
+	<source src="./video/demo.mp4" alt="VS Code demo" />
+</video>
+
+With ASAP PDF, you can:
+
++ Convert HTML to PDF on the fly;
++ Get an in-browser preview that’s nearly identical to the final PDF file;
++ Inline all external assets to your HTML without using third-party services (your images and fonts are encoded with
+base64, and styles are automatically inserted into the `<head>` tag);
++ Use ready-made text components;
++ Reuse your components with Pug;
++ Stop worrying about stylelint or pug-lint config, as they are already configured;
++ Perform screenshot testing of your project and get a detailed report.
+
+<h2>Features</h2>
+
+<br />
+<div className="block-list">
+	<div className="block-list__item">
+		<img src="./img/logo/bootstrap.svg" alt="Bootstrap logo" />
+		<span>
+			<strong>Just what you need from Bootstrap 5</strong>
+			Familiar <a href="https://getbootstrap.com/docs/5.1/utilities/api/" target="_blank">utilities</a>, <a href="https://getbootstrap.com/docs/5.1/layout/columns/" target="_blank">columns,</a> and nothing more
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/icons/layers-filled.svg" alt="Components" />
+		<span>
+			<strong>Ready-made components</strong>
+			<a href="?path=/story/introduction-components--page">Library of components</a> for PDF layout
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/icons/pdf.svg" alt="Convertation" />
+		<span>
+			<strong>Converting HTML to PDF</strong>
+			On the fly (using <a href="https://pptr.dev/" target="_blank" rel="noopener">Puppeteer</a>)
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/icons/compression.svg" alt="Images optimization" />
+		<span>
+			<strong>Image compression</strong>
+			All images are optimized during the project assembly
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/icons/base64.svg" alt="Base64 encoding" />
+		<span>
+			<strong>Base64</strong>
+			Assets are encoded with base64 and inserted into the HTML on the fly
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/logo/purgecss.svg" alt="Removing unused CSS" />
+		<span>
+			<strong>PurgeCSS</strong>
+			<a href="https://purgecss.com/" target="_blank" rel="noopener">PurgeCSS</a> will help you get rid of unnecessary CSS
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/logo/pug.svg" alt="Pug template engine" />
+		<span>
+			<strong>Pug</strong>
+			Elegant and powerful <a href="https://pugjs.org/api/getting-started.html" target="_blank" rel="noopener">HTML templating engine</a>
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/logo/sass.svg" alt="SASS" />
+		<span>
+			<strong>SCSS</strong>
+			Probably the best <a href="https://sass-lang.com/" target="_blank" rel="noopener">CSS preprocessor</a>
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/icons/linter.svg" alt="Code linting" />
+		<span>
+			<strong>SCSS and Pug linters</strong>
+			<a href="https://stylelint.io/" target="_blank" rel="noopener">Stylelint</a> and <a href="https://github.com/pugjs/pug-lint" target="_blank" rel="noopener">pug-lint</a> help your team maintain consistent code style
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/icons/json.svg" alt="Data mocking" />
+		<span>
+			<strong>Mock data</strong>
+			Simplest mocking with data substitution from JSON
+		</span>
+	</div>
+	<div className="block-list__item">
+		<img src="./img/icons/check-circle.svg" alt="Testing" />
+		<span>
+			<strong>Testing</strong>
+			Testing with detailed reports. <a href="?path=/story/test-about--page">Read about ASAP PDF testing</a>
+		</span>
+	</div>
+</div>
+<br />
+
+ASAP PDF uses [Puppeteer](https://pptr.dev/) to convert HTML to PDF, so it is recommended to use
+[Puppeteer Sharp](https://www.puppeteersharp.com/) to get the same conversion results on the backend.
+
+<br />
+
+## Examples
+
+Example of a document in a browser:
+<img src="./img/browser-demo.jpg" alt="Browser demo" />
+<br />
+
+Screenshot test report:
+<img src="./img/test-report-demo.jpg" alt="Report demo" />

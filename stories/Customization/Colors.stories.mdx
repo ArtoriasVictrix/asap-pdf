@@ -1,0 +1,213 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Customization/Colors' />
+
+
+# Colors
+
+## Base Colors
+
+In ASAP PDF, all colors are stored in the `/app/scss/variables/themes/asap/_colors.scss` file in the `$cl` map
+([associative arrays](https://sass-lang.com/documentation/values/maps)). Using the `get-colors()` mixin, all these
+colors are converted to RGB format and assigned to CSS variables
+([CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)) for further use in components and
+utilities ([example](?path=/story/utilities-typography-text-colors--page)):
+
+```scss
+// BASE COLORS
+// -----------------------------------------------
+
+$cl: (
+	black: #000000,
+	white: #FFFFFF,
+	gray-100: #18181D,
+	gray-200: #474A50,
+	gray-300: #7A7D82,
+	gray-400: #AEB0B4,
+	gray-500: #C8C9CD,
+	gray-600: #E1E2E6,
+	gray-700: #F0F1F5,
+	gray-800: #F8F8FB,
+	green-100: #10A863,
+	green-200: #25EB92,
+	green-300: #67F0AA,
+	green-400: #91F4C0,
+	green-500: #B5F7D5,
+	green-600: #D8F9E8,
+	blue-100: #1275F8,
+	blue-200: #378CF9,
+	blue-300: #68A5FC,
+	blue-400: #91BEFD,
+	blue-500: #B8D6FE,
+	blue-600: #E1EEFE,
+	violet-100: #603AF8,
+	violet-200: #7758F9,
+	violet-300: #947AFD,
+	violet-400: #AF9CFF,
+	violet-500: #CABDFF,
+	violet-600: #E4DEFE,
+	red-100: #FD214D,
+	red-200: #FD3F64,
+	red-300: #FD5662,
+	red-400: #FD6F7A,
+	red-500: #FDA2A9,
+	red-600: #FDD5D7,
+	orange-100: #FF780A,
+	orange-200: #FF943D,
+	orange-300: #FFAB63,
+	orange-400: #FFC089,
+	orange-500: #FFD5B0,
+	orange-600: #FFEAD8,
+	yellow-100: #E0A100,
+	yellow-200: #FFC93F,
+	yellow-300: #FFD469,
+	yellow-400: #FFDF8F,
+	yellow-500: #FFEAB4,
+	yellow-600: #FFF4D9,
+);
+
+@include get-colors($cl);
+
+// -----------------------------------------------
+// BASE COLORS
+```
+
+Mixin example:
+
+```scss
+$cl: (
+	blue-100: #1275F8,
+);
+@include get-cls($cl);
+
+// RESULT:
+--blue-100: 18, 117, 248;
+--cl-blue-100: rgb(var(--blue-100));
+```
+
+
+## Colors with Transparency
+
+RGBA colors (with transparency) are generated from the same `$cl` associative array using the `get-alpha()` mixin. To
+get the desired color, the mixin must be passed with the following parameters:
+1. palette (a set of colors in the form of an associative array);
+2. the name of the color from the palette that will be used as the basis for color with transparency;
+3. an associative array containing pairwise postfixes for the name of the new color and its corresponding level of transparency.
+
+Colors with transparency are also generated in the `/app/scss/variables/themes/asap/_colors.scss` file:
+
+```scss
+// TRANSPARENT COLORS
+// -----------------------------------------------
+
+@include
+get-alpha(
+	$cl,
+	'gray-100',
+	(
+		30: .3
+	)
+);
+
+@include
+get-alpha(
+	$cl,
+	'gray-300',
+	(
+		50: .5
+	)
+);
+
+// -----------------------------------------------
+// TRANSPARENT COLORS
+```
+
+Mixin example:
+
+```scss
+$ca-blue-100 (
+	10: .1,
+	20: .2,
+	30: .3,
+);
+@include get-alphas($cl, 'blue-100', $ca-blue-100)
+
+// RESULT:
+--ca-blue-100-10: rgba(var(--blue-100), .1)
+--ca-blue-100-20: rgba(var(--blue-100), .2)
+--ca-blue-100-30: rgba(var(--blue-100), .3)
+```
+
+> You can read more in the [Variables](?path=/story/customization-variables--page) section of the documentation.
+
+
+## Mixins
+
+The mixins described above are stored in the `/app/scss/mixins/_colors.scss` file:
+
+```scss
+/*
+	Create CSS custom properties from color map.
+
+	EXAMPLE:
+	$cl: (
+		blue-100: #1275F8,
+	);
+	@include get-cls($cl);
+
+	RESULT:
+	--blue-100: 18, 117, 248;
+	--cl-blue-100: rgb(var(--blue-100));
+
+	INFO: One '@each' expression were split into two to achieve
+	more readability of custom properties in a dev tools.
+*/
+@mixin get-colors($map, $prefix: 'cl') {
+	@each $prop, $val in $map {
+		$val: red($val) + ', ' + green($val) + ', ' + blue($val);
+
+		#{'--' + $prop}: string.unquote($val);
+	}
+
+	@each $prop in $map {
+		$prop: list.nth($prop, 1);
+
+		#{'--' + $prefix + '-' + $prop}: rgb(var(#{'--' + $prop}));
+	}
+}
+
+
+/*
+	Create RGBA custom property from given color.
+
+	EXAMPLE:
+	$ca-blue-100: (
+		10: .1,
+		20: .2,
+		30: .3,
+	);
+	@include get-alphas($cl, 'blue-100', $ca-blue-100)
+
+	RESULT:
+	--ca-blue-100-10: rgba(var(--blue-100), .1)
+	--ca-blue-100-20: rgba(var(--blue-100), .2)
+	--ca-blue-100-30: rgba(var(--blue-100), .3)
+*/
+@mixin get-alpha($palette, $cl, $ca, $prefix: 'ca') {
+	$i: 10;
+
+	@if (type-of($ca) == list) {
+		@each $alpha in $ca {
+			#{'--' + $prefix + '-' + $cl + '-' + $i}: rgba(var(#{'--' + $cl}), $alpha);
+
+			$i: $i + 10;
+		}
+	}
+
+	@if (type-of($ca) == map) {
+		@each $postfix, $alpha in $ca {
+			#{'--' + $prefix + '-' + $cl + '-' + $postfix}: rgba(var(#{'--' + $cl}), $alpha);
+		}
+	}
+}
+```

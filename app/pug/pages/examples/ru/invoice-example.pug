@@ -1,0 +1,103 @@
+extends ./../../../templates/common
+
+//- Document variables
+block append vars
+	-
+		docTitle = 'Пример выставленного счёта'
+		cssPath = '../../css/style.css'
+
+
+//- Document content
+block append content
+	.sheet.A4-m-15mm
+		img.logo.mr-20(src='../../img/logo/logo.svg' alt='Логотип')
+		.text-sm
+			.row.row--gx-28.mt-16
+				.col-9
+					h5.h5.ta-c.mb-4 Образец заполнения платёжного поручения
+					table.table.table--borders.table--borders-black.table--outer-border.cells-p-6.cells-va-t.w-100p.mb-32
+						tr
+							td.tt-u.w-60p(rowspan='2' colspan='2') ООО «Пример длинного названия какой-то одной организации»
+								.text-light.mt-16 Банк получателя
+							td БИК
+							td 000000000
+						tr
+							td Сч.&nbsp;№
+							td 00000000000000000000
+						tr
+							td ИНН&nbsp;&nbsp;{{Inn1}}
+							td КПП&nbsp;&nbsp;0000000000
+							td(rowspan='2') Сч.&nbsp;№
+							td(rowspan='2') 00000000000000000000
+						tr
+							td.border-r-1.border-r-solid.tt-u(colspan='2')
+								| Пример длинного названия какой-то другой организации
+								.text-light.mt-16 Получатель
+						tr
+							td(colspan='4') Пример текста о назначении платежа
+								.text-light.mt-16 Назначение платежа
+				.col-3
+					img.img-fluid.mt-40(src='../../img/qr-code.png' alt='QR-код')
+					p.ta-c.mt-12
+						| Отсканируйте в&nbsp;приложении банка 
+						br
+						| для оплаты
+
+			.fz-xl.fw-b.ta-c.mb-20
+				| Пример счёта на&nbsp;оплату &#8470;&nbsp;1&nbsp;от&nbsp;&laquo;1&raquo; июля 2021г.
+
+			table.table.w-100p
+				tr
+					td.text-light.pb-4 Поставщик:
+					td.pb-4 Какой-то поставщик для примера
+				tr
+					td.text-light Покупатель:
+					td ООО «Пример длинного названия какой-то организации», ИНН "{{Inn2}}", г. Какой-то
+
+			table.table.table--borders.table--borders-black.table--outer-border.table--striped.cells-p-6.border-1.w-100p.mt-16
+				thead
+					tr
+						th.ta-c №
+						th Наименование
+						th.ta-c Ед. изм.
+						th.ta-c Кол-во
+						th.ta-r Цена
+						th.ta-c НДС
+						th.ta-r.w-100 Сумма
+				tbody
+					tr
+						td.ta-c 1
+						td Помидорки
+						td.ta-c шт.
+						td.ta-c 12
+						td.ta-r 34.00
+						td.ta-c Без НДС
+						td.ta-r 5,678.00
+					tr
+						td.ta-c 2
+						td Сосисочки
+						td.ta-c шт.
+						td.ta-c 78
+						td.ta-r 910.12
+						td.ta-c 20%
+						td.ta-r 12,345.67
+
+			table.table.cells-p-6.w-100p.mb-12
+				tr
+					td.fw-b.ta-r Итого к оплате:
+					td.border-solid.border-1.border-t-none.ta-r.w-100 23,456.78
+				tr
+					td.fw-b.ta-r В том числе НДС:
+					td.border-solid.border-1.ta-r.w-100 100.00
+
+			.fz-md.mb-8 Всего наименований 2, на сумму 23,456.78 руб.
+			.fz-md.fw-b.mb-12 Двадцать две тысячи сто пятьдесят три рубля 00 коп.
+
+			table.table.cells-p-10.w-100p.mt-32
+				tr
+					td.w-108.fw-b.pl-0 Руководитель
+					td.cells-p-0.w-200.ta-c
+						img.w-100p(src='../../img/stamp-example.png' alt='Печать 1')
+					td.fw-b (Петров П.П.)
+					td.cells-p-0.w-200.ta-c
+						img.w-100p(src='../../img/stamp-example.png' alt='Печать 2')

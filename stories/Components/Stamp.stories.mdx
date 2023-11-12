@@ -1,0 +1,32 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Stamp' />
+
+
+# Stamp
+
+The `stamp` component is used to add stamps to documents.
+
+<Canvas>
+<div class="stamp">
+	BANK EXAMPLE
+	<br />
+	IBAN: DE99 0099 0099 9900 0000 99
+	<br />
+	SOME NUMBER: 99009900990099009900
+	<br/>
+	<span class="tt-u">APPROVED</span>
+</div>
+</Canvas>
+
+<Canvas>
+<div class="stamp stamp--danger p-12 w-300">
+	BANK EXAMPLE
+	<br />
+	IBAN: DE99 0099 0099 9900 0000 99
+	<br />
+	SOME NUMBER: 99009900990099009900
+	<br/>
+	<span class="tt-u">REJECTED</span>
+</div>
+</Canvas>

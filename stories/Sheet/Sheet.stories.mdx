@@ -1,0 +1,226 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Sheet/Sheet' />
+
+<style>{`
+	.docblock-source {
+		margin: 16px 0;
+	}
+`}</style>
+
+
+# Sheets
+
+## Sheet classes
+
+> ❗️ For Pug: all document content must be placed inside the `content` block.
+
+The `.sheet` class sets the default sheet styles but not the size or margin. To set the sheet size and margin, use the
+following classes:
+
+```
+.A3-m-15mm
+.A3-landscape-m-15mm
+.A4-m-10mm
+.A4-m-15mm
+.A4-m-20mm
+.A4-m-20mm-15mm-20mm-30mm
+.A4-landscape-m-10mm
+.A4-landscape-m-15mm
+.A4-landscape-m-20mm
+.A4-landscape-m-20mm-15mm-20mm-30mm
+.A5-m-15mm
+.A5-landscape-m-15mm
+.letter-m-15mm
+.letter-landscape-m-15mm
+.legal-m-15mm
+.legal-landscape-m-15mm
+```
+
+For example, the `sheet A4-m-15mm` classes will create an **A4** sheet with **15mm** margins on each side:
+
+<img src="./img/examples/empty-sheet-example-scheme.jpg" alt="Empty sheet example" />
+
+```pug
+extends ./../templates/common
+
+//- Document variables
+block append vars
+	-
+		docTitle = 'Document example'
+
+//- Document content
+block append content
+	.sheet.A4-m-15mm Example
+```
+
+```html
+...
+<body>
+	<div class="sheet A4-m-15mm">
+		Example
+	</div>
+</body>
+</html>
+```
+
+
+## Sheet blocks
+
+When converting HTML to PDF, the content of the block with the `.sheet` class is automatically split into separate
+sheets. If you want to split the contents of the document into separate sheets yourself, you can create a separate
+`.sheet` block for each.
+
+Example (**one** `.sheet` block):
+
+<img src="./img/examples/1-sheet.jpg" class="storybook-image" alt="1 sheet" />
+
+Example (**multiple** `.sheet` blocks):
+
+<img src="./img/examples/3-sheets.jpg" class="storybook-image" alt="3 sheets" />
+
+> ⛔️ Unfortunately, due to the implementation of `@page`, you **cannot** use different sheet sizes or different margins
+> within **the same document**.
+
+<br/>
+
+### "--clipped" modifier
+
+If you split the content of the document into separate sheets yourself and want to see the height of the sheets
+**in the browser**, you need to add a class with the `--clipped` postfix:
+
+```
+.A3-m-15mm--clipped
+.A3-landscape-m-15mm--clipped
+.A4-m-10mm--clipped
+.A4-m-15mm--clipped
+.A4-m-20mm--clipped
+.A4-m-20mm-15mm-20mm-30mm--clipped
+...
+```
+
+Example `sheet A5-landscape-m-15mm` **without** `A5-landscape-m-15mm--clipped`:
+
+<img src="./img/examples/no-clipped.jpg" class="storybook-image" alt="Sheets without --clipped class" />
+
+```
+block append content
+	.sheet.A5-landscape-m-15mm Example 1
+	.sheet.A5-landscape-m-15mm Example 2
+	.sheet.A5-landscape-m-15mm Example 3
+```
+
+```html
+...
+<body>
+	<div class="sheet A5-landscape-m-15mm">
+		Example 1
+	</div>
+	<div class="sheet A5-landscape-m-15mm">
+		Example 2
+	</div>
+	<div class="sheet A5-landscape-m-15mm">
+		Example 3
+	</div>
+</body>
+</html>
+```
+
+Example **with class** `...--clipped` - `sheet A5-landscape-m-15mm A5-landscape-m-15mm--clipped`:
+
+<img src="./img/examples/clipped.jpg" class="storybook-image" alt="Sheets with --clipped class" />
+
+```pug
+block append content
+	.sheet.A5-landscape-m-15mm.A5-landscape-m-15mm--clipped Example 1
+	.sheet.A5-landscape-m-15mm.A5-landscape-m-15mm--clipped Example 2
+	.sheet.A5-landscape-m-15mm.A5-landscape-m-15mm--clipped Example 3
+```
+
+```html
+...
+<body>
+	<div class="sheet A5-landscape-m-15mm A5-landscape-m-15mm--clipped">
+		Example 1
+	</div>
+	<div class="sheet A5-landscape-m-15mm A5-landscape-m-15mm--clipped">
+		Example 2
+	</div>
+	<div class="sheet A5-landscape-m-15mm A5-landscape-m-15mm--clipped">
+		Example 3
+	</div>
+</body>
+</html>
+```
+
+> ❗️ Classes with `--clipped` postfix do not affect sheet sizes during conversion from HTML to PDF. They serve the sole
+> purpose of facilitating the developer’s navigation during the layout creation and debugging of the document in the
+> browser.
+
+## Adding new sheet sizes
+
+If you need to add new sheet sizes, you can do it in the `app/scss/components/_sheets.scss` file (`$sheets` variable).
+For example:
+
+```scss
+$sheets: (
+	...
+
+	'example-1': (
+		width: 4.2in,
+		height:  6in,
+		margin: (
+			10mm,
+			0.5in,
+			1.5cm 2cm 2.2cm,
+			20mm 15mm 20mm 30mm,
+		),
+	),
+	'example-2': (
+		class: custom-size,
+		width: 200mm,
+		height:  100mm,
+		margin: (
+			10mm,
+		),
+	),
+
+	// ...
+);
+```
+
+The following classes will be generated as a result:
+
+```scss
+.sheet-4_2in-6in-m-10mm
+.sheet-4_2in-6in-m-0_5in
+.sheet-4_2in-6in-m-1_5cm-2cm-2_2cm
+.sheet-4_2in-6in-m-20mm-15mm-20mm-30mm
+
+.custom-size-m-10mm
+```
+
+> The dot in fractional values is replaced with the "_" character for the class name.
+
+
+## Class generation principle
+
+Required parameters:
+- `width` (width of the sheet; used to display the sheet in the browser properly);
+- `height` (height of the sheet; used to display the sheet in the browser properly and generate the `--clipped` class);
+
+Optional parameters:
+- `class` (sets the class name)
+- `size` (used in `@page` and in the class name if the `class` parameter has not been set);
+- `margin` (variable or list of variables - [list](https://sass-lang.com/documentation/values/lists); the default value
+will be used - `$default-sheet-margin` - if it is not specified);
+
+The process of class name generation:
+- If the `class` and `size` parameters are not specified, the `width` and `height` parameters will be used for class
+name generation;
+- If the value of `size` starts with a digit or if the class name was generated using the `width` and `height`
+parameters, the class name will be prefixed with the `.sheet-`;
+- If the class name is generated from fractional values, dots in fractions will be replaced with underscores;
+- The separator `-m-` will be automatically inserted between the margin and the sheet size in the class name.
+
+<img src="./img/examples/class-name-example.jpg" width="480" alt="Class name parts" />

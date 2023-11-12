@@ -1,0 +1,156 @@
+// ===============================================
+// TABLES
+// ===============================================
+
+
+// TABLE
+// -----------------------------------------------
+
+.table {
+	/*
+		First we need to define the default table variables to keep basic
+		presentation in nested tables.
+	*/
+
+	// Default table cell paddings
+	--table-py: 4px;
+	--table-px: 4px;
+
+	// Default border color
+	--table-border-cl: var(--table-default-border-cl);
+
+	// Default cell vertical align
+	--cells-va: middle;
+
+	border-spacing: 0;
+	border-collapse: collapse;
+
+
+	// stylelint-disable scss/selector-nest-combinators
+
+	> thead > tr > th {
+		border-bottom: 2px solid var(--table-border-cl);
+		background-color: var(--table-header-bg-cl);
+		color: var(--table-header-cl);
+		font-weight: 500;
+		text-align: left;
+	}
+
+	> thead > tr > th,
+	> thead > tr > td,
+	> tbody > tr > td,
+	> tfoot > tr > td {
+		padding: var(--table-py) var(--table-px);
+		vertical-align: var(--cells-va);
+	}
+
+	> tfoot > tr > td {
+		border-top: 2px solid var(--table-border-cl);
+		background-color: var(--table-footer-bg-cl);
+		color: var(--table-footer-cl);
+		font-weight: 700;
+	}
+
+
+	&--borders {
+		> thead > tr > th,
+		> thead > tr > td,
+		> tbody > tr > td,
+		> tfoot > tr > td {
+			&:not(:last-child) {
+				border-right: 1px solid var(--table-border-cl);
+			}
+		}
+
+		> tbody > tr:not(:last-child) > td {
+			border-bottom: 1px solid var(--table-border-cl);
+		}
+	}
+
+	&--borders-vert {
+		> thead > tr > th,
+		> thead > tr > td,
+		> tbody > tr > td,
+		> tfoot > tr > td {
+			&:not(:last-child) {
+				border-right: 1px solid var(--table-border-cl);
+			}
+		}
+	}
+
+	&--borders-hor {
+		> tbody > tr:not(:last-child) > td {
+			border-bottom: 1px solid var(--table-border-cl);
+		}
+	}
+
+	// Set background-color for even rows
+	&--striped {
+		> tbody > tr:nth-child(even) > td {
+			background-color: var(--table-striped-row-bg-cl);
+		}
+	}
+
+	// Set background-color for even columns
+	&--striped-cols {
+		> tbody > tr > td:nth-child(even) {
+			background-color: var(--table-striped-col-bg-cl);
+		}
+	}
+
+	&--outer-border {
+		border: 1px solid var(--table-border-cl);
+	}
+
+	&--borders-black {
+		--table-border-cl: var(--table-black-border-cl);
+
+		> thead > tr > th {
+			border-bottom: 1px solid var(--table-border-cl);
+		}
+
+		> tfoot > tr > td {
+			border-top: 1px solid var(--table-border-cl);
+		}
+	}
+
+	// stylelint-enable scss/selector-nest-combinators
+}
+
+// -----------------------------------------------
+// TABLE
+
+
+// TABLE UTILITIES
+// -----------------------------------------------
+
+.cells {
+	$i: $table-p-start;
+	$j: $table-p-start;
+
+	@while $i <= $table-p-end {
+		&-p-#{$i} {
+			#{--table-px}: $i + px;
+			#{--table-py}: $i + px;
+		}
+
+		// stylelint-disable-next-line
+		$i: $i + $table-p-step;
+	}
+
+	@while $j <= $table-p-end {
+		&-px-#{$j} {
+			#{--table-px}: $j + px;
+		}
+
+		&-py-#{$j} {
+			#{--table-py}: $j + px;
+		}
+
+		// stylelint-disable-next-line
+		$j: $j + $table-p-step;
+	}
+}
+
+// -----------------------------------------------
+// TABLE UTILITIES

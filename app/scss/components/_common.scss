@@ -1,0 +1,16 @@
+// ===============================================
+// COMMON PROJECT STYLES
+// ===============================================
+
+
+body {
+	overflow-x: hidden;
+	color: var(--body-cl);
+	font-family: var(--body-ff);
+	font-size: var(--body-fz);
+	font-weight: var(--body-fw);
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	line-height: var(--body-lh);
+	text-rendering: optimizeLegibility;
+}

@@ -1,0 +1,21 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Links' />
+
+
+# Links
+
+## Default
+
+<Canvas>
+<p>Do you know what this is? It’s <a href="#">a link</a>!</p>
+</Canvas>
+
+## To display the URL
+
+If you want to display the URL next to the link leading to it, use the `.link` class with the `.link--printable`
+[modifier](https://en.bem.info/methodology/quick-start/#modifier):
+
+<Canvas>
+<p>Do you know what it is? It’s <a class="link link--printable" href="https://validator.w3.org/">a link</a>!</p>
+</Canvas>

@@ -1,0 +1,178 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Layout/Gutters' />
+
+
+# Gutters
+
+> Gutters are the padding between your columns, used to space and align content in the grid system.
+
+## How they work
+
+**Gutters are the gaps between column content, created by horizontal `padding`**. We set `padding-right` and
+`padding-left` on each column, and use negative `margin` to offset that at the start and end of each row to align
+content.
+
+## Horizontal gutters
+
+`.row--gx-*` classes can be used to control the horizontal gutter widths. Default horizontal gutter width is 32px.
+
+<Canvas>
+<div class="row row--gx-12">
+	<div class="col">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+</div>
+</Canvas>
+
+## Vertical gutters
+
+`.row--gy-*` classes can be used to control the vertical gutter widths. Default vertical gutter width is 0.
+
+<Canvas>
+<div class="row row--gy-12">
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+</div>
+</Canvas>
+
+## Horizontal & vertical gutters
+
+`.row--g-*` classes can be used to control the horizontal and vertical gutter widths.
+
+<Canvas>
+<div class="row row--g-20">
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+	<div class="col-6">
+		<div class="bg-light p-12">Custom column padding</div>
+	</div>
+</div>
+</Canvas>
+
+## Row columns gutters
+
+Gutter classes can also be added to [row-columns](https://getbootstrap.com/docs/5.1/layout/grid/#row-columns).
+
+<Canvas>
+<div class="row row-cols-2 row--g-20">
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+	<div class="col">
+		<div class="bg-light p-12">Row column</div>
+	</div>
+</div>
+</Canvas>
+
+## SCSS (Sass)
+
+### Gutter sizes
+
+Gutter sizes are declared in `app/scss/variables/_grid.scss`.
+
+```
+// Default columns gutter
+$columns-gutter-x-default: 32px;
+
+// Vertical margins and column gaps
+$columns-gutter: 0;
+$columns-gutter-end: 32;
+$columns-gutter-step: 4;
+
+// Vertical margins
+$columns-gutter-y: 0;
+$columns-gutter-y-end: 32;
+$columns-gutter-y-step: 4;
+
+// Column gaps
+$columns-gutter-x: 0;
+$columns-gutter-x-end: 32;
+$columns-gutter-x-step: 4;
+```
+
+### Utilities API
+
+Gutters are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+/*
+	Gutters
+	Make use of `.row--g-*`, `.row--gx-*` or `.row--gy-*` utilities to change spacing between the columns.
+*/
+'row--g': (
+	property: '--gutter-x' '--gutter-y',
+	class: 'row--g',
+	values: create-range(
+		$columns-gutter,
+		$columns-gutter-end,
+		$columns-gutter-step,
+		'px'
+	),
+),
+'row--gy': (
+	property: '--gutter-y',
+	class: 'row--gy',
+	values: create-range(
+		$columns-gutter-y,
+		$columns-gutter-y-end,
+		$columns-gutter-y-step,
+		'px'
+	),
+),
+'row--gx': (
+	property: '--gutter-x',
+	class: 'row--gx',
+	values: create-range(
+		$columns-gutter-x,
+		$columns-gutter-x-end,
+		$columns-gutter-x-step,
+		'px'
+	),
+),
+```

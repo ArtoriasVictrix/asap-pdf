@@ -1,0 +1,18 @@
+// ===============================================
+// TEXT HELPERS
+// ===============================================
+
+
+// stylelint-disable block-opening-brace-newline-after, block-closing-brace-newline-before, block-closing-brace-space-before, block-opening-brace-space-before, rule-empty-line-before
+
+
+// ALIGNMENT
+// -----------------------------------------------
+
+.text-truncate { @include text-truncate; }
+
+// -----------------------------------------------
+// ALIGNMENT
+
+
+// stylelint-enable block-opening-brace-newline-after, block-closing-brace-newline-before, block-closing-brace-space-before, block-opening-brace-space-before, rule-empty-line-before

@@ -1,0 +1,21 @@
+// ===============================================
+// STAMPS
+// ===============================================
+
+
+.stamp {
+	--stamp-border-cl: var(--stamp-default-border-cl);
+	--stamp-cl: var(--stamp-default-cl);
+
+	display: inline-block;
+	padding: 4px 16px;
+	border: 2px solid var(--stamp-border-cl);
+	color: var(--stamp-cl);
+	font-weight: var(--stamp-fw);
+	text-align: center;
+
+	&--danger {
+		--stamp-border-cl: var(--stamp-danger-border-cl);
+		--stamp-cl: var(--stamp-danger-cl);
+	}
+}

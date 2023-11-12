@@ -1,0 +1,88 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Get started/Gulp tasks' />
+
+
+# Gulp tasks description
+
+### Styles
+
+- **scss** compiles the SCSS file `app/scss/style.scss` into CSS, runs it through an autoprefixer, ensures unified
+readability, and generates sourcemaps (in [development](?path=/story/get-started-npm-scripts--page) mode);
+
+- **cssBase64** encodes all resources found in the CSS file `temp/css/style.css` in Base64 and saves the resulting CSS
+file in `temp/css/style.b64.css`.
+
+### HTML
+
+- **html** copies HTML files to the `temp/` folder (or to `dist/` when in development mode).
+
+### Pug
+
+- **pug** compiles Pug/Jade to HTML and places it in the `temp/` folder (or to `dist/` when in development mode).
+
+### Images
+
+- **images** optimizes and copies images to the `temp/img/` folder (or to `dist/img/` when in development mode).
+
+### Fonts
+
+- **fonts** copies font files to the `temp/fonts/` folder (or to `dist/fonts/` when in development mode).
+
+### JavaScript
+
+- **scripts** compresses JS files (in production mode), places them in the `temp/js/` folder (or `dist/js/` when in
+development mode), generates sourcemaps (in development mode), and runs the code through Babel.
+
+### Libraries and plugins
+
+- **libs** copies all library files to the `temp/libs/` folder (or to `dist/libs/` when in development mode).
+
+### Purge/Inline
+
+- **purgeCss** performs a set of operations on each HTML file: compares the HTML content with the final styles file
+(style.css), removes unused code from the styles, and inserts the resulting styles into this HTML file in the
+`<style></style>` tag. Then, all resources specified in HTML are encoded in Base64 and inserted into this HTML file. The
+final HTML file is saved in the `dist/` folder.
+
+### Data mocking
+
+- **mock** takes json files from the `mocks/` folder one by one and inserts data from them into each HTML file. Then,
+each mocked file is stored in the `dist/mocked/` folder and arranged into subfolders named after json files (for
+example, `dist/mocked/mockMax/index.html`).
+
+### PDF
+
+- **html2pdf** creates a PDF file for each HTML file in the `dist/` folder and places it in the `dist/pdf/` folder.
+
+### Screenshot testing
+
+- **screenshotsInit** creates golden screenshots of HTML files from the `dist/` folder and places them to the
+`tests/screenshots/before/` folder;
+
+- **screenshotsCompare** creates screenshots of HTML files from the `dist/` folder and places them in the
+`tests/screenshots/after/` folder, compares them with screenshots from `tests/screenshots/before/`, and saves new images
+showing comparison results to `tests/screenshots/difference/`. Then, it creates the `tests/Screenshot test report.html`
+file reporting the results of the screenshot comparison;
+
+- **screenshotsRefresh** replaces screenshots from `tests/screenshots/before/` with screenshots from
+`tests/screenshots/after/`, and deletes the `after/` folder.
+
+### Pdf2img-testing
+
+- **pdf2imgInit** creates golden images from PDF files in the `dist/pdf/` folder and places them in the
+`tests/pdf2img/before/` folder. In the meantime, it temporarily creates the `tests/pdf2img/temp/` folder;
+
+- **pdf2imgCompare** creates images from PDF files in the `dist/pdf` folder and places them in `tests/pdf2img/after/`,
+compares them with images in `tests/pdf2img/before/`, and saves new images showing comparison results in
+`tests/pdf2img/difference/` folder. Then, it creates a `tests/PDF test report.html` file reporting the results of the
+image comparison;
+
+- **pdf2imgRefresh** replaces images from `tests/pdf2img/before/` with images from `tests/pdf2img/after/`, and deletes
+the `after/` folder.
+
+### Other
+
+- **clean** removes the `dist/` and `temp/` folders.
+
+> Each task can be run with `gulp {task-name}` if gulp is installed globally or with `npm run gulp {task-name}`

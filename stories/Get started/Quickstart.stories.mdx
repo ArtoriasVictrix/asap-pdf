@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Get started/🔥 Quick start' />
+
+
+# 🚀 Quick start
+
+<ol>
+	<li>
+		Download the <a href="https://github.com/ArtoriasVictrix/asap-pdf" rel="noopener">ASAP PDF </a>repository;
+	</li>
+	<li>
+		In the project root folder, run <code>npm i</code>;
+	</li>
+	<li>
+		To start the project:
+		<ul>
+			<li>
+				Run <code>npm start</code> if you <strong>need</strong> to inline all external assets to HTML and
+				convert the final HTML to PDF on the fly. The final PDFs will be saved in the folder <code>/dist/pdf/</code>.
+				You can open these PDFs in your IDE to see the result of code changes immediately;
+			</li>
+			<li>
+				Run <code>npm run dev</code> if you <strong>don't need</strong> to inline all external assets to HTML
+				and convert the final HTML to PDF on the fly. Sourcemaps are available in this mode;
+			</li>
+			<li>
+				The project will start at <code>http://localhost:3002/index.html</code>;
+			</li>
+		</ul>
+	</li>
+	<li>
+		Make a copy of the file <code>/app/pug/pages/index.pug</code> (or <code>/app/html/html-example.html</code> if you want to use HTML) and name it whatever you need;
+	</li>
+	<li>
+		Create a SCSS file for the new page in the folder <code>/app/scss/pages/</code> and import it in the file <code>/app/scss/_pages.scss</code>, if needed;
+	</li>
+	<li>
+		Write markup in the file created in step 4. All the code should be written inside the block with <code>.sheet.A4-m-15mm</code> classes;
+	</li>
+	<li>
+		Use ready-made <a href="?path=/story/utilities-main-display--page">utilities</a> and <a href="?path=/story/introduction-components--page">components</a>;
+	</li>
+	<li>
+		The compiled project files will be saved in the <code>/dist/</code> folder.
+	</li>
+</ol>
+
+<blockquote>
+	Resource inlining in HTML means base64 encoding of images and fonts (in both HTML
+	and CSS), and embedding compressed CSS in HTML (into the <code>&lt;head&gt;</code> tag).
+</blockquote>
+
+<br />
+
+## Quick start: Video guide
+
+### Production mode
+
+<video class="storybook-video" controls>
+	<source src="./video/quick-start.mp4" alt="Quick start video guide (production mode)" />
+</video>
+
+### Dev mode
+
+<video class="storybook-video" controls>
+	<source src="./video/quick-start-dev.mp4" alt="Quick start video guide (dev mode)" />
+</video>

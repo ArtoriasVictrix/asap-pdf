@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Helpers/Ratio' />
+
+
+# Ratio
+
+> Use generated pseudo elements to make an element maintain the aspect ratio of your choosing.
+
+Use the ratio helper to manage the aspect ratios of external content like `<iframe>`s, `<embed>`s, `<video>`s, and
+`<object>`s. These helpers also can be used on any standard HTML child element (e.g., a `<div>` or `<img>`). Styles are
+applied from the parent `.ratio` class directly to the child.
+
+Aspect ratios can be customized with [modifier](https://en.bem.info/methodology/quick-start/#modifier) classes. By
+default the following ratio classes are provided:
+
+<Canvas>
+<div>
+	<div class="d-inline-block bg-light w-200 border-solid border-1 border-dark ratio ratio--4x3">
+		<div class="pos-absolute pos-top-50p pos-left-50p translate-middle">.ratio--4x3</div>
+	</div>
+	<div class="d-inline-block bg-light w-200 border-solid border-1 border-dark ratio ratio--16x9">
+		<div class="pos-absolute pos-top-50p pos-left-50p translate-middle">.ratio--16x9</div>
+	</div>
+	<div class="d-inline-block bg-light w-200 border-solid border-1 border-dark ratio ratio--21x9">
+		<div class="pos-absolute pos-top-50p pos-left-50p translate-middle">.ratio--21x9</div>
+	</div>
+</div>
+</Canvas>
+
+## Custom ratios
+
+Each `.ratio--*` class includes a CSS custom property (or CSS variable) in the selector. You can override this CSS
+variable to create custom aspect ratios on the fly with some quick math on your part.
+
+For example, to create a 2x1 aspect ratio, set `--aspect-ratio: 50%` on the `.ratio`.
+
+<Canvas>
+<div>
+	<div class="d-inline-block bg-light w-200 border-solid border-1 border-dark ratio" style={{ "--aspect-ratio": "50%" }}>
+		<div class="pos-absolute pos-top-50p pos-left-50p translate-middle">2x1</div>
+	</div>
+</div>
+</Canvas>
+
+## Sass map
+
+Within `/app/scss/variables/_ratio.scss`, you can change the aspect ratios you want to use. Here’s the default
+`$aspect-ratios` map.
+
+```scss
+$aspect-ratios: (
+	'4x3': calc(3 / 4 * 100%),
+	'16x9': calc(9 / 16 * 100%),
+	'21x9': calc(9 / 21 * 100%)
+) !default;
+```

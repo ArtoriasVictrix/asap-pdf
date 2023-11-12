@@ -1,0 +1,43 @@
+//- Main template
+
+//- Document variables
+block vars
+	-
+		let docTitle = 'Document';
+		let cssPath = 'css/style.css';
+
+//- Mixins
+include ./../mixins/mixins
+
+
+doctype html
+html(lang='ru' data-theme=theme ? theme : 'asap')
+
+	head
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+
+		title= docTitle
+
+		//-
+			The path to the CSS file should only be specified for a development
+			build. The reason for this is that all resources, including CSS, are
+			copied to the dist folder in this mode.
+
+			For a production build, all resources, including CSS, are optimized.
+			Unused styles are removed using PurgeCSS, and the final version of
+			the code is automatically inserted into the style tag.
+		if(process.env.NODE_ENV !== 'production')
+			link(rel='stylesheet' href= cssPath)
+
+		//- Document styles
+		block appStyles
+
+
+	body
+		block content
+
+		//- script(src='js/app.js')
+
+		//- Document scripts
+		block appScripts

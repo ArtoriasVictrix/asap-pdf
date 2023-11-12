@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Sheet/New document' />
+
+
+# Create a New Document
+
+> ASAP PDF provides support for both Pug and HTML file formats. Please note that all resulting documents are stored in
+> the `/dist/` directory. Therefore, it is crucial that the names of the HTML and Pug pages do not match, as this will
+> overwrite files during the copying process to `/dist/`. For example: `/app/pug/pages/example.pug` and
+> `/app/html/example.html` (one of them will overwrite the other).
+
+
+## HTML
+
+All pages are located in the `/app/html/` folder. To create a new page, copy any of the existing pages or create a new
+HTML file and paste the following code into it:
+
+```HTML
+<!DOCTYPE html>
+<html lang="en" data-theme="asap">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Example</title>
+</head>
+
+<body>
+	<div class="sheet A4-m-15mm">
+		<h1 class="h1">
+			Example
+		</h1>
+	</div>
+</body>
+</html>
+```
+
+This will create an **A4** size page with a **15mm margin** on each side.
+
+Now you can fill the document with a markup, although this must be done inside the block containing the `A4-m-15mm sheet` classes;
+
+You can read about page sizes and creating custom sizes [here](?path=/story/sheet-sheet--page).
+
+
+## Pug (Jade)
+
+All pages are located in the `/app/pug/pages/` folder. To create a new page, copy any of the existing pages or create a
+pug file and paste the following code into it:
+
+```pug
+//- Path to main document template
+extends ./../templates/common
+
+//- Document variables
+block append vars
+	-
+		let docTitle = 'Example' //- <title>
+
+//- Document styles (if you need to include separate style files)
+block appStyles
+	//- link(href='libs/example.css' rel='stylesheet')
+
+
+//- Document content
+block append content
+	.sheet.A4-15mm
+		//- Sheet content
+		p Example
+```
+
+This will create an A4 size page with a 15mm margin on each side.
+
+Now you can fill the document with markup, although this must be done inside the block containing `.sheet.A4-m-15mm`;
+
+You can read about page sizes and creating custom sizes [here](?path=/story/sheet-sheet--page).
+
+
+## SCSS
+
+You can create separate style files for new pages:
+- create a new SCSS file in the `/app/scss/pages/` folder;
+- include this file in `/app/scss/_pages.scss`.
+
+Here is an example of including the page style file example.scss in the `/app/scss/_pages.scss` file:
+
+```
+// ===============================================
+// PROJECT PAGES
+// ===============================================
+
+
+@import 'pages/example';
+```

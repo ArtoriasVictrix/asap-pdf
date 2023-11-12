@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Image diffs</title>
+	<style>
+		/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+		html {
+			line-height: 1.15;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		body {
+			margin: 0;
+		}
+
+		main {
+			display: block;
+		}
+
+		a {
+			background-color: transparent;
+		}
+
+		b,
+		strong {
+			font-weight: bolder;
+		}
+
+		img {
+			border-style: none;
+		}
+
+
+		/* Custom styles */
+
+		html {
+			box-sizing: border-box;
+			background: #F1F2F4;
+		}
+
+		body {
+			color: #222222;
+			font-family: "Arial", "Helvetica CY", "Nimbus Sans L", sans-serif;
+			font-size: 14px;
+		}
+
+		*,
+		*::after,
+		*::before {
+			box-sizing: inherit;
+		}
+
+		h1,
+		h2,
+		h5 {
+			margin: 0;
+		}
+
+		p {
+			margin-top: 0;
+			margin-bottom: 12px;
+		}
+
+		::-webkit-scrollbar {
+			width: 12px;
+			height: 12px;
+		}
+
+		::-webkit-scrollbar-button {
+			width: 0;
+			height: 0;
+		}
+
+		::-webkit-scrollbar-thumb {
+			border: 2px solid transparent;
+			border-radius: 50px;
+			background: #D5D7DE;
+			background-clip: content-box;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #DCDEE5;
+			background-clip: content-box;
+		}
+
+		::-webkit-scrollbar-thumb:active {
+			background: #D0D2D9;
+			background-clip: content-box;
+		}
+
+		::-webkit-scrollbar-track {
+			border: 0 none #ffffff;
+			border-radius: 50px;
+		}
+
+		::-webkit-scrollbar-corner {
+			background: transparent;
+		}
+
+		/* =============================================== */
+
+		.container {
+			width: 100%;
+			max-width: 1440px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.row {
+			--gutter-x: 32px;
+			--gutter-y: 0;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			margin-bottom: calc(var(--gutter-y) * -1);
+			margin-right: calc(var(--gutter-x)/ -2);
+			margin-left: calc(var(--gutter-x)/ -2)
+		}
+
+		.row > * {
+			-ms-flex-negative: 0;
+			flex-shrink: 0;
+			width: 100%;
+			max-width: 100%;
+			margin-bottom: var(--gutter-y);
+			padding-right: calc(var(--gutter-x)/ 2);
+			padding-left: calc(var(--gutter-x)/ 2)
+		}
+
+		.col-3 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: 25%
+		}
+
+		.col-4 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: 33.3333333333%
+		}
+
+		.col-12 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: 100%
+		}
+
+		.row--gx-16 {
+			--gutter-x: 16px !important
+		}
+
+		.flex-shrink-0 {
+			-ms-flex-negative: 0 !important;
+			flex-shrink: 0 !important
+		}
+
+		.mt-20 {
+			margin-top: 20px !important
+		}
+
+		.mt-36 {
+			margin-top: 36px !important
+		}
+
+		.mr-8 {
+			margin-right: 8px !important
+		}
+
+		.mb-0 {
+			margin-bottom: 0 !important
+		}
+
+		.p-20 {
+			padding: 20px !important
+		}
+
+		.fz-xs {
+			font-size: 12px !important
+		}
+
+
+		.header {
+			padding: 32px 0 28px;
+		}
+
+		.h2 {
+			font-size: 22px;
+		}
+
+		.h3 {
+			font-size: 18px;
+		}
+
+		.h5 {
+			font-size: 12px;
+		}
+
+		.svg {
+			vertical-align: middle;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+		}
+
+		.logo--pdf {
+			--logo-color: #F33666;
+		}
+
+		.logo--screenshot {
+			--logo-color: #287BF8;
+		}
+
+		.logo__emblem {
+			width: 100%;
+			max-width: 38px;
+			height: auto;
+			margin-right: 11px;
+			box-shadow: 0 0 10px rgba(183, 192, 206, .2);
+		}
+
+		.logo__text {
+			font-size: 22px;
+			font-weight: 700;
+		}
+
+		.main {
+			padding: 0 0 50px;
+		}
+
+
+		.accordion__checkbox {
+			display: none;
+		}
+
+		.accordion {
+			margin-top: 20px;
+			border-radius: 4px;
+			overflow: hidden;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, .06),
+						0 1px 3px rgba(0, 0, 0, .1);
+		}
+
+		.accordion__header {
+			display: flex;
+			justify-content: space-between;
+			padding: 12px 12px;
+			background-color: #fff;
+			font-size: 14px;
+			line-height: 1.43;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.accordion__title {
+			display: flex;
+			margin-right: 20px;
+		}
+
+		.accordion__content {
+			max-height: 0;
+			overflow: hidden;
+			line-height: 1.43;
+		}
+
+		.accordion__content-inner {
+			padding: 12px 16px 12px;
+			border-top: 1px solid #EBEDF2;
+			overflow: auto;
+			background-color: #fff;
+			word-break: break-word;
+		}
+
+		.accordion__checkbox:checked + .accordion__header .accordion__arrow {
+			transform: rotate(180deg);
+		}
+
+		.accordion__checkbox:checked ~ .accordion__content {
+			max-height: none;
+		}
+
+		.accordion--scrollable .accordion__checkbox:checked~.accordion__content .accordion__content-inner {
+			max-height: 245px;
+		}
+
+
+		.card__title {
+			padding-right: 12px;
+			padding-left: 12px;
+		}
+
+		.card__content {
+			display: flex;
+			flex-direction: column;
+			height: 328px;
+			margin-top: 8px;
+			border: 1px solid #D5D7DE;
+			border-radius: 4px;
+			overflow: hidden;
+		}
+
+		.card__content--maximized {
+			height: 656px;
+		}
+
+		.card__image-container {
+			flex-grow: 1;
+			overflow: auto;
+		}
+
+		.card__image {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			cursor: pointer;
+		}
+
+		.card__text {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			padding: 8px 12px;
+			border-top: 1px solid #D5D7DE;
+			background-color: #fff;
+			font-size: 12px;
+			line-height: 1;
+		}
+
+		.card__status {
+			margin-right: 10px;
+		}
+
+		.card__links {
+			display: flex;
+			gap: 5px;
+			align-items: center;
+			margin-left: auto;
+		}
+
+		.card__link {
+			color: #222222;
+		}
+
+		.card__link-icon {
+			margin-left: 4px;
+		}
+
+		.card__link-icon svg {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<div class="container">
+			<div class="logo" id="logo">
+				<svg width="38" height="38" class="logo__emblem" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="38" height="38" rx="8" fill="white"/>
+					<rect x="12" y="7" width="10" height="20" fill="black"/>
+					<rect x="16" y="11" width="10" height="20" fill="var(--logo-color)"/>
+				</svg>
+				<h2 class="logo__text" id="logoText">Image diffs</h2>
+			</div>
+		</div>
+	</header>
+	<main class="main">
+		<div class="container">
+			<div>
+				<strong>Report created:</strong> <span id="date"></span>
+			</div>
+
+			<div class="row row--gx-16" id="alerts">
+
+			</div>
+
+			<section id="gallery">
+
+			</section>
+		</div>
+	</main>
+	<script>
+		let cardImages = document.querySelectorAll('.card__image');
+
+		if (cardImages) {
+			cardImages.forEach(cardImage => {
+				cardImage.addEventListener('click', (evt) => {
+					const cardContainer = cardImage.closest('.col-3');
+					const cardContent = cardImage.closest('.card__content');
+
+					cardContainer.classList.toggle('col-12');
+					cardContent.classList.toggle('card__content--maximized');
+				});
+			});
+		}
+	</script>
+</body>
+
+</html>

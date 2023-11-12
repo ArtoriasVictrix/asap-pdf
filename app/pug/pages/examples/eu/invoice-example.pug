@@ -1,0 +1,74 @@
+extends ./../../../templates/common
+
+//- Document variables
+block append vars
+	-
+		docTitle = 'Invoice Example'
+		cssPath = '../../css/style.css'
+
+
+//- Document content
+block append content
+	.sheet.A4-m-15mm.A4-m-15mm--clipped
+		img(src='../../img/logo/logo.svg' alt='ASAP PDF Logo')
+		p.mt-44
+			strong {{CompanyName1}}
+		p.mt-16 Street 123
+		p.mt-8 12345 City 1
+
+		p.mt-24
+			strong To: {{CompanyName2}}
+		p.mt-16.mb-8 Street 12
+		p.my-8 12345 City 2
+		p.my-8 VAT No.: AB00000000000
+		p.mt-8 Tax number: 00000000
+
+		h1.h1.mt-44 Example
+
+		p.mt-20.mb-8 Issue date: 12.04.2022
+		p.mt-8 Due date: 20.04.2022
+		p.mt-8 Order number: 12
+		p.mt-8 Track number: AB0000000
+
+		p.mt-36 We hereby invoice you for the following items.
+
+		table.table.table--borders-hor.cells-p-12.border-b-solid.border-b-1.border-light.brs-8.w-100p.mt-16
+			thead
+				tr
+					th.fw-b.brs-tl-8.w-45p Items
+					th.fw-b Quantity
+					th.fw-b Price (net)
+					th.fw-b VAT
+					th.fw-b.ta-r.brs-tr-8 Amount (net)
+			tbody
+				tr
+					td Keyboard
+					td 1
+					td 1,23 €
+					td 22%
+					td.ta-r 1,23 €
+				tr
+					td Mouse
+					td 2
+					td 2,34 €
+					td 22%
+					td.ta-r 4,56 €
+				tr
+					td Beer
+					td 3
+					td 20,00 €
+					td 22%
+					td.ta-r 78,00 €
+
+		table.table.w-100p.cells-px-12.cells-py-8.mt-16
+			tbody
+				tr
+					td.pl-0 Please pay in one payment, until Friday, thanks.
+					td.ta-r Total taxable
+					td.ta-r.pr-0 123,45 €
+				tr
+					td
+					td.ta-r VAT (22%)
+					td.ta-r.pr-0 12,34 €
+
+		h2.h1.ta-r.mt-16 123,45 €

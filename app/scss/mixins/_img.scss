@@ -1,0 +1,14 @@
+// ===============================================
+// IMAGE MIXINS
+// ===============================================
+
+
+/*
+	Responsive images
+	Keep images from scaling beyond the width of their parents.
+*/
+
+@mixin img-fluid {
+	max-width: 100%;
+	height: auto;
+}

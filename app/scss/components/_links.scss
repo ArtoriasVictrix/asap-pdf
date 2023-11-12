@@ -1,0 +1,28 @@
+// ===============================================
+// LINKS
+// ===============================================
+
+
+// Set default link style
+
+a,
+.link {
+	padding: 0;
+	border: 0;
+	background-color: var(--link-bg);
+	color: var(--link-cl);
+	text-decoration: var(--link-decoration);
+	cursor: pointer;
+}
+
+.link {
+	&--no-underline {
+		text-decoration: none;
+	}
+
+	&--printable {
+		&::after {
+			content: ' (' attr(href) ')';
+		}
+	}
+}

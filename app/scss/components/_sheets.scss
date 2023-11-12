@@ -1,0 +1,106 @@
+// ===============================================
+// SHEETS
+// ===============================================
+
+
+// COMMON SHEET STYLES
+// -----------------------------------------------
+
+.sheet {
+	page-break-after: always;
+}
+
+// For screen preview
+@media screen {
+	body {
+		background-color: var(--body-bg);
+	}
+
+	.sheet {
+		margin: 10mm auto;
+		background-color: var(--sheet-bg-cl);
+		box-shadow: var(--sheet-shadow);
+	}
+}
+
+// -----------------------------------------------
+// COMMON SHEET STYLES
+
+
+// SHEETS
+// -----------------------------------------------
+
+// stylelint-disable value-keyword-case
+
+$sheets: (
+	'A3': (
+		size: A3,
+		width: 297mm,
+		height: 420mm,
+	),
+	'A3-landscape': (
+		size: A3 landscape,
+		width: 420mm,
+		height: 297mm,
+	),
+	'A4': (
+		size: A4,
+		width: 210mm,
+		height: 297mm,
+		margin: (
+			10mm,
+			15mm,
+			20mm,
+			20mm 15mm 20mm 30mm,
+		),
+	),
+	'A4-landscape': (
+		size: A4 landscape,
+		width: 297mm,
+		height: 210mm,
+		margin: (
+			10mm,
+			15mm,
+			20mm,
+			20mm 15mm 20mm 30mm,
+		),
+	),
+	'A5': (
+		size: A5,
+		width: 148mm,
+		height: 210mm,
+	),
+	'A5-landscape': (
+		size: A5 landscape,
+		width: 210mm,
+		height: 148mm,
+	),
+	'letter': (
+		size: letter,
+		width: 216mm,
+		height: 279mm,
+	),
+	'letter-landscape': (
+		size: letter landscape,
+		width: 280mm,
+		height: 216mm,
+	),
+	'legal': (
+		size: legal,
+		width: 216mm,
+		height: 357mm,
+	),
+	'legal-landscape': (
+		size: 'legal landscape',
+		width: 357mm,
+		height: 216mm,
+	),
+);
+
+// stylelint-enable value-keyword-case
+
+
+@include generate-sheets($sheets);
+
+// -----------------------------------------------
+// SHEETS
