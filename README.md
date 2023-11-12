@@ -88,7 +88,7 @@ Node v14.15.0 or higher
 
 <blockquote>
     <p>
-		You can choose HTML files to be converted to PDF on the fly to speed up the process:
+		ℹ️ You can choose HTML files to be converted to PDF on the fly to speed up the process:
 	</p>
     <ol>
         <li>
