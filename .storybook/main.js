@@ -1,13 +1,18 @@
 module.exports = {
 	'stories': [
-		'../stories/**/*.stories.mdx',
+		'../stories/**/*.mdx',
 		'../stories/**/*.stories.@(js|jsx|ts|tsx)'
 	],
 	'addons': [
 		'@storybook/addon-links',
-		'@storybook/addon-essentials'
+		'@storybook/addon-essentials',
+		'@storybook/addon-docs'
 	],
-	'previewMainTemplate': './.storybook/index.ejs',
+	'framework': {
+		'name': '@storybook/html-webpack5',
+		'options': {}
+	},
+	'staticDirs': ['../stories/assets'],
 	'core': {
 		'disableTelemetry': true,
 	},

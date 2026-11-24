@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Text alignment' />
+
+import { LeftAlignment, CenterAlignment, RightAlignment, LeftAndRightAlignment } from './Text-align.stories';
+
+
+# Text alignment
+
+Easily realign text to components with text alignment classes.
+
+## Left alignment
+
+The `.ta-l` class aligns text to the left.
+
+<Canvas of={LeftAlignment} />
+
+## Center alignment
+
+The `.ta-c` class aligns text to the center.
+
+<Canvas of={CenterAlignment} />
+
+## Right alignment
+
+The `.ta-l` class aligns text to the right.
+
+<Canvas of={RightAlignment} />
+
+## Left and right alignment
+
+The `.ta-j` class aligns text to the left and right.
+
+<Canvas of={LeftAndRightAlignment} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Text alignment utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Text alignment
+'text-align': (
+	property: text-align,
+	class: ta,
+	values: (
+		j: justify,
+		l: left,
+		r: right,
+		c: center,
+	),
+),
+```

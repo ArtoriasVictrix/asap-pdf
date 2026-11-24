@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Object fit' />
+
+import { ObjContain, ObjCover, ObjFill, ObjNone, ObjScaleDown } from './Object-fit.stories';
+
+
+# Object fit
+
+[Object fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) utilities control how a replaced element's
+content should be resized.
+
+<table>
+	<thead>
+	    <tr>
+			<th>Class</th>
+			<th>Properties</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>obj-contain</td>
+			<td>object-fit: contain;</td>
+		</tr>
+		<tr>
+			<td>obj-cover</td>
+			<td>object-fit: cover;</td>
+		</tr>
+		<tr>
+			<td>obj-fill</td>
+			<td>object-fit: fill;</td>
+		</tr>
+		<tr>
+			<td>obj-none</td>
+			<td>object-fit: none;</td>
+		</tr>
+		<tr>
+			<td>obj-scale-down</td>
+			<td>object-fit: scale-down;</td>
+		</tr>
+	</tbody>
+</table>
+
+## `.obj-contain`
+
+<Canvas of={ObjContain} />
+
+## `.obj-cover`
+
+<Canvas of={ObjCover} />
+
+## `.obj-fill`
+
+<Canvas of={ObjFill} />
+
+## `.obj-none`
+
+<Canvas of={ObjNone} />
+
+## `.obj-scale-down`
+
+<Canvas of={ObjScaleDown} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Object fit utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'object-fit': (
+	property: object-fit,
+	class: obj,
+	values: (
+		contain,
+		cover,
+		fill,
+		none,
+		scale-down,
+	)
+),
+```

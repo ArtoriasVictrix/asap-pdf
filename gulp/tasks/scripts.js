@@ -9,7 +9,7 @@ const gulpif = require('gulp-if');
 const plumber = require('gulp-plumber');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
+const terser = require('gulp-terser');
 
 // Config files
 const projectPath = require('../config/projectPath');
@@ -25,7 +25,7 @@ module.exports = scripts = () => {
 				presets: ["@babel/preset-env"]
 			})
 		))
-		.pipe(gulpif(projectConfig.jsUglify, uglify()))
+		.pipe(gulpif(projectConfig.jsUglify, terser()))
 		.pipe(gulpif(projectConfig.jsSourcemaps, sourcemaps.write(projectPath.jsSourcemaps)))
 		.pipe(gulp.dest(projectConfig.tempFolder ? projectPath.temp.js : projectPath.build.js));
 };

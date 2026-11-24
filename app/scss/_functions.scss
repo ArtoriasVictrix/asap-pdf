@@ -4,6 +4,7 @@
 
 
 @use 'sass:map';
+@use 'sass:math';
 @use 'sass:string';
 
 
@@ -32,20 +33,22 @@
 		// Add prefix 'n' if value is negative
 		$value:
 			if(
-				string.slice(#{$value}, 0, 1) == '-',
-				'n' + string.slice(#{$value}, 2),
+				sass(string.slice(#{$value}, 0, 1) == '-'):
+				'n' + string.slice(#{$value}, 2);
+				else:
 				$value
 			);
 
 		// Replace dot with dash
 		$value:
 			if(
-				string.index(#{$value}, '.') != null,
-				string-replace(#{$value}, '.', '-'),
+				sass(string.index(#{$value}, '.') != null):
+				string-replace(#{$value}, '.', '-');
+				else:
 				$value
 			);
 
-		$value: $value + if($type == '%', 'p', if($type == 'px', '', $type));
+		$value: $value + if(sass($type == '%'): 'p'; else: if(sass($type == 'px'): ''; else: $type));
 	}
 
 	@return $value;
@@ -69,7 +72,7 @@
 @function create-range($start, $end, $step, $value-type) {
 	$map: (
 		#{create-name($start, $value-type)}:
-		#{$start + if($start != 0, $value-type, '')}
+		#{$start + if(sass($start != 0): $value-type; else: '')}
 	);
 
 	$i: $start + $step;
@@ -78,7 +81,7 @@
 		$map:
 			map.merge($map, (
 				#{create-name($i, $value-type)}:
-				#{$i + if($i != 0, $value-type, '')}
+				#{$i + if(sass($i != 0): $value-type; else: '')}
 			),
 		);
 
@@ -90,9 +93,9 @@
 
 
 @function divide($dividend, $divisor, $precision: 10) {
-	$sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
-	$dividend: abs($dividend);
-	$divisor: abs($divisor);
+	$sign: if(sass($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0): 1; else: -1);
+	$dividend: math.abs($dividend);
+	$divisor: math.abs($divisor);
 
 	@if $dividend == 0 {
 		@return 0;
@@ -128,8 +131,8 @@
 
 	// stylelint-disable-next-line order/order
 	$result: $result * $factor * $sign;
-	$dividend-unit: unit($dividend);
-	$divisor-unit: unit($divisor);
+	$dividend-unit: math.unit($dividend);
+	$divisor-unit: math.unit($divisor);
 	$unit-map: (
 		'px': 1px,
 		'rem': 1rem,
@@ -137,8 +140,8 @@
 		'%': 1%
 	);
 
-	@if ($dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)) {
-		$result: $result * map-get($unit-map, $dividend-unit);
+	@if ($dividend-unit != $divisor-unit and map.has-key($unit-map, $dividend-unit)) {
+		$result: $result * map.get($unit-map, $dividend-unit);
 	}
 
 	@return $result;

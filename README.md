@@ -37,7 +37,7 @@ base64, and styles are automatically inserted into the `<head>` tag);
 
 ### Requirements:
 
-Node v14.15.0 or higher
+Node v22.22.2 or higher
 
 ### Quick start guide:
 

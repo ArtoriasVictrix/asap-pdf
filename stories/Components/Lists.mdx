@@ -1,0 +1,44 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Lists' />
+
+import { Default, Nested, WithDifferentFontSizes, NoLeftMarginFlatAppearance, UnorderedLists, UnorderedLists2 } from './Lists.stories';
+
+
+# Lists
+
+`.ol` and `.ul` classes used together with different [modifiers](https://en.bem.info/methodology/quick-start/#modifier)
+let you create beautiful ordered and unordered lists.
+
+## Ordered lists
+
+### Default
+
+<Canvas of={Default} />
+
+### Nested
+
+To create ordered lists with any nesting depth, you need to use `.ol--nested` modifier. To keep a nested list properly
+structured, you need to apply this class to the nested `.ol`.
+
+<Canvas of={Nested} />
+
+### With different font sizes
+
+<Canvas of={WithDifferentFontSizes} />
+
+### No left margin (flat appearance)
+
+To create ordered lists with nested list items, but without left margins, you should use classes `.ol`, `.ol--flat`, and
+`.ol--nested`. The `.ol--nested` class is applied to the nested list items, while `.ol--flat` — to the parent list
+items.
+
+<Canvas of={NoLeftMarginFlatAppearance} />
+
+## Unordered lists
+
+You can change the marks in an unordered list with the `.ul--dashed` and `.ul--point` modifiers.
+
+<Canvas of={UnorderedLists} />
+
+<Canvas of={UnorderedLists2} />

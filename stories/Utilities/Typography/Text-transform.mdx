@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Text transform' />
+
+import { Lowercase, Uppercase, CapitalizeEachWord } from './Text-transform.stories';
+
+
+# Text transform
+
+The text-transform utilities make it possible to change the case of text.
+
+## Lowercase
+
+The `.tt-l` class makes it possible to display text in lowercase.
+
+<Canvas of={Lowercase} />
+
+## Uppercase
+
+The `.tt-u` class makes it possible to display text in uppercase.
+
+<Canvas of={Uppercase} />
+
+## Capitalize each word
+
+The `.tt-c` class makes it possible to display text with each word capitalized.
+
+<Canvas of={CapitalizeEachWord} />
+
+
+## SCSS (Sass)
+
+### Utilities API
+
+Text transformation utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Text transformation
+'text-transform': (
+	property: text-transform,
+	class: tt,
+	values: (
+		l: lowercase,
+		u: uppercase,
+		c: capitalize,
+	),
+),
+```

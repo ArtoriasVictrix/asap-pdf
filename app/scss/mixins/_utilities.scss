@@ -3,48 +3,54 @@
 // ===============================================
 
 
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:meta';
+
+
 // stylelint-disable order/order, scss/selector-nest-combinators
 
 // Used to generate utilities & print utilities
 @mixin generate-utility($utility, $prefix) {
-	$values: map-get($utility, values);
+	$values: map.get($utility, values);
 
 	// If the values are a list or string, convert it into a map
-	@if type-of($values) == 'string' or type-of(nth($values, 1)) != 'list' {
-		$values: zip($values, $values);
+	@if meta.type-of($values) == 'string' or meta.type-of(list.nth($values, 1)) != 'list' {
+		$values: list.zip($values, $values);
 	}
 
 	@each $key, $value in $values {
-		$properties: map-get($utility, property);
+		$properties: map.get($utility, property);
 
 		// Multiple properties are possible, for example with vertical or horizontal margins or paddings
-		@if type-of($properties) == 'string' {
-			$properties: append((), $properties);
+		@if meta.type-of($properties) == 'string' {
+			$properties: list.append((), $properties);
 		}
 
 		// Use custom class if present
-		$property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
-		$property-class: if($property-class == null, '', $property-class);
+		$property-class: if(sass(map.has-key($utility, class)): map.get($utility, class); else: list.nth($properties, 1));
+		$property-class: if(sass($property-class == null): ''; else: $property-class);
 
 		// State params to generate pseudo-classes
-		$state: if(map-has-key($utility, state), map-get($utility, state), ());
+		$state: if(sass(map.has-key($utility, state)): map.get($utility, state); else: ());
 
-		$prefix: if($property-class == '' and str-slice($prefix, 1, 1) == '-', str-slice($prefix, 2), $prefix);
+		$prefix: if(sass($property-class == '' and string.slice($prefix, 1, 1) == '-'): string.slice($prefix, 2); else: $prefix);
 
 		// Don't prefix if value key is null (eg. with shadow class)
-		$property-class-modifier: if($key, if($property-class == '' and $prefix == '', '', '-') + $key, '');
+		$property-class-modifier: if(sass($key): if(sass($property-class == '' and $prefix == ''): ''; else: '-') + $key; else: '');
 
 		@if $value != null {
 			.#{$prefix + $property-class + $property-class-modifier} {
 				@each $property in $properties {
-					#{$property}: $value if($enable-important-utilities, !important, null);
+					#{$property}: $value if(sass($enable-important-utilities): !important; else: null);
 				}
 			}
 
 			@each $pseudo in $state {
 				.#{$prefix + $property-class + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
 					@each $property in $properties {
-						#{$property}: $value if($enable-important-utilities, !important, null);
+						#{$property}: $value if(sass($enable-important-utilities): !important; else: null);
 					}
 				}
 			}

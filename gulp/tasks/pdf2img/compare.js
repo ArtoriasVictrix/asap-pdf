@@ -4,7 +4,7 @@
 
 
 // Node modules
-const open = require('open');
+const open = require('open').default;
 
 // Functions
 const getSrcPages = require('../../functions/tests/getSrcPages');

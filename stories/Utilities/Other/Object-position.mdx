@@ -1,0 +1,116 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Object position' />
+
+import { ObjNoneObjRightTop, ObjNoneObjCenter, ObjFill, ObjCoverObjLeft, ObjCoverObjRight, ObjContainObjTop, ObjContainObjBottom } from './Object-position.stories';
+
+
+# Object position
+
+[Object position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) utilities control how a replaced
+element's content should be positioned within its container.
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Class</th>
+			<th>Properties</th>
+		</tr>
+	</thead>
+    <tbody>
+	    <tr>
+			<td>obj-bottom</td>
+			<td>object-position: bottom;</td>
+		</tr>
+		<tr>
+			<td>obj-center</td>
+			<td>object-position: center;</td>
+		</tr>
+		<tr>
+			<td>obj-left</td>
+			<td>object-position: left;</td>
+		</tr>
+		<tr>
+			<td>obj-left-bottom</td>
+			<td>object-position: left bottom;</td>
+		</tr>
+		<tr>
+			<td>obj-left-top</td>
+			<td>object-position: left top;</td>
+		</tr>
+		<tr>
+			<td>obj-right</td>
+			<td>object-position: right;</td>
+		</tr>
+		<tr>
+			<td>obj-right-bottom</td>
+			<td>object-position: right bottom;</td>
+		</tr>
+		<tr>
+			<td>obj-right-top</td>
+			<td>object-position: right top;</td>
+		</tr>
+		<tr>
+			<td>obj-top</td>
+			<td>object-position: top;</td>
+		</tr>
+	</tbody>
+</table>
+
+
+Use the `obj-{side}` utilities to specify how a replaced element’s content should be positioned.
+
+## `.obj-none.obj-right-top`
+
+<Canvas of={ObjNoneObjRightTop} />
+
+## `.obj-none.obj-center`
+
+<Canvas of={ObjNoneObjCenter} />
+
+## `.obj-fill`
+
+<Canvas of={ObjFill} />
+
+## `.obj-cover.obj-left`
+
+<Canvas of={ObjCoverObjLeft} />
+
+## `.obj-cover.obj-right`
+
+<Canvas of={ObjCoverObjRight} />
+
+## `.obj-contain.obj-top`
+
+<Canvas of={ObjContainObjTop} />
+
+## `.obj-contain.obj-bottom`
+
+<Canvas of={ObjContainObjBottom} />
+
+
+## SCSS (Sass)
+
+### Utilities API
+
+Object position utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'object-position': (
+	property: object-position,
+	class: obj,
+	values: (
+		bottom: bottom,
+		center: center,
+		left: left,
+		left-bottom: left bottom,
+		left-top: left top,
+		right: right,
+		right-bottom: right bottom,
+		right-top: right top,
+		top: top,
+	)
+),
+```

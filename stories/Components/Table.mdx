@@ -1,0 +1,73 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Tables' />
+
+import { Default, WithBorders, WithVerticalBorders, WithHorizontalBorders, WithAnOuterBorder, WithBlackBorders, WithAlternatingRowBackgroundAZebraStripedTable, WithAlternatingColumnBackgroundsAZebraStripedColumn } from './Table.stories';
+
+
+# Tables
+
+## Default
+
+The classes used:
+- `.table`
+
+<Canvas of={Default} />
+
+## With borders
+
+The classes used:
+- `.table`
+- `.table--borders`
+
+<Canvas of={WithBorders} />
+
+## With vertical borders
+
+The classes used:
+- `.table`
+- `.table--borders-vert`
+
+<Canvas of={WithVerticalBorders} />
+
+## With horizontal borders
+
+The classes used:
+- `.table`
+- `.table--borders-hor`
+
+<Canvas of={WithHorizontalBorders} />
+
+## With an outer border
+
+The classes used:
+- `.table`
+- `.table--outer-border`
+
+<Canvas of={WithAnOuterBorder} />
+
+## With black borders
+
+The classes used:
+- `.table`
+- `.table--borders`
+- `.table--outer-border`
+- `.table--borders-black`
+
+<Canvas of={WithBlackBorders} />
+
+## With alternating row background (a zebra-striped table)
+
+The classes used:
+- `.table`
+- `.table--striped`
+
+<Canvas of={WithAlternatingRowBackgroundAZebraStripedTable} />
+
+## With alternating column backgrounds (a zebra-striped column)
+
+The classes used:
+- `.table`
+- `.table--striped-cols`
+
+<Canvas of={WithAlternatingColumnBackgroundsAZebraStripedColumn} />

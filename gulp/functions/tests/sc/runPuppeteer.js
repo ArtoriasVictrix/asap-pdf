@@ -99,7 +99,7 @@ module.exports = runPuppeteer = async (pages, config, dir) => {
 			if (existingDevices.length > 0) {
 				for(let device of existingDevices) {
 					fs.mkdirsSync(path.join(dir, device));
-					await browserPage.emulate(puppeteer.devices[device]);
+					await browserPage.emulate(puppeteer.KnownDevices[device]);
 					const screenshot = await takeScreenshot(
 						page,
 						dir,

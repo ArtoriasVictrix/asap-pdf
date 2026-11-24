@@ -32,5 +32,4 @@ module.exports = prodConfig = {
 
 	// Only works when usePlumber = true:
 	useNotify: true, // Notifying on a compilation error (for Pug and SCSS)
-	useBeeper: true, // Sound signal on a compilation error (for Pug and SCSS)
 }

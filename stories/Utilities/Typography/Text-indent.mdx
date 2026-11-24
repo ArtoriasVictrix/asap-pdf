@@ -1,0 +1,34 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Text indent' />
+
+import { Story1 } from './Text-indent.stories';
+
+
+# Text indent
+
+Use text indentation utilities to set the length of empty space (indentation) before lines of text in a block.
+
+The format is `.ti-{value}em`. Where *value* is in the range from **0** to **3** in 0.5em increments.
+
+<Canvas of={Story1} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Text indentation utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'text-indent': (
+	property: text-indent,
+	class: ti,
+	values: create-range(
+		0,
+		3,
+		.5,
+		'em',
+	),
+),
+```

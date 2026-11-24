@@ -1,0 +1,19 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Links' />
+
+import { Default, ToDisplayTheURL } from './Links.stories';
+
+
+# Links
+
+## Default
+
+<Canvas of={Default} />
+
+## To display the URL
+
+If you want to display the URL next to the link leading to it, use the `.link` class with the `.link--printable`
+[modifier](https://en.bem.info/methodology/quick-start/#modifier):
+
+<Canvas of={ToDisplayTheURL} />

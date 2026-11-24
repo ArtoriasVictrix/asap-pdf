@@ -119,7 +119,7 @@ const compareImages = (file, config) => {
 		};
 
 		// Device variables
-		const puppeteerDevices = puppeteer.devices;
+		const puppeteerDevices = puppeteer.KnownDevices;
 		let device = '';
 		let pageWidth = '';
 		let pageWidthPostfix = '';

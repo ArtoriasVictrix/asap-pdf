@@ -1,9 +1,8 @@
-// import '!style-loader!css-loader!../stories/assets/css/style.css';
-import '!style-loader!css-loader?url=false!../stories/assets/css/style.css';
-import { addDecorator } from '@storybook/html';
+// Regular import: Storybook's own css pipeline (style-loader + css-loader)
+// resolves the relative url() font paths inside the stylesheet
+import '../stories/assets/css/style.css';
 
 export const parameters = {
-	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
 		matchers: {
 			color: /(background|color)$/i,
@@ -58,3 +57,9 @@ export const parameters = {
 		},
 	},
 }
+
+// The data-theme attribute on the preview root element (a legacy of the custom
+// index.ejs template from Storybook 6). This module runs inside the preview
+// iframe, so a top-level side effect covers every page: both docs-only MDX
+// pages and stories (decorators are not applied to docs-only pages).
+document.documentElement.setAttribute('data-theme', 'asap');

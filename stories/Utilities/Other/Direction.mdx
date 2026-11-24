@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Direction' />
+
+import { Story1, Story2, Story3 } from './Direction.stories';
+
+
+# Direction
+
+Set the direction of text in a container with direction utilities.
+
+<Canvas of={Story1} />
+
+<Canvas of={Story2} />
+
+Text is clipped with three dots on the left. Note that the last...
+
+<Canvas of={Story3} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Direction utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'direction': (
+	property: direction,
+	class: dir,
+	values: (rtl, ltr)
+),
+```

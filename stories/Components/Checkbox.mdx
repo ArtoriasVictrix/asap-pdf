@@ -1,0 +1,30 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title='Components/Checkbox' />
+
+import { Default, Default2, Default3, Default4, SmallCheckboxSm, SmallCheckboxSm2 } from './Checkbox.stories';
+
+
+# Checkbox
+
+At first, it might seem like checkboxes make no sense in a framework used to create PDF files, but it’s not true.
+Typically, checkboxes are necessary to display that a user agrees to the terms and conditions of service.
+
+ASAP PDF has two types of checkboxes: small ones (with `.checkbox--sm`
+[modifier](https://en.bem.info/methodology/quick-start/#modifier)) and regular ones (without a modifier).
+
+## Default
+
+<Canvas of={Default} />
+
+<Canvas of={Default2} />
+
+<Canvas of={Default3} />
+
+<Canvas of={Default4} />
+
+## Small (`.checkbox--sm`)
+
+<Canvas of={SmallCheckboxSm} />
+
+<Canvas of={SmallCheckboxSm2} />

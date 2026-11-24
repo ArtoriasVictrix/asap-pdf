@@ -1,0 +1,47 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Vertical align' />
+
+import { Story1, Story2 } from './Vertical-align.stories';
+
+
+# Vertical alignment
+
+> Easily change the vertical alignment of inline, inline-block, inline-table, and table cell elements.
+
+Change the alignment of elements with the
+[vertical-alignment](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align) utilities. Please note that
+vertical-align only affects inline, inline-block, inline-table, and table cell elements.
+
+Choose from `.va-bl`, `.va-t`, `.va-m`, `.va-b`, `.va-tb`, and `.va-tt` as needed.
+
+To vertically center non-inline content (like `<div>`s and more), use the
+[flex box utilities](?path=/story/utilities-main-flex--page#align-items).
+
+<Canvas of={Story1} />
+
+With table cells:
+
+<Canvas of={Story2} />
+
+## Sass
+
+### Utilities API
+
+Vertical align utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'align': (
+	property: vertical-align,
+	class: va,
+	values: (
+		bl: baseline,
+		t: top,
+		m: middle,
+		b: bottom,
+		tb: text-bottom,
+		tt: text-top
+	)
+),
+```

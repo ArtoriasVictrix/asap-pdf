@@ -1,12 +1,11 @@
 // Node modules
 const notify = require('gulp-notify');
-const beeper = require('beeper');
 
 // Config files
 const projectConfig = require('./getEnvConfig').getConfigKeys();
 
 
-// Playing a sound signal and displaying a compilation error message
+// Displaying a compilation error message
 module.exports = function onError(err) {
 	if (projectConfig.useNotify) {
 		notify.onError({
@@ -16,10 +15,6 @@ module.exports = function onError(err) {
 		})(err);
 	} else {
 		console.log(err.stack)
-	}
-
-	if (projectConfig.useBeeper) {
-		beeper(1);
 	}
 
 	this.emit('end');

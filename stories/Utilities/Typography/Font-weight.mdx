@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Font weight' />
+
+import { Strong, B, Classes } from './Font-weight.stories';
+
+
+# Font weight
+
+## Tags
+
+### `<strong>`
+
+<Canvas of={Strong} />
+
+### `<b>`
+
+<Canvas of={B} />
+
+## Classes
+
+Quickly change the `font-weight` of text with this utilities.
+
+<Canvas of={Classes} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Font weight utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Font weights
+'font-weight': (
+	property: font-weight,
+	class: fw,
+	values: (
+		xl: var(--fw-xl),
+		l: var(--fw-l),
+		n: var(--fw-n),
+		m: var(--fw-m),
+		sb: var(--fw-sb),
+		b: var(--fw-b),
+		xb: var(--fw-xb),
+	),
+),
+```

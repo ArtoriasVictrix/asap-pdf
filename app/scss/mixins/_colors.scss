@@ -5,6 +5,8 @@
 
 @use 'sass:string';
 @use 'sass:list';
+@use 'sass:meta';
+@use 'sass:color';
 
 
 /*
@@ -25,7 +27,7 @@
 */
 @mixin get-colors($map, $prefix: 'cl') {
 	@each $prop, $val in $map {
-		$val: red($val) + ', ' + green($val) + ', ' + blue($val);
+		$val: color.channel($val, 'red', $space: rgb) + ', ' + color.channel($val, 'green', $space: rgb) + ', ' + color.channel($val, 'blue', $space: rgb);
 
 		#{'--' + $prop}: string.unquote($val);
 	}
@@ -57,7 +59,7 @@
 @mixin get-alpha($palette, $cl, $ca, $prefix: 'ca') {
 	$i: 10;
 
-	@if (type-of($ca) == list) {
+	@if (meta.type-of($ca) == list) {
 		@each $alpha in $ca {
 			#{'--' + $prefix + '-' + $cl + '-' + $i}: rgba(var(#{'--' + $cl}), $alpha);
 
@@ -65,7 +67,7 @@
 		}
 	}
 
-	@if (type-of($ca) == map) {
+	@if (meta.type-of($ca) == map) {
 		@each $postfix, $alpha in $ca {
 			#{'--' + $prefix + '-' + $cl + '-' + $postfix}: rgba(var(#{'--' + $cl}), $alpha);
 		}

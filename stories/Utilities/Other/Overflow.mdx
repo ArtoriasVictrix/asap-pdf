@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Overflow' />
+
+import { Story1, OverflowXAndOverflowY } from './Overflow.stories';
+
+
+# Overflow
+
+> Use these shorthand utilities for quickly configuring how content overflows an element.
+
+Adjust the `overflow` property on the fly with four default values and classes.
+
+<Canvas of={Story1} />
+
+```
+<div class="ov-auto">...</div>
+<div class="ov-hidden">...</div>
+<div class="ov-visible">...</div>
+<div class="ov-scroll">...</div>
+```
+
+## `overflow-x` and `overflow-y`
+
+You can change overflow for the `x` and `y` axis separately using `ov-{axis}-{value}` classes. Where *axis* is `x` or
+`y` and *value* is one of:
+
+- `auto`
+- `hidden`
+- `visible`
+- `scroll`
+
+<Canvas of={OverflowXAndOverflowY} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Overflow utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'overflow': (
+	property: overflow,
+	class: ov,
+	values: auto hidden visible scroll,
+),
+'overflow-x': (
+	property: overflow-x,
+	class: ov-x,
+	values: auto hidden visible scroll,
+),
+'overflow-y': (
+	property: overflow-y,
+	class: ov-y,
+	values: auto hidden visible scroll,
+),
+```

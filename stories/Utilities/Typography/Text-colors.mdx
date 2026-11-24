@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Typography/Text colors' />
+
+import { Story1 } from './Text-colors.stories';
+
+
+# Text colors
+
+> Convey meaning through color with a handful of color utility classes.
+
+Colorize text with color utilities.
+
+<Canvas of={Story1} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Text color utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+// Contextual colors
+'text-color': (
+	property: color,
+	class: text,
+	values: (
+		white: var(--text-white-cl),
+		black: var(--text-black-cl),
+		light: var(--text-light-cl),
+		dark: var(--text-dark-cl),
+		primary: var(--text-primary-cl),
+		success: var(--text-success-cl),
+		warning: var(--text-warning-cl),
+		danger: var(--text-danger-cl),
+		info: var(--text-info-cl),
+		muted: var(--text-muted-cl),
+		reset: inherit,
+	),
+),
+```

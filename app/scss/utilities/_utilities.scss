@@ -5,11 +5,12 @@
 
 @use 'sass:map';
 
+
 $utilities: () !default;
 $enable-important-utilities: true;
 
 // stylelint-disable-next-line scss/dollar-variable-colon-newline-after, scss/no-duplicate-dollar-variables, value-list-max-empty-lines, function-max-empty-lines
-$utilities: map-merge(
+$utilities: map.merge(
 	(
 		'align': (
 			property: vertical-align,
@@ -603,7 +604,7 @@ $utilities: map-merge(
 		),
 		'order': (
 			property: order,
-			values: map-merge(
+			values: map.merge(
 				(first: -1),
 				create-range(0, 6, 1, ''),
 			),
@@ -730,7 +731,7 @@ $utilities: map-merge(
 		'margin': (
 			property: margin,
 			class: m,
-			values: map-merge(create-range(
+			values: map.merge(create-range(
 				$margin-start,
 				$margin-end,
 				$margin-step,
@@ -740,7 +741,7 @@ $utilities: map-merge(
 		'margin-x': (
 			property: margin-right margin-left,
 			class: mx,
-			values: map-merge(create-range(
+			values: map.merge(create-range(
 				$margin-start,
 				$margin-end,
 				$margin-step,
@@ -750,7 +751,7 @@ $utilities: map-merge(
 		'margin-y': (
 			property: margin-top margin-bottom,
 			class: my,
-			values: map-merge(create-range(
+			values: map.merge(create-range(
 				$margin-start,
 				$margin-end,
 				$margin-step,
@@ -760,7 +761,7 @@ $utilities: map-merge(
 		'margin-top': (
 			property: margin-top,
 			class: mt,
-			values: map-merge(create-range(
+			values: map.merge(create-range(
 				$margin-start,
 				$margin-end,
 				$margin-step,
@@ -770,7 +771,7 @@ $utilities: map-merge(
 		'margin-right': (
 			property: margin-right,
 			class: mr,
-			values: map-merge(create-range(
+			values: map.merge(create-range(
 				$margin-start,
 				$margin-end,
 				$margin-step,
@@ -780,7 +781,7 @@ $utilities: map-merge(
 		'margin-bottom': (
 			property: margin-bottom,
 			class: mb,
-			values: map-merge(create-range(
+			values: map.merge(create-range(
 				$margin-start,
 				$margin-end,
 				$margin-step,
@@ -790,7 +791,7 @@ $utilities: map-merge(
 		'margin-left': (
 			property: margin-left,
 			class: ml,
-			values: map-merge(create-range(
+			values: map.merge(create-range(
 				$margin-start,
 				$margin-end,
 				$margin-step,

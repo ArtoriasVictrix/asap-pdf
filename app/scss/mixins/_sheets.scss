@@ -3,6 +3,11 @@
 // ===============================================
 
 
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+
+
 /*
 	Required parameters:
 	- width (to properly display sheet size in browser);
@@ -25,19 +30,19 @@ $default-sheet-margin: 15mm;
 
 @mixin generate-sheets($sheets) {
 	@each $key, $value in $sheets {
-		$class: if(map-has-key($value, class), map-get($value, class), '');
-		$width: map-get($value, width);
-		$height: map-get($value, height);
-		$size: if(map-has-key($value, size), map-get($value, size), $width + ' ' + $height);
-		$margins: if(map-has-key($value, margin), map-get($value, margin), $default-sheet-margin);
+		$class: if(sass(map.has-key($value, class)): map.get($value, class); else: '');
+		$width: map.get($value, width);
+		$height: map.get($value, height);
+		$size: if(sass(map.has-key($value, size)): map.get($value, size); else: $width + ' ' + $height);
+		$margins: if(sass(map.has-key($value, margin)): map.get($value, margin); else: $default-sheet-margin);
 
 
 		@if ($class == '') {
 			$class: string-replace(#{$size}, ' ', '-');
 
 			// Class name can't start with a digit
-			$first-symbol: str-slice($class, 0, 1);
-			$class: if(index('1' '2' '3' '4' '5' '6' '7' '8' '9' '0', $first-symbol), 'sheet-' + $class, $class);
+			$first-symbol: string.slice($class, 0, 1);
+			$class: if(sass(list.index('1' '2' '3' '4' '5' '6' '7' '8' '9' '0', $first-symbol)): 'sheet-' + $class; else: $class);
 		}
 
 		@each $margin in $margins {

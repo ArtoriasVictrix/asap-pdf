@@ -20,6 +20,6 @@ module.exports = fonts = () => {
 		fontsDest = projectConfig.tempFolder ? projectPath.temp.fonts : projectPath.build.fonts;
 	}
 
-	return gulp.src(projectPath.src.fonts)
+	return gulp.src(projectPath.src.fonts, { encoding: false })
 		.pipe(gulp.dest(fontsDest));
 };

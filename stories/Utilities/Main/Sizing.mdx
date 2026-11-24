@@ -1,0 +1,169 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Main/Sizing' />
+
+import { Width, MinWidth, MaxWidth, Height, MinHeight, MaxHeight } from './Sizing.stories';
+
+
+# Sizing
+
+> Easily make an element wider or taller with our width and height utilities.
+
+## Relative to the parent
+
+Width, min-width, max-width and height, min-height, max-height utilities are generated from the
+[utilities API](?path=/story/utilities-api--page) in `/app/scss/utilities/_utilities.scss`.
+
+You can set your own sizes for these utilities by changing the values in the `/app/scss/variables/_spacing.scss` file.
+
+> &#151; Why do you suggest using such a large range of values?  
+> &#151; The answer is simple enough. These ranges are based on our own experience, and in production mode, all unused
+> classes are removed from the CSS using PurgeCSS.
+
+### Width
+
+The classes are named using the format `w-{size}`.
+
+Where *size* is one of:
+
+- The value ranges from 0 to 100 in 5 **percent** increments (0, 5, 10 ... 100)
+- The value ranges from 4 to 156 in 4 **pixel** increments (4, 8, 12 ... 156)
+- The value ranges from 160 to 400 in 20 **pixel** increments (160, 160, 180 ... 400)
+- `auto` - for classes that set the `width` to `auto`
+
+<Canvas of={Width} />
+
+### Min-width
+
+The classes are named using the format `min-w-{size}`.
+
+Where *size* is one of:
+
+- The value ranges from 0 to 100 in 5 **percent** increments (0, 5, 10 ... 100)
+- The value ranges from 4 to 136 in 4 **pixel** increments (4, 8, 12 ... 136)
+
+<Canvas of={MinWidth} />
+
+### Max-width
+
+The classes are named using the format `max-w-{size}`.
+
+Where *size* is one of:
+
+- The value ranges from 0 to 100 in 5 **percent** increments (0, 5, 10 ... 100)
+- The value ranges from 4 to 136 in 4 **pixel** increments (4, 8, 12 ... 136)
+- The value ranges from 140 to 400 in 20 **pixel** increments (140, 160, 180 ... 400)
+- `none` - for classes that set the `max-width` to `none`
+
+<Canvas of={MaxWidth} />
+
+### Height
+
+The classes are named using the format `h-{size}`.
+
+Where *size* is one of:
+
+- The value ranges from 0 to 100 in 25 **percent** increments (0, 25, 50, 75 100)
+- The value ranges from 4 to 80 in 4 **pixel** increments (4, 8, 12 ... 80)
+- The value ranges from 80 to 300 in 20 **pixel** increments (80, 100, 120 ... 300)
+- `auto` - for classes that set the `height` to `auto`
+
+<Canvas of={Height} />
+
+### Min-height
+
+The classes are named using the format `min-h-{size}`.
+
+Where *size* is one of:
+
+- The value ranges from 0 to 60 in 4 **pixel** increments (0, 4, 8 ... 60)
+- The value ranges from 300 to 440 in 20 **pixel** increments (300, 320, 340 ... 440)
+
+<Canvas of={MinHeight} />
+
+### Max-height
+
+The class is named `max-h-100p` (`max-height: 100%`).
+
+<Canvas of={MaxHeight} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Sizing utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```scss
+'width-percent': (
+	property: width,
+	class: w,
+	values: create-range(0, 100, 5, '%'),
+),
+'width': (
+	property: width,
+	class: w,
+	values: map.merge(create-range(4, 156, 4, 'px'), (auto: auto)),
+),
+'width-large': (
+	property: width,
+	class: w,
+	values: create-range(160, 400, 20, 'px'),
+),
+'min-width-percent': (
+	property: min-width,
+	class: min-w,
+	values: create-range(0, 100, 5, '%'),
+),
+'min-width-px': (
+	property: min-width,
+	class: min-w,
+	values: create-range(4, 136, 4, 'px'),
+),
+'max-width-percent': (
+	property: max-width,
+	class: max-w,
+	values: map.merge(create-range(0, 100, 5, '%'), (none: none)),
+),
+'max-width': (
+	property: max-width,
+	class: max-w,
+	values: create-range(4, 136, 4, 'px'),
+),
+'max-width-large': (
+	property: max-width,
+	class: max-w,
+	values: create-range(140, 400, 20, 'px'),
+),
+
+'height-percent': (
+	property: height,
+	class: h,
+	values: map.merge(create-range(0, 100, 25, '%'), (auto: auto)),
+),
+'height': (
+	property: height,
+	class: h,
+	values: create-range(4, 80, 4, 'px'),
+),
+'height-px-large': (
+	property: height,
+	class: h,
+	values: create-range(80, 300, 20, 'px'),
+),
+'min-height': (
+	property: min-height,
+	class: min-h,
+	values: create-range(0, 60, 4, 'px'),
+),
+'min-height-large': (
+	property: min-height,
+	class: min-h,
+	values: create-range(300, 440, 20, 'px'),
+),
+'max-height': (
+	property: max-height,
+	class: max-h,
+	values: (100p: 100%),
+),
+```

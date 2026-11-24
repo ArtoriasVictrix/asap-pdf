@@ -9,7 +9,7 @@ const gulpif = require('gulp-if');
 const plumber = require('gulp-plumber');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpScss = require('gulp-sass')(require('sass'));
-const autoprefixer = require('gulp-autoprefixer');
+const autoprefixer = require('gulp-autoprefixer').default;
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 

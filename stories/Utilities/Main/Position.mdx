@@ -1,0 +1,130 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Main/Position' />
+
+import { ArrangeElements, CenterElements, CenterElements2 } from './Position.stories';
+
+
+# Position
+
+## Position values
+
+```
+<div class="pos-static">...</div>
+<div class="pos-relative">...</div>
+<div class="pos-absolute">...</div>
+<div class="pos-fixed">...</div>
+<div class="pos-sticky">...</div>
+```
+
+## Arrange elements
+
+Arrange elements easily with the edge positioning utilities. The format is `pos-{property}-{position}`.
+
+Where *property* is one of:
+
+- `top` - for the vertical top position
+- `left` - for the horizontal left position
+- `bottom` - for the vertical bottom position
+- `right` - for the horizontal right position
+
+Where *position* is one of:
+
+- `0` - for `0` edge position
+- `50` - for `50%` edge position
+- `100` - for `100%` edge position
+
+> You can change position values in `/app/scss/variables/_position.scss` file.
+
+<Canvas of={ArrangeElements} />
+
+## Center elements
+
+In addition, you can also center the elements with the transform utility class `.translate-middle`.
+
+This class applies the transformations `translateX(-50%)` and `translateY(-50%)` to the element which, in combination
+with the edge positioning utilities, allows you to absolute center an element.
+
+<Canvas of={CenterElements} />
+
+By adding `.translate-middle-x` or `.translate-middle-y` classes, elements can be positioned only in horizontal or
+vertical direction.
+
+<Canvas of={CenterElements2} />
+
+## SCSS (Sass)
+
+### Maps
+
+Default position utility values are declared in a Sass variables (`/app/scss/variables/_position.scss`), then used to
+generate the utilities.
+
+```
+$position-step: 50;
+$position-start: -100;
+$position-end: 100;
+$position-type: '%';
+```
+
+### Utilities API
+
+Position utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'position': (
+	property: position,
+	class: pos,
+	values: static relative absolute fixed sticky,
+),
+'position-top': (
+	property: top,
+	class: pos-top,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+'position-right': (
+	property: right,
+	class: pos-right,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+'position-bottom': (
+	property: bottom,
+	class: pos-bottom,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+'position-left': (
+	property: left,
+	class: pos-left,
+	values: create-range(
+		$position-start,
+		$position-end,
+		$position-step,
+		$position-type
+	),
+),
+
+'translate-middle': (
+	property: transform,
+	class: translate-middle,
+	values: (
+		null: translate(-50%, -50%),
+		x: translateX(-50%),
+		y: translateY(-50%),
+	)
+),
+```

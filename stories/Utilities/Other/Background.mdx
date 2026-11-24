@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title='Utilities/Other/Background' />
+
+import { NoBackground, BackgroundColor } from './Background.stories';
+
+
+# Background
+
+> Convey meaning through `background-color`.
+
+## No background
+
+<Canvas of={NoBackground} />
+
+## Background color
+
+Similar to the contextual text color classes, set the background of an element to any contextual class. Background
+utilities **do not set** `color`, so in some cases you’ll want to use `.text-*`
+[color utilities](?path=/story/utilities-typography-text-colors--page).
+
+<Canvas of={BackgroundColor} />
+
+## SCSS (Sass)
+
+### Utilities API
+
+Background utilities are declared in the utilities API in `app/scss/_utilities.scss`.
+[Learn how to use the utilities API on the Bootstrap website](https://getbootstrap.com/docs/5.1/utilities/api/#using-the-api).
+
+```
+'background': (
+	property: background,
+	class: bg,
+	// INFO: 'none' transforms into '0 0' by SCSS
+	values: none,
+),
+'background-color': (
+	property: background-color,
+	class: bg,
+	values: (
+		white: var(--bg-white),
+		black: var(--bg-black),
+		light: var(--bg-light),
+		dark: var(--bg-dark),
+		primary: var(--bg-primary),
+		success: var(--bg-success),
+		warning: var(--bg-warning),
+		danger: var(--bg-danger),
+		info: var(--bg-info),
+		transparent: transparent,
+	)
+),
+```

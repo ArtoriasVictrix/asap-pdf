@@ -1,0 +1,713 @@
+<!DOCTYPE html><html lang="ru"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pdf2img diffs</title>
+	<style>
+		/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+		html {
+			line-height: 1.15;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		body {
+			margin: 0;
+		}
+
+		main {
+			display: block;
+		}
+
+		a {
+			background-color: transparent;
+		}
+
+		b,
+		strong {
+			font-weight: bolder;
+		}
+
+		img {
+			border-style: none;
+		}
+
+
+		/* Custom styles */
+
+		html {
+			box-sizing: border-box;
+			background: #F1F2F4;
+		}
+
+		body {
+			color: #222222;
+			font-family: "Arial", "Helvetica CY", "Nimbus Sans L", sans-serif;
+			font-size: 14px;
+		}
+
+		*,
+		*::after,
+		*::before {
+			box-sizing: inherit;
+		}
+
+		h1,
+		h2,
+		h5 {
+			margin: 0;
+		}
+
+		p {
+			margin-top: 0;
+			margin-bottom: 12px;
+		}
+
+		::-webkit-scrollbar {
+			width: 12px;
+			height: 12px;
+		}
+
+		::-webkit-scrollbar-button {
+			width: 0;
+			height: 0;
+		}
+
+		::-webkit-scrollbar-thumb {
+			border: 2px solid transparent;
+			border-radius: 50px;
+			background: #D5D7DE;
+			background-clip: content-box;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #DCDEE5;
+			background-clip: content-box;
+		}
+
+		::-webkit-scrollbar-thumb:active {
+			background: #D0D2D9;
+			background-clip: content-box;
+		}
+
+		::-webkit-scrollbar-track {
+			border: 0 none #ffffff;
+			border-radius: 50px;
+		}
+
+		::-webkit-scrollbar-corner {
+			background: transparent;
+		}
+
+		/* =============================================== */
+
+		.container {
+			width: 100%;
+			max-width: 1440px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.row {
+			--gutter-x: 32px;
+			--gutter-y: 0;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			margin-bottom: calc(var(--gutter-y) * -1);
+			margin-right: calc(var(--gutter-x)/ -2);
+			margin-left: calc(var(--gutter-x)/ -2)
+		}
+
+		.row > * {
+			-ms-flex-negative: 0;
+			flex-shrink: 0;
+			width: 100%;
+			max-width: 100%;
+			margin-bottom: var(--gutter-y);
+			padding-right: calc(var(--gutter-x)/ 2);
+			padding-left: calc(var(--gutter-x)/ 2)
+		}
+
+		.col-3 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: 25%
+		}
+
+		.col-4 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: 33.3333333333%
+		}
+
+		.col-12 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: 100%
+		}
+
+		.row--gx-16 {
+			--gutter-x: 16px !important
+		}
+
+		.flex-shrink-0 {
+			-ms-flex-negative: 0 !important;
+			flex-shrink: 0 !important
+		}
+
+		.mt-20 {
+			margin-top: 20px !important
+		}
+
+		.mt-36 {
+			margin-top: 36px !important
+		}
+
+		.mr-8 {
+			margin-right: 8px !important
+		}
+
+		.mb-0 {
+			margin-bottom: 0 !important
+		}
+
+		.p-20 {
+			padding: 20px !important
+		}
+
+		.fz-xs {
+			font-size: 12px !important
+		}
+
+
+		.header {
+			padding: 32px 0 28px;
+		}
+
+		.h2 {
+			font-size: 22px;
+		}
+
+		.h3 {
+			font-size: 18px;
+		}
+
+		.h5 {
+			font-size: 12px;
+		}
+
+		.svg {
+			vertical-align: middle;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+		}
+
+		.logo--pdf {
+			--logo-color: #F33666;
+		}
+
+		.logo--screenshot {
+			--logo-color: #287BF8;
+		}
+
+		.logo__emblem {
+			width: 100%;
+			max-width: 38px;
+			height: auto;
+			margin-right: 11px;
+			box-shadow: 0 0 10px rgba(183, 192, 206, .2);
+		}
+
+		.logo__text {
+			font-size: 22px;
+			font-weight: 700;
+		}
+
+		.main {
+			padding: 0 0 50px;
+		}
+
+
+		.accordion__checkbox {
+			display: none;
+		}
+
+		.accordion {
+			margin-top: 20px;
+			border-radius: 4px;
+			overflow: hidden;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, .06),
+						0 1px 3px rgba(0, 0, 0, .1);
+		}
+
+		.accordion__header {
+			display: flex;
+			justify-content: space-between;
+			padding: 12px 12px;
+			background-color: #fff;
+			font-size: 14px;
+			line-height: 1.43;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.accordion__title {
+			display: flex;
+			margin-right: 20px;
+		}
+
+		.accordion__content {
+			max-height: 0;
+			overflow: hidden;
+			line-height: 1.43;
+		}
+
+		.accordion__content-inner {
+			padding: 12px 16px 12px;
+			border-top: 1px solid #EBEDF2;
+			overflow: auto;
+			background-color: #fff;
+			word-break: break-word;
+		}
+
+		.accordion__checkbox:checked + .accordion__header .accordion__arrow {
+			transform: rotate(180deg);
+		}
+
+		.accordion__checkbox:checked ~ .accordion__content {
+			max-height: none;
+		}
+
+		.accordion--scrollable .accordion__checkbox:checked~.accordion__content .accordion__content-inner {
+			max-height: 245px;
+		}
+
+
+		.card__title {
+			padding-right: 12px;
+			padding-left: 12px;
+		}
+
+		.card__content {
+			display: flex;
+			flex-direction: column;
+			height: 328px;
+			margin-top: 8px;
+			border: 1px solid #D5D7DE;
+			border-radius: 4px;
+			overflow: hidden;
+		}
+
+		.card__content--maximized {
+			height: 656px;
+		}
+
+		.card__image-container {
+			flex-grow: 1;
+			overflow: auto;
+		}
+
+		.card__image {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			cursor: pointer;
+		}
+
+		.card__text {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			padding: 8px 12px;
+			border-top: 1px solid #D5D7DE;
+			background-color: #fff;
+			font-size: 12px;
+			line-height: 1;
+		}
+
+		.card__status {
+			margin-right: 10px;
+		}
+
+		.card__links {
+			display: flex;
+			gap: 5px;
+			align-items: center;
+			margin-left: auto;
+		}
+
+		.card__link {
+			color: #222222;
+		}
+
+		.card__link-icon {
+			margin-left: 4px;
+		}
+
+		.card__link-icon svg {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<div class="container">
+			<div class="logo logo--pdf" id="logo">
+				<svg width="38" height="38" class="logo__emblem" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="38" height="38" rx="8" fill="white"></rect>
+					<rect x="12" y="7" width="10" height="20" fill="black"></rect>
+					<rect x="16" y="11" width="10" height="20" fill="var(--logo-color)"></rect>
+				</svg>
+				<h2 class="logo__text" id="logoText">Pdf2img diffs</h2>
+			</div>
+		</div>
+	</header>
+	<main class="main">
+		<div class="container">
+			<div>
+				<strong>Report created:</strong> <span id="date">16 нояб. 2026 г., 23:00:59</span>
+			</div>
+
+			<div class="row row--gx-16" id="alerts">
+
+			</div>
+
+			<section id="gallery">
+
+			
+				<div class="mt-36">
+					<h3 class="h3">index.html</h3>
+				
+					<div class="accordion mt-20">
+						<input id="accordion-a2016a1f-0991-d0cf-9f7c-521698cbf043" class="accordion__checkbox" type="checkbox">
+						<label for="accordion-a2016a1f-0991-d0cf-9f7c-521698cbf043" class="accordion__header">
+							<span class="accordion__title">
+								
+		<svg width="20" height="20" class="svg flex-shrink-0 mr-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M18.3333 9.2333V9.99997C18.3323 11.797 17.7504 13.5455 16.6744 14.9848C15.5985 16.4241 14.0861 17.477 12.3628 17.9866C10.6395 18.4961 8.79771 18.4349 7.11205 17.8121C5.42639 17.1894 3.9872 16.0384 3.00912 14.5309C2.03105 13.0233 1.56648 11.24 1.68472 9.4469C1.80296 7.65377 2.49766 5.94691 3.66522 4.58086C4.83278 3.21482 6.41064 2.26279 8.16348 1.86676C9.91632 1.47073 11.7502 1.65192 13.3917 2.3833" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M18.3333 3.33325L10 11.6749L7.5 9.17492" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	No diffs found
+							</span>
+							<svg width="20" height="20" class="accordion__arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 12 15 18 9"></polyline>
+							</svg>
+						</label>
+						<div class="accordion__content">
+							<div class="accordion__content-inner p-20">
+								<div class="row row--gx-16">
+									
+					<div class="col-3">
+						<div class="card">
+							<h5 class="card__title">PC</h5>
+							<div class="card__content">
+								<div class="card__image-container">
+									<img class="card__image" src="../tests/pdf2img/difference/index.png" alt="">
+								</div>
+								<div class="card__text">
+									<div class="card__links">
+										<a href="../tests/pdf2img/difference/index.png" target="_blank" class="card__link-icon">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 2H14V6" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M6.66666 9.33333L14 2" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			
+				<div class="mt-36">
+					<h3 class="h3">html-example.html</h3>
+				
+					<div class="accordion mt-20">
+						<input id="accordion-f8536de3-5090-75a4-3ad2-dc1f63aaa0e6" class="accordion__checkbox" type="checkbox">
+						<label for="accordion-f8536de3-5090-75a4-3ad2-dc1f63aaa0e6" class="accordion__header">
+							<span class="accordion__title">
+								
+		<svg width="20" height="20" class="svg flex-shrink-0 mr-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M18.3333 9.2333V9.99997C18.3323 11.797 17.7504 13.5455 16.6744 14.9848C15.5985 16.4241 14.0861 17.477 12.3628 17.9866C10.6395 18.4961 8.79771 18.4349 7.11205 17.8121C5.42639 17.1894 3.9872 16.0384 3.00912 14.5309C2.03105 13.0233 1.56648 11.24 1.68472 9.4469C1.80296 7.65377 2.49766 5.94691 3.66522 4.58086C4.83278 3.21482 6.41064 2.26279 8.16348 1.86676C9.91632 1.47073 11.7502 1.65192 13.3917 2.3833" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M18.3333 3.33325L10 11.6749L7.5 9.17492" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	No diffs found
+							</span>
+							<svg width="20" height="20" class="accordion__arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 12 15 18 9"></polyline>
+							</svg>
+						</label>
+						<div class="accordion__content">
+							<div class="accordion__content-inner p-20">
+								<div class="row row--gx-16">
+									
+					<div class="col-3">
+						<div class="card">
+							<h5 class="card__title">PC</h5>
+							<div class="card__content">
+								<div class="card__image-container">
+									<img class="card__image" src="../tests/pdf2img/difference/html-example.png" alt="">
+								</div>
+								<div class="card__text">
+									<div class="card__links">
+										<a href="../tests/pdf2img/difference/html-example.png" target="_blank" class="card__link-icon">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 2H14V6" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M6.66666 9.33333L14 2" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			
+				<div class="mt-36">
+					<h3 class="h3">examples/ru/payment-example.html</h3>
+				
+					<div class="accordion mt-20">
+						<input id="accordion-66248111-c030-e7d8-5333-9530e479a421" class="accordion__checkbox" type="checkbox">
+						<label for="accordion-66248111-c030-e7d8-5333-9530e479a421" class="accordion__header">
+							<span class="accordion__title">
+								
+		<svg width="20" height="20" class="svg flex-shrink-0 mr-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M18.3333 9.2333V9.99997C18.3323 11.797 17.7504 13.5455 16.6744 14.9848C15.5985 16.4241 14.0861 17.477 12.3628 17.9866C10.6395 18.4961 8.79771 18.4349 7.11205 17.8121C5.42639 17.1894 3.9872 16.0384 3.00912 14.5309C2.03105 13.0233 1.56648 11.24 1.68472 9.4469C1.80296 7.65377 2.49766 5.94691 3.66522 4.58086C4.83278 3.21482 6.41064 2.26279 8.16348 1.86676C9.91632 1.47073 11.7502 1.65192 13.3917 2.3833" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M18.3333 3.33325L10 11.6749L7.5 9.17492" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	No diffs found
+							</span>
+							<svg width="20" height="20" class="accordion__arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 12 15 18 9"></polyline>
+							</svg>
+						</label>
+						<div class="accordion__content">
+							<div class="accordion__content-inner p-20">
+								<div class="row row--gx-16">
+									
+					<div class="col-3">
+						<div class="card">
+							<h5 class="card__title">PC</h5>
+							<div class="card__content">
+								<div class="card__image-container">
+									<img class="card__image" src="../tests/pdf2img/difference/examples/ru/payment-example.png" alt="">
+								</div>
+								<div class="card__text">
+									<div class="card__links">
+										<a href="../tests/pdf2img/difference/examples/ru/payment-example.png" target="_blank" class="card__link-icon">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 2H14V6" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M6.66666 9.33333L14 2" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			
+				<div class="mt-36">
+					<h3 class="h3">examples/ru/notification-example.html</h3>
+				
+					<div class="accordion mt-20">
+						<input id="accordion-5ce6f102-5f2c-27da-edf7-162e9a6aeb05" class="accordion__checkbox" type="checkbox">
+						<label for="accordion-5ce6f102-5f2c-27da-edf7-162e9a6aeb05" class="accordion__header">
+							<span class="accordion__title">
+								
+		<svg width="20" height="20" class="svg flex-shrink-0 mr-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M18.3333 9.2333V9.99997C18.3323 11.797 17.7504 13.5455 16.6744 14.9848C15.5985 16.4241 14.0861 17.477 12.3628 17.9866C10.6395 18.4961 8.79771 18.4349 7.11205 17.8121C5.42639 17.1894 3.9872 16.0384 3.00912 14.5309C2.03105 13.0233 1.56648 11.24 1.68472 9.4469C1.80296 7.65377 2.49766 5.94691 3.66522 4.58086C4.83278 3.21482 6.41064 2.26279 8.16348 1.86676C9.91632 1.47073 11.7502 1.65192 13.3917 2.3833" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M18.3333 3.33325L10 11.6749L7.5 9.17492" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	No diffs found
+							</span>
+							<svg width="20" height="20" class="accordion__arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 12 15 18 9"></polyline>
+							</svg>
+						</label>
+						<div class="accordion__content">
+							<div class="accordion__content-inner p-20">
+								<div class="row row--gx-16">
+									
+					<div class="col-3">
+						<div class="card">
+							<h5 class="card__title">PC</h5>
+							<div class="card__content">
+								<div class="card__image-container">
+									<img class="card__image" src="../tests/pdf2img/difference/examples/ru/notification-example.png" alt="">
+								</div>
+								<div class="card__text">
+									<div class="card__links">
+										<a href="../tests/pdf2img/difference/examples/ru/notification-example.png" target="_blank" class="card__link-icon">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 2H14V6" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M6.66666 9.33333L14 2" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			
+				<div class="mt-36">
+					<h3 class="h3">examples/ru/invoice-example.html</h3>
+				
+					<div class="accordion mt-20">
+						<input id="accordion-27d72213-4909-ae16-310c-991fe35f6782" class="accordion__checkbox" type="checkbox">
+						<label for="accordion-27d72213-4909-ae16-310c-991fe35f6782" class="accordion__header">
+							<span class="accordion__title">
+								
+		<svg width="20" height="20" class="svg flex-shrink-0 mr-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M18.3333 9.2333V9.99997C18.3323 11.797 17.7504 13.5455 16.6744 14.9848C15.5985 16.4241 14.0861 17.477 12.3628 17.9866C10.6395 18.4961 8.79771 18.4349 7.11205 17.8121C5.42639 17.1894 3.9872 16.0384 3.00912 14.5309C2.03105 13.0233 1.56648 11.24 1.68472 9.4469C1.80296 7.65377 2.49766 5.94691 3.66522 4.58086C4.83278 3.21482 6.41064 2.26279 8.16348 1.86676C9.91632 1.47073 11.7502 1.65192 13.3917 2.3833" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M18.3333 3.33325L10 11.6749L7.5 9.17492" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	No diffs found
+							</span>
+							<svg width="20" height="20" class="accordion__arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 12 15 18 9"></polyline>
+							</svg>
+						</label>
+						<div class="accordion__content">
+							<div class="accordion__content-inner p-20">
+								<div class="row row--gx-16">
+									
+					<div class="col-3">
+						<div class="card">
+							<h5 class="card__title">PC</h5>
+							<div class="card__content">
+								<div class="card__image-container">
+									<img class="card__image" src="../tests/pdf2img/difference/examples/ru/invoice-example.png" alt="">
+								</div>
+								<div class="card__text">
+									<div class="card__links">
+										<a href="../tests/pdf2img/difference/examples/ru/invoice-example.png" target="_blank" class="card__link-icon">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 2H14V6" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M6.66666 9.33333L14 2" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			
+				<div class="mt-36">
+					<h3 class="h3">examples/eu/invoice-example.html</h3>
+				
+					<div class="accordion mt-20">
+						<input id="accordion-da4ef1e8-d523-a6c4-7d6e-5ac5d2c53252" class="accordion__checkbox" type="checkbox">
+						<label for="accordion-da4ef1e8-d523-a6c4-7d6e-5ac5d2c53252" class="accordion__header">
+							<span class="accordion__title">
+								
+		<svg width="20" height="20" class="svg flex-shrink-0 mr-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M18.3333 9.2333V9.99997C18.3323 11.797 17.7504 13.5455 16.6744 14.9848C15.5985 16.4241 14.0861 17.477 12.3628 17.9866C10.6395 18.4961 8.79771 18.4349 7.11205 17.8121C5.42639 17.1894 3.9872 16.0384 3.00912 14.5309C2.03105 13.0233 1.56648 11.24 1.68472 9.4469C1.80296 7.65377 2.49766 5.94691 3.66522 4.58086C4.83278 3.21482 6.41064 2.26279 8.16348 1.86676C9.91632 1.47073 11.7502 1.65192 13.3917 2.3833" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M18.3333 3.33325L10 11.6749L7.5 9.17492" stroke="#1AB45D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	No diffs found
+							</span>
+							<svg width="20" height="20" class="accordion__arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 12 15 18 9"></polyline>
+							</svg>
+						</label>
+						<div class="accordion__content">
+							<div class="accordion__content-inner p-20">
+								<div class="row row--gx-16">
+									
+					<div class="col-3">
+						<div class="card">
+							<h5 class="card__title">PC</h5>
+							<div class="card__content">
+								<div class="card__image-container">
+									<img class="card__image" src="../tests/pdf2img/difference/examples/eu/invoice-example.png" alt="">
+								</div>
+								<div class="card__text">
+									<div class="card__links">
+										<a href="../tests/pdf2img/difference/examples/eu/invoice-example.png" target="_blank" class="card__link-icon">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 2H14V6" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M6.66666 9.33333L14 2" stroke="#287BF8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</section>
+		</div>
+	</main>
+	<script>
+		let cardImages = document.querySelectorAll('.card__image');
+
+		if (cardImages) {
+			cardImages.forEach(cardImage => {
+				cardImage.addEventListener('click', (evt) => {
+					const cardContainer = cardImage.closest('.col-3');
+					const cardContent = cardImage.closest('.card__content');
+
+					cardContainer.classList.toggle('col-12');
+					cardContent.classList.toggle('card__content--maximized');
+				});
+			});
+		}
+	</script>
+
+
+
+</body></html>
